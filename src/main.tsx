@@ -8,28 +8,55 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { HelmetProvider } from 'react-helmet-async';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { RouteErrorBoundary } from '@/components/RouteErrorBoundary';
+import { Toaster } from '@/components/ui/sonner';
 import '@/index.css'
-import { HomePage } from '@/pages/HomePage'
-
+// Layout & Pages
+import { RootLayout } from '@/components/layout/RootLayout';
+import { HomePage } from '@/pages/HomePage';
+import { ServicesPage } from '@/pages/ServicesPage';
+import { ServiceAreasPage } from '@/pages/ServiceAreasPage';
+import { AboutPage } from '@/pages/AboutPage';
+import { ContactPage } from '@/pages/ContactPage';
 const queryClient = new QueryClient();
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <RootLayout><HomePage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/services",
+    element: <RootLayout><ServicesPage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/areas",
+    element: <RootLayout><ServiceAreasPage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/about",
+    element: <RootLayout><AboutPage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/contact",
+    element: <RootLayout><ContactPage /></RootLayout>,
     errorElement: <RouteErrorBoundary />,
   },
 ]);
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ErrorBoundary>
-        <RouterProvider router={router} />
-      </ErrorBoundary>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary>
+          <RouterProvider router={router} />
+          <Toaster richColors closeButton position="top-center" />
+        </ErrorBoundary>
+      </QueryClientProvider>
+    </HelmetProvider>
   </StrictMode>,
 )
-   

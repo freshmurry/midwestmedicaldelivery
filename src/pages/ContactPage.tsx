@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { SEO } from '@/components/SEO';
-import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2, Package, MessageSquare, Copy } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,59 +21,39 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [lastRequest, setLastRequest] = useState<ContactFormValues | null>(null);
-  const [honeypot, setHoneypot] = useState('');
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
   });
   const onSubmit = async (data: ContactFormValues) => {
-    if (honeypot) return; // Spam detected
     setIsSubmitting(true);
-    const subject = `MMD Delivery Request: ${data.name}`;
-    const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
     try {
-      const res = await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      const json = await res.json();
-      if (json.success && json.data?.emailSent) {
-        setTimeout(() => {
-          toast.success('Request routed to dispatch');
-          setLastRequest(data);
-          setIsSuccess(true);
-          reset();
-          setIsSubmitting(false);
-        }, 600);
-        return;
+      if (response.ok) {
+        setIsSuccess(true);
+        toast.success('Request Received', {
+          description: "Our dispatch team will contact you shortly."
+        });
+        reset();
+      } else {
+        throw new Error('Failed to send');
       }
     } catch (error) {
-      console.error('API logging failed', error);
-    }
-
-    setTimeout(() => {
-      toast.success('Request routed to dispatch', {
-        description: "Complete the submission in your email client for immediate logging."
+      toast.error('Submission Failed', {
+        description: "Please call us directly for immediate assistance."
       });
-      setLastRequest(data);
-      setIsSuccess(true);
-      reset();
+    } finally {
       setIsSubmitting(false);
-      window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }, 600);
-  };
-  const copySummary = () => {
-    if (!lastRequest) return;
-    const summary = `MMD Pickup Request\nClinic: ${lastRequest.name}\nPickup: ${lastRequest.pickup}\nDelivery: ${lastRequest.delivery}`;
-    navigator.clipboard.writeText(summary);
-    toast.success('Request summary copied');
+    }
   };
   return (
     <>
-      <SEO
-        title="Request Medical Pickup"
-        description="Contact MMD for dental office, pharmacy, or vet clinic deliveries. Specialist medical delivery dispatch for Northwest Indiana."
+      <SEO 
+        title="Contact & Request Delivery" 
+        description="Request a medical delivery or get a quote. 24/7 STAT medical courier dispatch for Northwest Indiana."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -81,20 +61,20 @@ export function ContactPage() {
             {/* Contact Info */}
             <div className="space-y-12">
               <div className="space-y-6">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Medical <span className="text-mmc-teal">Dispatch.</span></h1>
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Get in <span className="text-mmc-teal">Touch.</span></h1>
                 <p className="text-xl text-mmc-gray leading-relaxed">
-                  Need a pickup for a dental mold or urgent prescription? Our professional dispatch team is standing by to coordinate your regional clinical routes via digital inquiry.
+                  Need a STAT pickup? Have a question about our routes? Our team is available 24/7 for urgent medical logistics.
                 </p>
               </div>
               <div className="space-y-8">
                 <div className="flex gap-6">
                   <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center shrink-0">
-                    <MessageSquare className="h-6 w-6 text-mmc-teal" />
+                    <Phone className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Digital Inquiry</h3>
-                    <p className="text-mmc-gray">Verified Clinical Dispatch</p>
-                    <p className="text-xs text-mmc-teal font-bold uppercase mt-1">24/7 Monitoring</p>
+                    <h3 className="text-lg font-bold text-mmc-dark">Immediate Dispatch</h3>
+                    <p className="text-mmc-gray">(219) 555-0123</p>
+                    <p className="text-xs text-mmc-teal font-bold uppercase mt-1">Available 24/7 for STAT</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
@@ -102,108 +82,92 @@ export function ContactPage() {
                     <Mail className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Clinic Support</h3>
+                    <h3 className="text-lg font-bold text-mmc-dark">Email Inquiries</h3>
                     <p className="text-mmc-gray">dispatch@midwestmedicaldelivery.com</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center shrink-0">
-                    <Package className="h-6 w-6 text-mmc-teal" />
+                    <Clock className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Logistics Focus</h3>
-                    <p className="text-mmc-gray">Professional Medical Transport (Molds, Rx, Supplies)</p>
-                    <p className="text-mmc-gray">Optimized Regional Routes</p>
+                    <h3 className="text-lg font-bold text-mmc-dark">Business Hours</h3>
+                    <p className="text-mmc-gray">Standard Routes: Mon–Fri, 8AM–6PM</p>
+                    <p className="text-mmc-gray">STAT Service: Always Open</p>
                   </div>
                 </div>
               </div>
               <div className="p-8 bg-mmc-dark rounded-3xl text-white">
-                <h3 className="text-xl font-bold mb-4">Dedicated Regional Coverage</h3>
-                <p className="text-gray-400 mb-6">Serving Northwest Indiana clinics with professional regional routes and selective border connections for high-priority clinical cargo.</p>
+                <h3 className="text-xl font-bold mb-4">Coverage Area</h3>
+                <p className="text-gray-400 mb-6">Serving Lake and Porter Counties in Indiana, plus selective routes into the Chicago area.</p>
                 <div className="flex items-center gap-2 text-mmc-teal font-bold">
                   <MapPin className="h-5 w-5" />
-                  NWI Local Network
+                  Northwest Indiana Corridor
                 </div>
               </div>
             </div>
             {/* Contact Form */}
             <div className="bg-white border border-gray-100 rounded-[3rem] p-8 md:p-12 shadow-airbnb relative">
               {isSuccess ? (
-                <div className="h-full flex flex-col items-center justify-center text-center space-y-8 py-12 animate-in fade-in zoom-in" aria-live="polite">
-                  <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center">
+                <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12 animate-in fade-in zoom-in">
+                  <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
                   </div>
-                  <div className="space-y-4">
-                    <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
-                    <p className="text-mmc-gray text-lg max-w-sm mx-auto">
-                      Your request was routed to dispatch. Please finalize the email in your client.
-                    </p>
-                  </div>
-                  <div className="flex flex-col w-full gap-4">
-                    <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl font-bold py-6 text-mmc-dark border-2 border-mmc-dark">
-                      Send New Request
-                    </Button>
-                    <Button variant="ghost" onClick={copySummary} className="text-mmc-teal font-bold gap-2">
-                      <Copy className="h-4 w-4" />
-                      Copy Request Fallback
-                    </Button>
-                  </div>
+                  <h2 className="text-3xl font-black text-mmc-dark">Message Received!</h2>
+                  <p className="text-mmc-gray text-lg max-w-sm">
+                    Thank you for contacting MMC. Our dispatch team is reviewing your request and will call you shortly.
+                  </p>
+                  <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl">
+                    Send Another Message
+                  </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="hidden" aria-hidden="true">
-                    <Label htmlFor="bot-field">Do not fill this out</Label>
-                    <Input 
-                      id="bot-field" 
-                      value={honeypot} 
-                      onChange={(e) => setHoneypot(e.target.value)} 
-                    />
-                  </div>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Clinic / Contact Name</Label>
-                      <Input id="name" {...register('name')} placeholder="Regional Health Clinic" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                      <Label htmlFor="name">Full Name</Label>
+                      <Input id="name" {...register('name')} placeholder="John Doe" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.name && <p className="text-xs text-red-500 font-bold">{errors.name.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" {...register('phone')} placeholder="(XXX) XXX-XXXX" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                      <Input id="phone" {...register('phone')} placeholder="(219) 000-0000" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.phone && <p className="text-xs text-red-500 font-bold">{errors.phone.message}</p>}
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" {...register('email')} placeholder="office@clinic.com" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                    <Input id="email" type="email" {...register('email')} placeholder="john@example.com" className="bg-mmc-light border-0 rounded-xl py-6" />
                     {errors.email && <p className="text-xs text-red-500 font-bold">{errors.email.message}</p>}
                   </div>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="pickup">Pickup Location</Label>
-                      <Input id="pickup" {...register('pickup')} placeholder="Local Clinic Office" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                      <Label htmlFor="pickup">Pickup City/Facility</Label>
+                      <Input id="pickup" {...register('pickup')} placeholder="Munster, IN" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.pickup && <p className="text-xs text-red-500 font-bold">{errors.pickup.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="delivery">Delivery Destination</Label>
-                      <Input id="delivery" {...register('delivery')} placeholder="Dental Lab / Pharmacy" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                      <Label htmlFor="delivery">Delivery City/Facility</Label>
+                      <Input id="delivery" {...register('delivery')} placeholder="Gary, IN" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.delivery && <p className="text-xs text-red-500 font-bold">{errors.delivery.message}</p>}
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Delivery Details (Optional)</Label>
-                    <Textarea id="message" {...register('message')} placeholder="e.g. Dental molds, prescription bags, clinical supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px] focus:ring-2 focus:ring-mmc-teal" />
+                    <Label htmlFor="message">Delivery Details / Message (Optional)</Label>
+                    <Textarea id="message" {...register('message')} placeholder="e.g. STAT Lab Specimens, Pharmacy Route..." className="bg-mmc-light border-0 rounded-xl min-h-[120px]" />
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-8 text-lg font-bold shadow-airbnb">
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Routing to Dispatch...
+                        Processing...
                       </>
                     ) : (
-                      'Request Pickup'
+                      'Request Service'
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Email-routed regional logistics. Midwest Medical Delivery.
+                    By submitting, you agree to be contacted via phone or email for service coordination.
                   </p>
                 </form>
               )}

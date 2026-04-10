@@ -1,113 +1,73 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
-import { Award, ShieldCheck, Zap, ShieldAlert, Package } from 'lucide-react';
-import { AuditSummary } from '@/components/AuditSummary';
+import { Award, ShieldCheck, Heart, UserCheck } from 'lucide-react';
 export function AboutPage() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Midwest Medical Delivery",
-    "description": "MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport.",
-    "knowsAbout": ["Medical Logistics", "HIPAA Compliance", "OSHA 10 Safety", "Dental Prosthetic Transport", "Pharmacy Delivery"],
-    "url": "https://midwestmedicaldelivery.com/about"
-  };
   return (
     <>
-      <SEO
-        title="About Our Medical Logistics Specialization"
-        description="MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport."
-        schema={schema}
+      <SEO 
+        title="About & Certifications" 
+        description="Learn about Midwest Medical Delivery (MMC). HIPAA compliant, OSHA 10 certified, and fully insured medical courier experts in Indiana."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark leading-tight">
-                  Medical Logistics <span className="text-mmc-teal">Elite.</span>
-                </h1>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
-                    <ShieldCheck className="h-4 w-4 text-mmc-teal" />
-                    HIPAA Compliant
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
-                    <ShieldAlert className="h-4 w-4 text-mmc-teal" />
-                    OSHA 10 Certified
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
-                    <Award className="h-4 w-4 text-mmc-teal" />
-                    Licensed & Insured
-                  </span>
-                </div>
-              </div>
+            <div className="space-y-8">
+              <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Commitment to <span className="text-mmc-teal">Compliance.</span></h1>
               <p className="text-xl text-mmc-gray leading-relaxed">
-                Midwest Medical Delivery (MMD) provides the Northwest Indiana region with the professional precision that clinical healthcare demands.
+                Founded on the principles of reliability and safety, Midwest Medical Delivery (MMC) has grown to be the trusted partner for healthcare facilities across Northwest Indiana.
               </p>
               <p className="text-lg text-mmc-gray leading-relaxed">
-                We've invested in a professional medical fleet, navigating urban routes with agility and ensuring clinical materials are handled with dedicated security and compliance.
+                We understand that every package we carry represents a patient waiting for results, a pharmacy fulfilling a life-saving prescription, or a surgeon needing critical equipment. This sense of responsibility drives every delivery we make.
               </p>
-              <div className="grid sm:grid-cols-2 gap-8 pt-4">
+              <div className="grid sm:grid-cols-2 gap-6">
                 {[
-                  { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for facility delivery.' },
-                  { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },
-                  { icon: Zap, title: 'Regional Experts', desc: 'Professional response times across the clinic network.' },
-                  { icon: Package, title: 'Clinical Specialization', desc: 'Exclusively handling dental and medical parcels.' }
+                  { icon: Award, title: 'OSHA 10 Certified', desc: 'Trained at Joliet Junior College for workplace safety standards.' },
+                  { icon: ShieldCheck, title: 'HIPAA Compliant', desc: 'Continuous training in patient privacy and PHI security.' },
+                  { icon: Heart, title: 'Care-First Approach', desc: 'Trained to handle sensitive cargo with maximum professionalism.' },
+                  { icon: UserCheck, title: 'Fully Insured', desc: 'Comprehensive liability and cargo insurance for your peace of mind.' }
                 ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    className="space-y-2 group"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + (i * 0.1) }}
-                  >
+                  <div key={i} className="space-y-2">
                     <div className="flex items-center gap-2 text-mmc-teal">
                       <item.icon className="h-5 w-5" />
                       <h3 className="font-black uppercase tracking-wider text-xs">{item.title}</h3>
                     </div>
                     <p className="text-sm text-mmc-gray leading-relaxed">{item.desc}</p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-2xl border border-gray-100">
-                <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71f1e3c77d?auto=format&fit=crop&q=80&w=800&fm=webp"
-                  alt="Secure Medical Handling in Professional Fleet"
-                  loading="lazy"
-                  width={800}
-                  height={1000}
-                  className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
+            </div>
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-airbnb">
+                <img 
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" 
+                  alt="Medical Professional" 
+                  className="w-full h-full object-cover grayscale-[10%]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-mmc-dark/40 to-transparent pointer-events-none" />
               </div>
-              <motion.div
-                className="absolute -bottom-10 -left-10 bg-white/90 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-airbnb max-w-xs space-y-4 border border-white/20 hidden md:block z-20"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-              >
-                <div className="text-2xl font-black text-mmc-dark">Regional Logistics</div>
-                <p className="text-sm font-bold text-mmc-dark leading-tight">Providing professional medical logistics for over 50 regional clinic partners.</p>
-              </motion.div>
-            </motion.div>
+              <div className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[2.5rem] shadow-airbnb max-w-xs space-y-4 border border-gray-100 hidden md:block">
+                <div className="text-4xl font-black text-mmc-teal">Zero</div>
+                <p className="text-sm font-bold text-mmc-dark leading-tight">Accidents or security breaches since our founding.</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-32 max-w-4xl mx-auto text-center space-y-12">
+            <h2 className="text-3xl md:text-4xl font-black text-mmc-dark">Professional Excellence is our Standard</h2>
+            <div className="grid md:grid-cols-2 gap-10 text-left">
+              <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm">
+                <h3 className="text-xl font-bold text-mmc-dark mb-4">HIPAA Compliance</h3>
+                <p className="text-mmc-gray leading-relaxed">
+                  Our drivers are certified annually in HIPAA (Health Insurance Portability and Accountability Act) standards. We ensure that Protected Health Information (PHI) is never exposed and chain of custody is maintained through secure digital logs and physical verification.
+                </p>
+              </div>
+              <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm">
+                <h3 className="text-xl font-bold text-mmc-dark mb-4">Biohazard Handling</h3>
+                <p className="text-mmc-gray leading-relaxed">
+                  Every MMC vehicle is equipped with biohazard spill kits and temperature-controlled storage solutions. Our staff is trained in the safe handling of bloodborne pathogens and diagnostic specimens, adhering strictly to OSHA 29 CFR 1910.1030 standards.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <AuditSummary />
       </div>
     </>
   );

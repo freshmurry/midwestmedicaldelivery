@@ -1,108 +1,95 @@
-import * as React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
 import { SEO } from '@/components/SEO';
-import { MapPin, Navigation, Info } from 'lucide-react';
-import { QuickInquiryModal } from '@/components/QuickInquiryModal';
-import { Button } from '@/components/ui/button';
-import { CityMap } from '@/components/CityMap';
-import { CITY_DATA } from '@shared/city-data';
+import { MapPin, Navigation } from 'lucide-react';
+const regions = [
+  {
+    city: 'Gary',
+    description: 'Providing rapid lab transport and pharmaceutical delivery for Gary, IN hospitals and community clinics. We navigate the Broadway and Miller corridors daily for on-time specimen pickup.'
+  },
+  {
+    city: 'Hammond',
+    description: 'Dedicated medical courier routes across Hammond, Indiana. We specialize in serving medical offices near the Calumet and Indianapolis Blvd healthcare hubs with 24/7 STAT support.'
+  },
+  {
+    city: 'Munster',
+    description: 'Serving the premier Munster medical corridor. Reliable transportation for diagnostic clinics and specialist offices throughout Munster, IN, including immediate inter-facility transfers.'
+  },
+  {
+    city: 'Schererville',
+    description: 'Efficient medical logistics for Schererville, Indiana providers. Our couriers are experts in the US-30 corridor, ensuring specimens reach their destination without traffic delays.'
+  },
+  {
+    city: 'Merrillville',
+    description: 'Hub for medical transport in Merrillville, IN. We support large-scale medical centers and independent labs with frequent daily routes and emergency supply delivery.'
+  },
+  {
+    city: 'Crown Point',
+    description: 'Fast, secure medical delivery across Crown Point, Indiana. From the historic square to new medical developments, we offer comprehensive coverage for the Lake County seat.'
+  },
+  {
+    city: 'Hobart',
+    description: 'Reliable healthcare delivery solutions in Hobart, IN. Our HIPAA-trained drivers serve the medical communities surrounding St. Mary Medical Center and beyond.'
+  },
+  {
+    city: 'East Chicago',
+    description: 'Crucial medical courier services for East Chicago healthcare providers. We prioritize safe transport through the industrial and residential corridors of East Chicago, IN.'
+  },
+  {
+    city: 'Highland',
+    description: 'Focused delivery services for Highland, Indiana medical clinics. We provide seamless integration with your office schedule for daily laboratory specimen pickups.'
+  },
+  {
+    city: 'Dyer',
+    description: 'Trusted partner for medical facilities in Dyer, IN. Secure, timely transport for dialysis centers and rehabilitation clinics in the border town area.'
+  },
+  {
+    city: 'St. John',
+    description: 'Premium medical courier service for the growing healthcare landscape in St. John, Indiana. Ensuring patient privacy and safety with every delivery.'
+  }
+];
 export function ServiceAreasPage() {
-  const { hash } = useLocation();
-  const regions = Object.values(CITY_DATA);
-  React.useEffect(() => {
-    if (hash) {
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, [hash]);
   return (
     <>
-      <SEO
-        title="Regional Coverage Map"
-        description="Professional medical delivery for Dental, Pharmacy, and Vet clinics across Gary, Hammond, Munster, and the Northwest Indiana region."
+      <SEO 
+        title="Service Areas in Northwest Indiana" 
+        description="We provide medical courier services in Gary, Hammond, Munster, Merrillville, Crown Point, and across Northwest Indiana. View our full coverage map."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-8 md:py-10 lg:py-12">
-          <div className="max-w-3xl mb-12 md:mb-16 space-y-4 md:space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mmc-teal/10 text-mmc-teal text-xs font-bold uppercase tracking-widest">
-              <Navigation className="h-3 w-3" />
-              Service Coverage Area
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-mmc-dark leading-tight">
-              Regional <span className="text-mmc-teal">Network.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-mmc-gray leading-relaxed max-w-2xl">
-              Our professional medical fleet is strategically positioned to serve local clinics and regional hubs with unparalleled local speed.
+        <div className="py-16 md:py-24">
+          <div className="max-w-3xl mb-20 space-y-6">
+            <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Northwest Indiana <span className="text-mmc-teal">Coverage.</span></h1>
+            <p className="text-xl text-mmc-gray leading-relaxed">
+              We are strategically located to serve the entire Lake and Porter County medical communities with speed and efficiency.
             </p>
           </div>
-          {/* Lake County Map Section */}
-          <div className="mb-24 space-y-10">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div className="space-y-2">
-                <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Interactive Network</h2>
-                <h3 className="text-3xl md:text-4xl font-black text-mmc-dark">Lake County Coverage</h3>
-              </div>
-              <p className="text-xs font-bold text-mmc-gray uppercase tracking-wider max-w-[200px] sm:text-right">
-                Explore our clinic logistics network across Northwest Indiana.
-              </p>
-            </div>
-            <CityMap />
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {regions.map((city) => (
-              <section
-                key={city.slug}
-                id={city.slug}
-                className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 scroll-mt-24 flex flex-col"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center group-hover:bg-mmc-teal transition-colors shrink-0">
-                    <MapPin className="h-6 w-6 text-mmc-teal group-hover:text-white" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {regions.map((region, i) => (
+              <section key={i} className="bg-mmc-light rounded-3xl p-8 border border-transparent hover:border-mmc-teal/20 transition-all group">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                    <MapPin className="h-5 w-5 text-mmc-teal" />
                   </div>
-                  <h2 className="text-xl md:text-2xl font-black text-mmc-dark group-hover:text-mmc-teal transition-colors leading-tight">
-                    {city.name}, IN
-                  </h2>
+                  <h2 className="text-2xl font-black text-mmc-dark">Medical Courier in {region.city}, Indiana</h2>
                 </div>
-                <p className="text-mmc-gray text-sm md:text-base leading-relaxed mb-6 flex-grow">
-                  {city.metaDescription}
+                <p className="text-mmc-gray leading-relaxed mb-6">
+                  {region.description}
                 </p>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-xs font-bold text-mmc-teal bg-mmc-teal/5 w-fit px-3 py-1.5 rounded-full">
-                    <Info className="h-3.5 w-3.5" />
-                    Clinic Routes Available
-                  </div>
-                  <Link
-                    to={`/${city.slug}`}
-                    className="inline-flex items-center text-sm font-black text-mmc-dark hover:text-mmc-teal transition-colors"
-                  >
-                    View City Details <Navigation className="ml-2 h-4 w-4" />
-                  </Link>
+                <div className="flex items-center gap-2 text-sm font-bold text-mmc-teal">
+                  <Navigation className="h-4 w-4" />
+                  90-Min STAT Service Available
                 </div>
               </section>
             ))}
           </div>
-          <div className="mt-16 md:mt-24 p-8 md:p-16 bg-mmc-dark rounded-[2.5rem] md:rounded-[4rem] text-center space-y-6 md:space-y-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-mmc-teal opacity-10 rounded-full -mr-20 -mt-20 blur-3xl pointer-events-none" />
-            <h2 className="text-3xl md:text-4xl font-black text-white relative z-10">Local Clinic Provider?</h2>
-            <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed relative z-10">
-              We specialize in regional clinical logistics. If your facility is within our coverage area, we have a solution for your secure delivery needs.
+          <div className="mt-24 p-12 bg-white border-2 border-dashed border-gray-200 rounded-[3rem] text-center space-y-8">
+            <h2 className="text-3xl font-black text-mmc-dark">Don't see your city listed?</h2>
+            <p className="text-lg text-mmc-gray max-w-xl mx-auto">
+              We frequently handle deliveries extending into Valparaiso, Chesterton, and the South Chicago suburbs. Contact our dispatch to verify coverage for your specific route.
             </p>
-            <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-              <QuickInquiryModal
-                trigger={
-                  <Button size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-8 h-14 text-lg font-bold w-full sm:w-auto">
-                    Get Route Quote
-                  </Button>
-                }
-              />
-              <Button asChild variant="outline" className="border-2 border-white/20 text-white font-bold hover:bg-white/10 rounded-2xl px-8 h-14 text-lg w-full sm:w-auto transition-colors">
-                <Link to="/contact">Contact Support</Link>
-              </Button>
+            <div className="flex justify-center">
+              <a href="tel:2195550123" className="bg-mmc-dark text-white px-8 py-4 rounded-2xl font-bold hover:bg-mmc-teal transition-colors">
+                Call for Custom Quote
+              </a>
             </div>
           </div>
         </div>

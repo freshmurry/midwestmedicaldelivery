@@ -78,7 +78,8 @@ function updateWranglerJsonc() {
 
 function runSetupCommands() {
     const commands = [
-    "bun add react-helmet-async@^2.0.5"
+    "bun add react-helmet-async@^2.0.5",
+    "bun install react-helmet-async"
 ];
     
     if (commands.length === 0) {

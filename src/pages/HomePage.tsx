@@ -69,8 +69,8 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-airbnb relative">
                 <img
-                  src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800"
-                  alt="Agile Jeep Wrangler Delivery Vehicle"
+                  src="https://images.unsplash.com/photo-1566230389586-ef1b2c119f88?auto=format&fit=crop&q=80&w=1200"
+                  alt="MMC All-Black Jeep Wrangler - Agile Small-Parcels Medical Courier"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent" />

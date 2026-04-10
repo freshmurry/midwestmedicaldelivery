@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
 import { MapPin, Navigation, Info } from 'lucide-react';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';

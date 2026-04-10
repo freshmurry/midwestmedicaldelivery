@@ -22,7 +22,7 @@ export function HomePage() {
     <>
       <SEO
         title="Small-Parcel Medical Courier for NWI Clinics"
-        description="Fast small-parcel medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Agile Jeep Wrangler transport for sensitive small items."
+        description="Fast professional medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Secure transport for sensitive small items."
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
@@ -36,13 +36,13 @@ export function HomePage() {
             >
               <div className="inline-flex items-center gap-2 bg-mmc-teal/10 text-mmc-teal px-4 py-2 rounded-full text-sm font-bold tracking-tight">
                 <Zap className="h-4 w-4" />
-                AGILE JEEP WRANGLER TRANSPORT
+                FAST PROFESSIONAL COURIER SERVICE
               </div>
               <h1 className="text-5xl md:text-7xl font-black text-mmc-dark leading-[1.1] tracking-tight">
                 Small-Parcel Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Courier</span> for Clinics.
               </h1>
               <p className="text-xl text-mmc-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Fast, secure, and compact delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Lake & Porter Counties.
+                Fast, secure, and professional delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Lake & Porter Counties.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg shadow-airbnb hover:-translate-y-1 transition-all">
@@ -53,7 +53,7 @@ export function HomePage() {
                 </Button>
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 pt-4">
-                {['Small Cargo Specialist', 'HIPAA Compliant', 'Fully Insured'].map((text, i) => (
+                {['Small Cargo Specialist', 'HIPAA Compliant', 'Professional Fleet'].map((text, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
                     <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
                     {text}
@@ -69,8 +69,8 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-airbnb relative">
                 <img
-                  src="https://images.unsplash.com/photo-1566230389586-ef1b2c119f88?auto=format&fit=crop&q=80&w=1200"
-                  alt="MMC All-Black Jeep Wrangler - Agile Small-Parcels Medical Courier"
+                  src="https://images.unsplash.com/photo-1512418490979-92798ccc93a0?auto=format&fit=crop&q=80&w=1200"
+                  alt="MMC Medical Courier Vehicle for Small-Parcels"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent" />
@@ -92,7 +92,7 @@ export function HomePage() {
             {[
               { label: 'Precision Handling', value: '100%', sub: 'No Bulk Cargo' },
               { label: 'Clinic Hubs', value: '12+', sub: 'Active NWI Cities' },
-              { label: 'Transport', value: 'Agile', sub: 'Jeep Wrangler Fleet' },
+              { label: 'Transport', value: 'Rapid', sub: 'Modern Courier Fleet' },
               { label: 'Service', value: '24/7', sub: 'Small Parcel Dispatch' }
             ].map((stat, i) => (
               <motion.div key={i} className="text-center space-y-1" variants={fadeIn}>
@@ -116,7 +116,7 @@ export function HomePage() {
           >
             <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Focused Expertise</h2>
             <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Precision for sensitive small cargo.</h3>
-            <p className="text-lg text-mmc-gray">We've traded heavy vans for agile Jeep transport to better serve local dental, pharmacy, and outpatient clinics.</p>
+            <p className="text-lg text-mmc-gray">We've specialized in professional medical transport to better serve local dental, pharmacy, and outpatient clinics.</p>
           </motion.div>
           <motion.div
             className="grid md:grid-cols-3 gap-8"
@@ -127,7 +127,7 @@ export function HomePage() {
           >
             {[
               { icon: Package, title: 'Dental & Ortho', desc: 'Secure transport for non-biohazard crowns, molds, and retainers. We handle the bridge between the lab and your clinic.' },
-              { icon: Pill, title: 'Pharmacy Precision', desc: 'Pharmacy-to-patient and office delivery for sensitive medications. Agile routing ensures zero-delay patient care.' },
+              { icon: Pill, title: 'Pharmacy Precision', desc: 'Pharmacy-to-patient and office delivery for sensitive medications. Professional routing ensures zero-delay patient care.' },
               { icon: Heart, title: 'Vet & Outpatient', desc: 'Urgent supplies and document transport for veterinary and outpatient facilities that need small items fast.' }
             ].map((feature, i) => (
               <motion.div

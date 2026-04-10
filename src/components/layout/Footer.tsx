@@ -27,7 +27,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-mmc-gray text-sm leading-relaxed">
-              Specialized small-parcel medical courier utilizing agile Jeep transport for dental, pharmacy, and outpatient clinics across NWI.
+              Specialized small-parcel medical courier utilizing a professional medical fleet for dental, pharmacy, and outpatient clinics across NWI.
             </p>
             <div className="flex flex-wrap gap-3">
               <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-mmc-dark shadow-sm">
@@ -36,7 +36,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-mmc-dark shadow-sm">
                 <Zap className="h-4 w-4 text-mmc-teal" />
-                AGILE JEEP FLEET
+                SECURE MEDICAL TRANSPORT
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-xs text-mmc-gray leading-relaxed text-center max-w-4xl mx-auto">
-            Midwest Medical Delivery (MMC) provides premium small-medical courier services in Gary, Hammond, Munster, and across Northwest Indiana. We specialize in non-biohazard delivery of dental crowns, prosthetics, pharmacy prescriptions, and vet supplies. Our agile Jeep Wrangler fleet ensures precision handling for small, sensitive items where traditional large vans fail. Fully HIPAA compliant even for low-PHI clinic scenarios across Lake and Porter Counties.
+            Midwest Medical Delivery (MMC) provides premium small-medical courier services in Gary, Hammond, Munster, and across Northwest Indiana. We specialize in non-biohazard delivery of dental crowns, prosthetics, pharmacy prescriptions, and vet supplies. Our dedicated professional fleet ensures precision handling for small, sensitive items where traditional large logistics fail. Fully HIPAA compliant even for low-PHI clinic scenarios across Lake and Porter Counties.
           </p>
           <div className="mt-6 text-center text-xs text-mmc-gray">
             © {new Date().getFullYear()} Midwest Medical Delivery. Licensed & Insured. All rights reserved.

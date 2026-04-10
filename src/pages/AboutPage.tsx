@@ -7,7 +7,7 @@ export function AboutPage() {
     <>
       <SEO
         title="About Our Small-Parcel Specialty"
-        description="Learn how MMC specializes in agile, small-parcel medical delivery for dental offices, pharmacies, and vet clinics in Northwest Indiana."
+        description="Learn how MMC specializes in professional medical delivery for dental offices, pharmacies, and vet clinics in Northwest Indiana."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -23,13 +23,13 @@ export function AboutPage() {
                 Midwest Medical Delivery (MMC) was founded to fill the gap in medical logistics: a courier that treats small dental prosthetics and pharmacy prescriptions with the precision they deserve.
               </p>
               <p className="text-lg text-mmc-gray leading-relaxed">
-                We've moved away from bulky vans in favor of agile Jeep Wrangler transport, allowing us to navigate NWI urban routes faster while ensuring sensitive small cargo never shares space with heavy industrial freight.
+                We've invested in a dedicated medical transport fleet, allowing us to navigate NWI urban routes faster while ensuring sensitive small cargo never shares space with heavy industrial freight.
               </p>
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
                   { icon: Award, title: 'Pharmacy Precision', desc: 'Optimized protocols for patient prescription delivery.' },
                   { icon: ShieldCheck, title: 'HIPAA Compliant', desc: 'Compliant even in low-PHI clinic scenarios.' },
-                  { icon: Zap, title: 'Agile Jeep Fleet', desc: 'Compact transport for faster local clinic routing.' },
+                  { icon: Zap, title: 'Rapid Fleet Response', desc: 'Professional transport for faster local clinic routing.' },
                   { icon: Package, title: 'Dental Specialist', desc: 'Secure, gentle handling for prosthetics and molds.' }
                 ].map((item, i) => (
                   <motion.div
@@ -57,7 +57,7 @@ export function AboutPage() {
               <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-airbnb">
                 <img
                   src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=800"
-                  alt="MMC Courier Delivering Small Dental Package to Local Clinic"
+                  alt="Professional Medical Courier Vehicle Delivering Small Package to Local Clinic"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -83,13 +83,13 @@ export function AboutPage() {
               <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-glow transition-shadow duration-500">
                 <h3 className="text-xl font-bold text-mmc-dark mb-4">Precision over Bulk</h3>
                 <p className="text-mmc-gray leading-relaxed">
-                  We don't do trucks, vans, or heavy pallets. By specializing in small-parcel medical courier work, we offer a more personalized, higher-security service for dental labs, pharmacies, and vet clinics that traditional delivery companies overlook.
+                  We don't do trucks or heavy pallets. By specializing in small-parcel medical courier work, we offer a more personalized, higher-security service for dental labs, pharmacies, and vet clinics that traditional delivery companies overlook.
                 </p>
               </div>
               <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-glow transition-shadow duration-500">
-                <h3 className="text-xl font-bold text-mmc-dark mb-4">Agile NWI Transport</h3>
+                <h3 className="text-xl font-bold text-mmc-dark mb-4">Professional Delivery Fleet</h3>
                 <p className="text-mmc-gray leading-relaxed">
-                  Our Jeep Wrangler fleet is more than a branding choice—it's a strategic advantage. It allows us to access tight clinic parking lots and navigate NWI traffic with ease, ensuring your time-sensitive prescriptions or molds arrive ahead of schedule.
+                  Our professional delivery fleet is more than a branding choice—it's a strategic advantage. It allows us to access tight clinic parking lots and navigate NWI traffic with ease, ensuring your time-sensitive prescriptions or molds arrive ahead of schedule through agile transport.
                 </p>
               </div>
             </div>

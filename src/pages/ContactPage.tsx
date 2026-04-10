@@ -93,7 +93,7 @@ export function ContactPage() {
                   <div>
                     <h3 className="text-lg font-bold text-mmc-dark">Logistics Type</h3>
                     <p className="text-mmc-gray">Small parcels only (Molds, Rx, Supplies)</p>
-                    <p className="text-mmc-gray">Optimized Agile Jeep Routes</p>
+                    <p className="text-mmc-gray">Optimized Professional Routes</p>
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export function ContactPage() {
                   </div>
                   <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
                   <p className="text-mmc-gray text-lg max-w-sm">
-                    Thank you. Our small-parcel dispatch is assigning your pickup to an agile Jeep unit now.
+                    Thank you. Our small-parcel dispatch is assigning your pickup to a medical courier unit now.
                   </p>
                   <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl">
                     New Request
@@ -167,7 +167,7 @@ export function ContactPage() {
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Small-parcel medical specialty. Agile Jeep transport.
+                    Small-parcel medical specialty. Professional Medical Fleet.
                   </p>
                 </form>
               )}

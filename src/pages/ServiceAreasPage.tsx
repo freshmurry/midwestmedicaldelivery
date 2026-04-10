@@ -10,7 +10,7 @@ const regions = [
   },
   {
     city: 'Hammond',
-    description: 'Expert dental and pharmacy courier routes in Hammond. Our agile Jeep fleet navigates local clinics along Calumet Ave with precision small-parcel handling.'
+    description: 'Expert dental and pharmacy courier routes in Hammond. Our professional courier units navigate local clinics along Calumet Ave with precision small-parcel handling.'
   },
   {
     city: 'Munster',
@@ -22,7 +22,7 @@ const regions = [
   },
   {
     city: 'Merrillville',
-    description: 'Hub for clinic-to-clinic small deliveries in Merrillville. Supporting dental labs and independent pharmacies with frequent, secure Jeep routes.'
+    description: 'Hub for clinic-to-clinic small deliveries in Merrillville. Supporting dental labs and independent pharmacies with frequent, secure medical transport routes.'
   },
   {
     city: 'Crown Point',
@@ -34,7 +34,7 @@ const regions = [
   },
   {
     city: 'East Chicago',
-    description: 'Reliable pharmacy and dental delivery for East Chicago. Our drivers prioritize safety and speed for small medical parcels throughout the local region.'
+    description: 'Reliable pharmacy and dental delivery for East Chicago. Our professional medical transport fleet prioritizes safety and speed for small medical parcels.'
   },
   {
     city: 'Highland',
@@ -54,7 +54,7 @@ export function ServiceAreasPage() {
     <>
       <SEO
         title="NWI Clinic Coverage Map"
-        description="Agile small-parcel delivery for Dental, Pharmacy, and Vet clinics in Gary, Hammond, Munster, and across Northwest Indiana. View our coverage area."
+        description="Fast professional delivery for Dental, Pharmacy, and Vet clinics in Gary, Hammond, Munster, and across Northwest Indiana. View our coverage area."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 md:py-10 lg:py-12">
@@ -67,7 +67,7 @@ export function ServiceAreasPage() {
               Northwest Indiana <span className="text-mmc-teal">Network.</span>
             </h1>
             <p className="text-lg md:text-xl text-mmc-gray leading-relaxed max-w-2xl">
-              Our Jeep-based fleet is strategically positioned to serve Lake and Porter County dental labs, pharmacies, and outpatient clinics with unparalleled speed.
+              Our professional courier fleet is strategically positioned to serve Lake and Porter County dental labs, pharmacies, and outpatient clinics with unparalleled speed.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -96,7 +96,7 @@ export function ServiceAreasPage() {
             <div className="relative z-10 space-y-4">
               <h2 className="text-3xl md:text-4xl font-black text-white">Dental, Pharmacy, or Vet Clinic?</h2>
               <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed">
-                We specialize in agile routes for small-facility needs. If you're in Lake, Porter, or the Chicagoland border, we've got you covered.
+                We specialize in professional courier routes for small-facility needs. If you're in Lake, Porter, or the Chicagoland border, we've got you covered.
               </p>
             </div>
             <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">

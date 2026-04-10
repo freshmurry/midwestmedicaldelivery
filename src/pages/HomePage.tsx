@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Truck, ShieldCheck, Clock, Activity, MapPin, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -10,7 +10,12 @@ const fadeIn = {
   transition: { duration: 0.6, ease: "easeOut" }
 };
 const stagger = {
-  animate: { transition: { staggerChildren: 0.1 } }
+  initial: {},
+  animate: { 
+    transition: { 
+      staggerChildren: 0.1 
+    } 
+  }
 };
 export function HomePage() {
   return (
@@ -23,7 +28,7 @@ export function HomePage() {
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
+            <motion.div
               className="flex-1 text-center lg:text-left space-y-8"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -56,7 +61,7 @@ export function HomePage() {
                 ))}
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="flex-1 w-full max-w-lg lg:max-w-none"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -77,7 +82,7 @@ export function HomePage() {
       {/* Trust Stats */}
       <section className="bg-mmc-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
             initial="initial"
             whileInView="animate"
@@ -102,7 +107,7 @@ export function HomePage() {
       {/* Service Highlights */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center max-w-3xl mx-auto mb-16 space-y-4"
             initial="initial"
             whileInView="animate"
@@ -113,7 +118,7 @@ export function HomePage() {
             <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Precision handling for precious cargo.</h3>
             <p className="text-lg text-mmc-gray">We aren't just a delivery service. We are a specialized extension of your healthcare facility.</p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-3 gap-8"
             initial="initial"
             whileInView="animate"
@@ -125,8 +130,8 @@ export function HomePage() {
               { icon: Clock, title: 'Unmatched Speed', desc: 'Our STAT delivery protocols guarantee the fastest possible transport for time-sensitive lab specimens.' },
               { icon: Truck, title: 'Real-time Reliability', desc: 'Modern tracking and dedicated dispatch ensure you always know exactly where your delivery is.' }
             ].map((feature, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 variants={fadeIn}
                 whileHover={{ y: -8 }}
                 className="p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-airbnb transition-all duration-300 group"
@@ -146,14 +151,19 @@ export function HomePage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-mmc-teal opacity-10 skew-x-12 translate-x-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <motion.div className="space-y-6" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div 
+              className="space-y-6" 
+              initial={{ opacity: 0, x: -20 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              viewport={{ once: true }}
+            >
               <h2 className="text-4xl md:text-5xl font-black max-w-xl">Localized expertise across Northwest Indiana.</h2>
               <p className="text-lg text-gray-400 max-w-lg">From Merrillville to Crown Point, we know the NWI medical corridor like the back of our hand.</p>
               <Button asChild variant="outline" className="border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl">
                 <Link to="/areas">View Coverage Map</Link>
               </Button>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="grid grid-cols-2 gap-4 w-full md:w-auto"
               initial="initial"
               whileInView="animate"
@@ -173,7 +183,7 @@ export function HomePage() {
       {/* CTA Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="bg-mmc-teal rounded-[3rem] p-12 md:p-20 text-center text-white shadow-glow relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,27 +1,36 @@
 import { Hono } from "hono";
 import type { Env } from './core-utils';
-import { UserEntity, ChatBoardEntity } from "./entities";
-import { ok, bad, notFound, isStr } from './core-utils';
+import { UserEntity } from "./entities";
+import { ok, bad } from './core-utils';
 export function userRoutes(app: Hono<{ Bindings: Env }>) {
-  // CONTACT FORM
+  // CONTACT & QUICK INQUIRY FORM HANDLER
   app.post('/api/contact', async (c) => {
     try {
       const data = await c.req.json();
-      // Basic validation for phase 1
-      if (!data.name || !data.phone || !data.email) {
-        return bad(c, 'Required fields missing');
+      // Basic validation for common fields
+      if ((!data.name && !data.contactName) || !data.phone || !data.email) {
+        return bad(c, 'Required contact information missing');
       }
-      console.log('[CONTACT FORM SUBMISSION]', data);
-      // In a real scenario, you'd send an email or store in DB.
-      // For this phase, we mock success.
-      return ok(c, { message: 'Inquiry received successfully' });
+      // Log the specific type of inquiry for backend monitoring
+      const isInquiry = !!data.facilityType;
+      console.log(
+        isInquiry ? '[MEDICAL PROVIDER INQUIRY]' : '[STANDARD CONTACT SUBMISSION]',
+        JSON.stringify(data, null, 2)
+      );
+      // Simulate a realistic processing delay (200ms)
+      await new Promise(resolve => setTimeout(resolve, 200));
+      return ok(c, { 
+        message: 'Request received successfully',
+        referenceId: crypto.randomUUID().slice(0, 8).toUpperCase()
+      });
     } catch (e) {
+      console.error('[CONTACT_API_ERROR]', e);
       return bad(c, 'Invalid request payload');
     }
   });
-  // TEST
+  // TEST ENDPOINT
   app.get('/api/test', (c) => c.json({ success: true, data: { name: 'MMC API Running' }}));
-  // USERS (Template Demo)
+  // USERS (Template Demo Legacy Support)
   app.get('/api/users', async (c) => {
     await UserEntity.ensureSeed(c.env);
     const cq = c.req.query('cursor');
@@ -29,6 +38,5 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
     const page = await UserEntity.list(c.env, cq ?? null, lq ? Math.max(1, (Number(lq) | 0)) : undefined);
     return ok(c, page);
   });
-  // DELETE: Users
   app.delete('/api/users/:id', async (c) => ok(c, { id: c.req.param('id'), deleted: await UserEntity.delete(c.env, c.req.param('id')) }));
 }

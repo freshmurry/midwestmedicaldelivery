@@ -1,8 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Truck, ShieldCheck, Clock, Activity, MapPin, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" }
+};
+const stagger = {
+  animate: { transition: { staggerChildren: 0.1 } }
+};
 export function HomePage() {
   return (
     <>
@@ -14,7 +23,12 @@ export function HomePage() {
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="flex-1 text-center lg:text-left space-y-8 animate-in fade-in slide-in-from-left-4 duration-700">
+            <motion.div 
+              className="flex-1 text-center lg:text-left space-y-8"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <div className="inline-flex items-center gap-2 bg-mmc-teal/10 text-mmc-teal px-4 py-2 rounded-full text-sm font-bold tracking-tight">
                 <Activity className="h-4 w-4" />
                 NOW SERVING ALL OF NORTHWEST INDIANA
@@ -34,21 +48,20 @@ export function HomePage() {
                 </Button>
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 pt-4">
-                <div className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
-                  <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
-                  HIPAA Compliant
-                </div>
-                <div className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
-                  <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
-                  OSHA 10 Certified
-                </div>
-                <div className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
-                  <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
-                  Fully Insured
-                </div>
+                {['HIPAA Compliant', 'OSHA 10 Certified', 'Fully Insured'].map((text, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
+                    <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
+                    {text}
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="flex-1 w-full max-w-lg lg:max-w-none animate-in fade-in slide-in-from-right-4 duration-700">
+            </motion.div>
+            <motion.div 
+              className="flex-1 w-full max-w-lg lg:max-w-none"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-airbnb relative">
                 <img
                   src="https://images.unsplash.com/photo-1541123287012-70691500f48f?auto=format&fit=crop&q=80&w=800"
@@ -57,64 +70,75 @@ export function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent" />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
       {/* Trust Stats */}
       <section className="bg-mmc-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
             {[
               { label: 'Delivery Time', value: '< 90m', sub: 'For STAT requests' },
               { label: 'Compliance', value: '100%', sub: 'HIPAA & OSHA' },
               { label: 'Coverage', value: '12+', sub: 'NWI Cities' },
               { label: 'Service', value: '24/7', sub: 'Emergency Support' }
             ].map((stat, i) => (
-              <div key={i} className="text-center space-y-1">
+              <motion.div key={i} className="text-center space-y-1" variants={fadeIn}>
                 <div className="text-3xl md:text-4xl font-black text-mmc-teal">{stat.value}</div>
                 <div className="text-sm font-bold text-mmc-dark uppercase tracking-wide">{stat.label}</div>
                 <div className="text-xs text-mmc-gray">{stat.sub}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
       {/* Service Highlights */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <motion.div 
+            className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
             <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Why Choose MMC</h2>
             <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Precision handling for precious cargo.</h3>
             <p className="text-lg text-mmc-gray">We aren't just a delivery service. We are a specialized extension of your healthcare facility.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          </motion.div>
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
             {[
-              {
-                icon: ShieldCheck,
-                title: 'Strict Compliance',
-                desc: 'Every driver is HIPAA trained and OSHA 10 certified, ensuring chain of custody and biohazard safety.'
-              },
-              {
-                icon: Clock,
-                title: 'Unmatched Speed',
-                desc: 'Our STAT delivery protocols guarantee the fastest possible transport for time-sensitive lab specimens.'
-              },
-              {
-                icon: Truck,
-                title: 'Real-time Reliability',
-                desc: 'Modern tracking and dedicated dispatch ensure you always know exactly where your delivery is.'
-              }
+              { icon: ShieldCheck, title: 'Strict Compliance', desc: 'Every driver is HIPAA trained and OSHA 10 certified, ensuring chain of custody and biohazard safety.' },
+              { icon: Clock, title: 'Unmatched Speed', desc: 'Our STAT delivery protocols guarantee the fastest possible transport for time-sensitive lab specimens.' },
+              { icon: Truck, title: 'Real-time Reliability', desc: 'Modern tracking and dedicated dispatch ensure you always know exactly where your delivery is.' }
             ].map((feature, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-airbnb transition-all duration-300 group">
+              <motion.div 
+                key={i} 
+                variants={fadeIn}
+                whileHover={{ y: -8 }}
+                className="p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-airbnb transition-all duration-300 group"
+              >
                 <div className="w-14 h-14 bg-mmc-light rounded-2xl flex items-center justify-center mb-6 group-hover:bg-mmc-teal transition-colors">
                   <feature.icon className="h-7 w-7 text-mmc-teal group-hover:text-white" />
                 </div>
                 <h4 className="text-xl font-bold text-mmc-dark mb-4">{feature.title}</h4>
                 <p className="text-mmc-gray leading-relaxed">{feature.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
       {/* Area Callout */}
@@ -122,28 +146,39 @@ export function HomePage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-mmc-teal opacity-10 skew-x-12 translate-x-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="space-y-6">
+            <motion.div className="space-y-6" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="text-4xl md:text-5xl font-black max-w-xl">Localized expertise across Northwest Indiana.</h2>
               <p className="text-lg text-gray-400 max-w-lg">From Merrillville to Crown Point, we know the NWI medical corridor like the back of our hand.</p>
               <Button asChild variant="outline" className="border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl">
                 <Link to="/areas">View Coverage Map</Link>
               </Button>
-            </div>
-            <div className="grid grid-cols-2 gap-4 w-full md:w-auto">
+            </motion.div>
+            <motion.div 
+              className="grid grid-cols-2 gap-4 w-full md:w-auto"
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={stagger}
+            >
               {['Munster', 'Schererville', 'Merrillville', 'Hammond'].map((city) => (
-                <div key={city} className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl flex items-center gap-3">
+                <motion.div key={city} variants={fadeIn} className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-mmc-teal" />
                   <span className="font-bold">{city}</span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
       {/* CTA Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-mmc-teal rounded-[3rem] p-12 md:p-20 text-center text-white shadow-glow relative overflow-hidden">
+          <motion.div 
+            className="bg-mmc-teal rounded-[3rem] p-12 md:p-20 text-center text-white shadow-glow relative overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             <div className="absolute inset-0 bg-black/5 pointer-events-none" />
             <h2 className="text-4xl md:text-6xl font-black mb-8">Ready to streamline your medical logistics?</h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Contact us today for a custom quote or to request an immediate pickup.</p>
@@ -155,7 +190,7 @@ export function HomePage() {
                 Call Now: (219) 555-0123
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
-import { Award, ShieldCheck, Zap, Package } from 'lucide-react';
+import { Award, ShieldCheck, Zap, Package, ShieldAlert } from 'lucide-react';
 export function AboutPage() {
   return (
     <>
       <SEO
         title="About Our Small-Parcel Specialty"
-        description="Learn how MMC specializes in professional medical delivery for dental offices, pharmacies, and vet clinics in Northwest Indiana."
+        description="Learn how MMC specializes in professional medical delivery for dental offices, pharmacies, and vet clinics in Northwest Indiana. OSHA 10 and HIPAA certified."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -18,7 +18,24 @@ export function AboutPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Specialized for <span className="text-mmc-teal">Clinics.</span></h1>
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Specialized for <span className="text-mmc-teal">Clinics.</span></h1>
+                {/* Certification Badges */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
+                    <ShieldCheck className="h-3 w-3 text-mmc-teal" />
+                    HIPAA Compliant
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
+                    <ShieldAlert className="h-3 w-3 text-mmc-teal" />
+                    OSHA 10 Certified
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
+                    <Award className="h-3 w-3 text-mmc-teal" />
+                    Fully Insured
+                  </span>
+                </div>
+              </div>
               <p className="text-xl text-mmc-gray leading-relaxed">
                 Midwest Medical Delivery (MMC) was founded to fill the gap in medical logistics: a courier that treats small dental prosthetics and pharmacy prescriptions with the precision they deserve.
               </p>
@@ -30,7 +47,7 @@ export function AboutPage() {
                   { icon: Award, title: 'Pharmacy Precision', desc: 'Optimized protocols for patient prescription delivery.' },
                   { icon: ShieldCheck, title: 'HIPAA Compliant', desc: 'Compliant even in low-PHI clinic scenarios.' },
                   { icon: Zap, title: 'Rapid Fleet Response', desc: 'Professional transport for faster local clinic routing.' },
-                  { icon: Package, title: 'Dental Specialist', desc: 'Secure, gentle handling for prosthetics and molds.' }
+                  { icon: ShieldAlert, title: 'OSHA 10 Certified', desc: 'Rigorous safety standards for clinic-level handling.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -54,10 +71,10 @@ export function AboutPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
             >
-              <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-airbnb">
+              <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-airbnb border border-gray-100">
                 <img
                   src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=800"
-                  alt="Professional Medical Courier Vehicle Delivering Small Package to Local Clinic"
+                  alt="Professional Medical Courier Delivering Small Package to Local Clinic"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -89,7 +106,7 @@ export function AboutPage() {
               <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-glow transition-shadow duration-500">
                 <h3 className="text-xl font-bold text-mmc-dark mb-4">Professional Delivery Fleet</h3>
                 <p className="text-mmc-gray leading-relaxed">
-                  Our professional delivery fleet is more than a branding choice—it's a strategic advantage. It allows us to access tight clinic parking lots and navigate NWI traffic with ease, ensuring your time-sensitive prescriptions or molds arrive ahead of schedule through agile transport.
+                  Our professional delivery fleet is more than a branding choice—it's a strategic advantage. It allows us to access tight clinic parking lots and navigate NWI traffic with ease, ensuring your time-sensitive prescriptions or molds arrive ahead of schedule through professional fleet response.
                 </p>
               </div>
             </div>

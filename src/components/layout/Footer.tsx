@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Package, Zap } from 'lucide-react';
+import { ShieldCheck, Package, Zap, ShieldAlert } from 'lucide-react';
 const cities = [
   'Gary', 'Hammond', 'East Chicago', 'Munster', 'Highland',
   'Schererville', 'Dyer', 'Merrillville', 'Crown Point', 'St. John', 'Hobart'
@@ -27,16 +27,20 @@ export function Footer() {
               </div>
             </div>
             <p className="text-mmc-gray text-sm leading-relaxed">
-              Specialized small-parcel medical courier utilizing a professional medical fleet for dental, pharmacy, and outpatient clinics across NWI.
+              Specialized small-parcel medical courier utilizing a professional medical fleet for dental, pharmacy, and outpatient clinics across NWI. OSHA 10 and HIPAA compliant.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-mmc-dark shadow-sm">
-                <Package className="h-4 w-4 text-mmc-teal" />
+            <div className="flex flex-wrap gap-2">
+              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-[10px] font-bold text-mmc-dark shadow-sm">
+                <Package className="h-3.5 w-3.5 text-mmc-teal" />
                 SMALL CARGO ONLY
               </div>
-              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-mmc-dark shadow-sm">
-                <Zap className="h-4 w-4 text-mmc-teal" />
-                SECURE MEDICAL TRANSPORT
+              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-[10px] font-bold text-mmc-dark shadow-sm">
+                <ShieldAlert className="h-3.5 w-3.5 text-mmc-teal" />
+                OSHA 10 CERTIFIED
+              </div>
+              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-[10px] font-bold text-mmc-dark shadow-sm">
+                <ShieldCheck className="h-3.5 w-3.5 text-mmc-teal" />
+                HIPAA COMPLIANT
               </div>
             </div>
           </div>
@@ -82,7 +86,7 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-xs text-mmc-gray leading-relaxed text-center max-w-4xl mx-auto">
-            Midwest Medical Delivery (MMC) provides premium small-medical courier services in Gary, Hammond, Munster, and across Northwest Indiana. We specialize in non-biohazard delivery of dental crowns, prosthetics, pharmacy prescriptions, and vet supplies. Our dedicated professional fleet ensures precision handling for small, sensitive items where traditional large logistics fail. Fully HIPAA compliant even for low-PHI clinic scenarios across Lake and Porter Counties.
+            Midwest Medical Delivery (MMC) provides premium small-medical courier services in Gary, Hammond, Munster, and across Northwest Indiana. We specialize in non-biohazard delivery of dental crowns, prosthetics, pharmacy prescriptions, and vet supplies. Our dedicated professional fleet ensures precision handling for small, sensitive items where traditional large logistics fail. Fully HIPAA compliant and OSHA 10 safety certified across Lake and Porter Counties.
           </p>
           <div className="mt-6 text-center text-xs text-mmc-gray">
             © {new Date().getFullYear()} Midwest Medical Delivery. Licensed & Insured. All rights reserved.

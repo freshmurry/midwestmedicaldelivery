@@ -144,16 +144,23 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const handleSuccess = () => setIsSuccess(true);
+  // Reset success state when modal is closed
+  const onOpenChange = (isOpen: boolean) => {
+    setOpen(isOpen);
+    if (!isOpen) {
+      setTimeout(() => setIsSuccess(false), 300);
+    }
+  };
   const handleClose = () => {
     setOpen(false);
     setTimeout(() => setIsSuccess(false), 300);
   };
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         {trigger ?? <Button className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-xl">Clinic Inquiry</Button>}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[550px] max-h-[90vh] overflow-y-auto rounded-3xl p-6 md:p-10">
+      <DialogContent className="sm:max-w-[550px] max-h-[95vh] overflow-y-auto rounded-3xl p-6 md:p-10">
         <AnimatePresence mode="wait">
           {!isSuccess ? (
             <motion.div
@@ -162,7 +169,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
             >
-              <DialogHeader className="mb-6">
+              <DialogHeader className="mb-6 text-left">
                 <DialogTitle className="text-2xl md:text-3xl font-black text-mmc-dark">
                   Inquiry for <span className="text-mmc-teal">Providers</span>
                 </DialogTitle>
@@ -185,7 +192,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                   Our small-parcel dispatch team has received your clinic inquiry. We respond within 1 hour.
                 </p>
               </div>
-              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10">Close</Button>
+              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white">Close</Button>
             </motion.div>
           )}
         </AnimatePresence>

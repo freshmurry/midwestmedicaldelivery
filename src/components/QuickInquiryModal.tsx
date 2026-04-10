@@ -75,7 +75,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="facilityType" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Facility Type</Label>
-          <Select onValueChange={(val) => setValue('facilityType', val)}>
+          <Select onValueChange={(val) => setValue('facilityType', val, { shouldValidate: true })}>
             <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-mmc-teal">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
@@ -115,7 +115,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="serviceNeeded" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Service Needed</Label>
-        <Select onValueChange={(val) => setValue('serviceNeeded', val)}>
+        <Select onValueChange={(val) => setValue('serviceNeeded', val, { shouldValidate: true })}>
           <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-mmc-teal">
             <SelectValue placeholder="Select service" />
           </SelectTrigger>
@@ -144,7 +144,6 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const handleSuccess = () => setIsSuccess(true);
-  // Reset success state when modal is closed
   const onOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
     if (!isOpen) {

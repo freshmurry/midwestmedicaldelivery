@@ -5,6 +5,13 @@ const cities = [
   'Gary', 'Hammond', 'East Chicago', 'Munster', 'Highland',
   'Schererville', 'Dyer', 'Merrillville', 'Crown Point', 'St. John', 'Hobart'
 ];
+const navigationMapping = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+  { name: 'Service Areas', path: '/areas' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+];
 export function Footer() {
   return (
     <footer className="bg-mmc-light border-t border-gray-200">
@@ -37,10 +44,10 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Company</h3>
             <ul className="space-y-4">
-              {['Home', 'Services', 'Service Areas', 'About', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm">
-                    {item}
+              {navigationMapping.map((item) => (
+                <li key={item.name}>
+                  <Link to={item.path} className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium">
+                    {item.name}
                   </Link>
                 </li>
               ))}

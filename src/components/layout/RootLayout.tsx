@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { Phone } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
+import { QuickInquiryModal } from '@/components/QuickInquiryModal';
 interface RootLayoutProps {
   children: React.ReactNode;
 }
@@ -13,15 +14,18 @@ export function RootLayout({ children }: RootLayoutProps) {
         {children}
       </main>
       <Footer />
-      {/* Mobile Sticky CTA */}
+      {/* Mobile Sticky CTA Triggering Inquiry Modal */}
       <div className="md:hidden fixed bottom-0 left-0 w-full p-4 z-40 bg-gradient-to-t from-white via-white/80 to-transparent">
-        <a 
-          href="tel:2195550123"
-          className="flex items-center justify-center gap-3 w-full bg-mmc-teal text-white py-4 rounded-2xl font-bold shadow-airbnb active:scale-95 transition-transform"
-        >
-          <Phone className="h-5 w-5 fill-current" />
-          Call Dispatch Now
-        </a>
+        <QuickInquiryModal 
+          trigger={
+            <button
+              className="flex items-center justify-center gap-3 w-full bg-mmc-teal text-white py-4 rounded-2xl font-bold shadow-airbnb active:scale-95 transition-transform"
+            >
+              <MessageCircle className="h-5 w-5 fill-current" />
+              Contact Us
+            </button>
+          }
+        />
       </div>
     </div>
   );

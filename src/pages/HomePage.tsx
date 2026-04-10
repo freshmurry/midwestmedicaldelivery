@@ -6,8 +6,8 @@ import { SEO } from '@/components/SEO';
 export function HomePage() {
   return (
     <>
-      <SEO 
-        title="Fast & Secure Medical Courier" 
+      <SEO
+        title="Fast & Secure Medical Courier"
         description="Reliable medical courier services in Northwest Indiana. HIPAA compliant specimen transport, prescription delivery, and medical equipment logistics."
       />
       {/* Hero Section */}
@@ -50,9 +50,9 @@ export function HomePage() {
             </div>
             <div className="flex-1 w-full max-w-lg lg:max-w-none animate-in fade-in slide-in-from-right-4 duration-700">
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-airbnb relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1581056344415-3abb473d38c1?auto=format&fit=crop&q=80&w=800" 
-                  alt="Medical Courier Van" 
+                <img
+                  src="https://images.unsplash.com/photo-1541123287012-70691500f48f?auto=format&fit=crop&q=80&w=800"
+                  alt="MMC Professional Delivery Vehicle"
                   className="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent" />
@@ -90,20 +90,20 @@ export function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: ShieldCheck, 
-                title: 'Strict Compliance', 
-                desc: 'Every driver is HIPAA trained and OSHA 10 certified, ensuring chain of custody and biohazard safety.' 
+              {
+                icon: ShieldCheck,
+                title: 'Strict Compliance',
+                desc: 'Every driver is HIPAA trained and OSHA 10 certified, ensuring chain of custody and biohazard safety.'
               },
-              { 
-                icon: Clock, 
-                title: 'Unmatched Speed', 
-                desc: 'Our STAT delivery protocols guarantee the fastest possible transport for time-sensitive lab specimens.' 
+              {
+                icon: Clock,
+                title: 'Unmatched Speed',
+                desc: 'Our STAT delivery protocols guarantee the fastest possible transport for time-sensitive lab specimens.'
               },
-              { 
-                icon: Truck, 
-                title: 'Real-time Reliability', 
-                desc: 'Modern tracking and dedicated dispatch ensure you always know exactly where your delivery is.' 
+              {
+                icon: Truck,
+                title: 'Real-time Reliability',
+                desc: 'Modern tracking and dedicated dispatch ensure you always know exactly where your delivery is.'
               }
             ].map((feature, i) => (
               <div key={i} className="p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-airbnb transition-all duration-300 group">

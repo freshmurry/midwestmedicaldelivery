@@ -7,12 +7,14 @@ interface SEOProps {
   schema?: object;
 }
 export function SEO({ title, description, canonical, schema }: SEOProps) {
-  const fullTitle = `${title} | Midwest Medical Delivery (MMC)`;
-  const siteUrl = 'https://midwestmedicaldelivery.com'; // Placeholder
+  // Update: Included "Small Parcel" & "Dental Courier" keywords in logic
+  const fullTitle = `${title} | MMC Small-Parcel & Dental Courier`;
+  const siteUrl = 'https://midwestmedicaldelivery.com';
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content="small medical delivery, dental courier Indiana, pharmacy prescription delivery NWI, vet clinic transport, non-biohazard dental molds, medical courier Lake County" />
       {canonical && <link rel="canonical" href={`${siteUrl}${canonical}`} />}
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

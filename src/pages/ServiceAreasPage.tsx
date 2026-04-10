@@ -6,68 +6,68 @@ import { Button } from '@/components/ui/button';
 const regions = [
   {
     city: 'Gary',
-    description: 'Providing rapid lab transport and pharmaceutical delivery for Gary, IN hospitals and community clinics. We navigate the Broadway and Miller corridors daily for on-time specimen pickup.'
+    description: 'Serving dental offices and local pharmacies across Gary, IN. We prioritize fast transport for orthodontic molds and prescriptions through the downtown medical corridor.'
   },
   {
     city: 'Hammond',
-    description: 'Dedicated medical courier routes across Hammond, Indiana. We specialize in serving medical offices near the Calumet and Indianapolis Blvd healthcare hubs with 24/7 STAT support.'
+    description: 'Expert dental and pharmacy courier routes in Hammond. Our agile Jeep fleet navigates local clinics along Calumet Ave with precision small-parcel handling.'
   },
   {
     city: 'Munster',
-    description: 'Serving the premier Munster medical corridor. Reliable transportation for diagnostic clinics and specialist offices throughout Munster, IN, including immediate inter-facility transfers.'
+    description: 'Dedicated small-parcel logistics for the Munster dental and medical corridor. Reliable delivery for outpatient centers and specialist dental offices daily.'
   },
   {
     city: 'Schererville',
-    description: 'Efficient medical logistics for Schererville, Indiana providers. Our couriers are experts in the US-30 corridor, ensuring specimens reach their destination without traffic delays.'
+    description: 'Precision vet and pharmacy delivery for Schererville providers. We ensure small, sensitive items reach your clinic without the delay of traditional large couriers.'
   },
   {
     city: 'Merrillville',
-    description: 'Hub for medical transport in Merrillville, IN. We support large-scale medical centers and independent labs with frequent daily routes and emergency supply delivery.'
+    description: 'Hub for clinic-to-clinic small deliveries in Merrillville. Supporting dental labs and independent pharmacies with frequent, secure Jeep routes.'
   },
   {
     city: 'Crown Point',
-    description: 'Fast, secure medical delivery across Crown Point, Indiana. From the historic square to new medical developments, we offer comprehensive coverage for the Lake County seat.'
+    description: 'Fast clinic courier service across Crown Point. From dental crowns to urgent prescriptions, we provide secure transport for the city\'s medical community.'
   },
   {
     city: 'Hobart',
-    description: 'Reliable healthcare delivery solutions in Hobart, IN. Our HIPAA-trained drivers serve the medical communities surrounding St. Mary Medical Center and beyond.'
+    description: 'Specialized outpatient delivery in Hobart. We support local vet clinics and small dental practices with HIPAA-compliant small-parcel logistics.'
   },
   {
     city: 'East Chicago',
-    description: 'Crucial medical courier services for East Chicago healthcare providers. We prioritize safe transport through the industrial and residential corridors of East Chicago, IN.'
+    description: 'Reliable pharmacy and dental delivery for East Chicago. Our drivers prioritize safety and speed for small medical parcels throughout the local region.'
   },
   {
     city: 'Highland',
-    description: 'Focused delivery services for Highland, Indiana medical clinics. We provide seamless integration with your office schedule for daily laboratory specimen pickups.'
+    description: 'Focused courier services for Highland dental and pharmacy hubs. Seamless integration for your daily outpatient delivery needs.'
   },
   {
     city: 'Dyer',
-    description: 'Trusted partner for medical facilities in Dyer, IN. Secure, timely transport for dialysis centers and rehabilitation clinics in the border town area.'
+    description: 'Trusted partner for small clinics in Dyer. Secure transport for sensitive dental prosthetics and patient-ready prescriptions.'
   },
   {
     city: 'St. John',
-    description: 'Premium medical courier service for the growing healthcare landscape in St. John, Indiana. Ensuring patient privacy and safety with every delivery.'
+    description: 'Premium small-parcel delivery for the growing St. John dental and medical landscape. Precision handling for high-value small medical cargo.'
   }
 ];
 export function ServiceAreasPage() {
   return (
     <>
       <SEO
-        title="Service Areas in Northwest Indiana"
-        description="We provide medical courier services in Gary, Hammond, Munster, Merrillville, Crown Point, and across Northwest Indiana. View our full coverage map."
+        title="NWI Clinic Coverage Map"
+        description="Agile small-parcel delivery for Dental, Pharmacy, and Vet clinics in Gary, Hammond, Munster, and across Northwest Indiana. View our coverage area."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 md:py-10 lg:py-12">
           <div className="max-w-3xl mb-12 md:mb-16 space-y-4 md:space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mmc-teal/10 text-mmc-teal text-xs font-bold uppercase tracking-widest">
               <Navigation className="h-3 w-3" />
-              Regional Coverage
+              Clinic Coverage Map
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-mmc-dark leading-tight">
-              Northwest Indiana <span className="text-mmc-teal">Coverage.</span>
+              Northwest Indiana <span className="text-mmc-teal">Network.</span>
             </h1>
             <p className="text-lg md:text-xl text-mmc-gray leading-relaxed max-w-2xl">
-              We are strategically located to serve the entire Lake and Porter County medical communities with speed, security, and local expertise.
+              Our Jeep-based fleet is strategically positioned to serve Lake and Porter County dental labs, pharmacies, and outpatient clinics with unparalleled speed.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -86,7 +86,7 @@ export function ServiceAreasPage() {
                 </p>
                 <div className="flex items-center gap-2 text-xs font-bold text-mmc-teal bg-mmc-teal/5 w-fit px-3 py-1.5 rounded-full">
                   <Info className="h-3.5 w-3.5" />
-                  STAT Service Available
+                  Clinic Routes Available
                 </div>
               </section>
             ))}
@@ -94,24 +94,24 @@ export function ServiceAreasPage() {
           <div className="mt-16 md:mt-24 p-8 md:p-16 bg-mmc-dark rounded-[2.5rem] md:rounded-[4rem] text-center space-y-6 md:space-y-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-mmc-teal opacity-10 rounded-full -mr-20 -mt-20 blur-3xl" />
             <div className="relative z-10 space-y-4">
-              <h2 className="text-3xl md:text-4xl font-black text-white">Don't see your city listed?</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-white">Dental, Pharmacy, or Vet Clinic?</h2>
               <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed">
-                We frequently extend our coverage into Valparaiso, Chesterton, and the South Chicago suburbs for dedicated clients.
+                We specialize in agile routes for small-facility needs. If you're in Lake, Porter, or the Chicagoland border, we've got you covered.
               </p>
             </div>
             <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-              <QuickInquiryModal 
+              <QuickInquiryModal
                 trigger={
                   <Button size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-8 h-14 text-lg font-bold w-full sm:w-auto">
-                    Check Custom Route
+                    Check Clinic Route
                   </Button>
                 }
               />
-              <a 
-                href="tel:2195550123" 
+              <a
+                href="tel:2195550123"
                 className="inline-flex items-center justify-center h-14 px-8 rounded-2xl border-2 border-white/20 text-white font-bold hover:bg-white/10 transition-colors w-full sm:w-auto"
               >
-                Call Dispatch
+                Call Small-Parcel Dispatch
               </a>
             </div>
           </div>

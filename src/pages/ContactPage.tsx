@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { SEO } from '@/components/SEO';
-import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -35,7 +35,7 @@ export function ContactPage() {
       if (response.ok) {
         setIsSuccess(true);
         toast.success('Request Received', {
-          description: "Our dispatch team will contact you shortly."
+          description: "Our small-parcel dispatch team will contact you shortly."
         });
         reset();
       } else {
@@ -43,7 +43,7 @@ export function ContactPage() {
       }
     } catch (error) {
       toast.error('Submission Failed', {
-        description: "Please call us directly for immediate assistance."
+        description: "Please call our dispatch line directly for immediate assistance."
       });
     } finally {
       setIsSubmitting(false);
@@ -51,9 +51,9 @@ export function ContactPage() {
   };
   return (
     <>
-      <SEO 
-        title="Contact & Request Delivery" 
-        description="Request a medical delivery or get a quote. 24/7 STAT medical courier dispatch for Northwest Indiana."
+      <SEO
+        title="Request Small-Parcel Pickup"
+        description="Contact MMC for dental office, pharmacy, or vet clinic deliveries. Specialist small-parcel medical courier dispatch for Northwest Indiana."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -61,9 +61,9 @@ export function ContactPage() {
             {/* Contact Info */}
             <div className="space-y-12">
               <div className="space-y-6">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Get in <span className="text-mmc-teal">Touch.</span></h1>
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Clinic <span className="text-mmc-teal">Dispatch.</span></h1>
                 <p className="text-xl text-mmc-gray leading-relaxed">
-                  Need a STAT pickup? Have a question about our routes? Our team is available 24/7 for urgent medical logistics.
+                  Need a pickup for a dental mold or urgent prescription? Our small-parcel dispatch team is standing by to coordinate your clinic routes.
                 </p>
               </div>
               <div className="space-y-8">
@@ -72,9 +72,9 @@ export function ContactPage() {
                     <Phone className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Immediate Dispatch</h3>
+                    <h3 className="text-lg font-bold text-mmc-dark">Small Parcel Dispatch</h3>
                     <p className="text-mmc-gray">(219) 555-0123</p>
-                    <p className="text-xs text-mmc-teal font-bold uppercase mt-1">Available 24/7 for STAT</p>
+                    <p className="text-xs text-mmc-teal font-bold uppercase mt-1">24/7 STAT Available</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
@@ -82,27 +82,27 @@ export function ContactPage() {
                     <Mail className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Email Inquiries</h3>
+                    <h3 className="text-lg font-bold text-mmc-dark">Clinic Support</h3>
                     <p className="text-mmc-gray">dispatch@midwestmedicaldelivery.com</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center shrink-0">
-                    <Clock className="h-6 w-6 text-mmc-teal" />
+                    <Package className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Business Hours</h3>
-                    <p className="text-mmc-gray">Standard Routes: Mon–Fri, 8AM–6PM</p>
-                    <p className="text-mmc-gray">STAT Service: Always Open</p>
+                    <h3 className="text-lg font-bold text-mmc-dark">Logistics Type</h3>
+                    <p className="text-mmc-gray">Small parcels only (Molds, Rx, Supplies)</p>
+                    <p className="text-mmc-gray">Optimized Agile Jeep Routes</p>
                   </div>
                 </div>
               </div>
               <div className="p-8 bg-mmc-dark rounded-3xl text-white">
-                <h3 className="text-xl font-bold mb-4">Coverage Area</h3>
-                <p className="text-gray-400 mb-6">Serving Lake and Porter Counties in Indiana, plus selective routes into the Chicago area.</p>
+                <h3 className="text-xl font-bold mb-4">Dedicated Clinic Coverage</h3>
+                <p className="text-gray-400 mb-6">Serving local Lake and Porter County clinics with selective border routes for high-priority small cargo.</p>
                 <div className="flex items-center gap-2 text-mmc-teal font-bold">
                   <MapPin className="h-5 w-5" />
-                  Northwest Indiana Corridor
+                  NWI Local Network
                 </div>
               </div>
             </div>
@@ -113,20 +113,20 @@ export function ContactPage() {
                   <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
                   </div>
-                  <h2 className="text-3xl font-black text-mmc-dark">Message Received!</h2>
+                  <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
                   <p className="text-mmc-gray text-lg max-w-sm">
-                    Thank you for contacting MMC. Our dispatch team is reviewing your request and will call you shortly.
+                    Thank you. Our small-parcel dispatch is assigning your pickup to an agile Jeep unit now.
                   </p>
                   <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl">
-                    Send Another Message
+                    New Request
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" {...register('name')} placeholder="John Doe" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Label htmlFor="name">Clinic / Contact Name</Label>
+                      <Input id="name" {...register('name')} placeholder="Community Dental" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.name && <p className="text-xs text-red-500 font-bold">{errors.name.message}</p>}
                     </div>
                     <div className="space-y-2">
@@ -137,37 +137,37 @@ export function ContactPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" {...register('email')} placeholder="john@example.com" className="bg-mmc-light border-0 rounded-xl py-6" />
+                    <Input id="email" type="email" {...register('email')} placeholder="office@clinic.com" className="bg-mmc-light border-0 rounded-xl py-6" />
                     {errors.email && <p className="text-xs text-red-500 font-bold">{errors.email.message}</p>}
                   </div>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="pickup">Pickup City/Facility</Label>
-                      <Input id="pickup" {...register('pickup')} placeholder="Munster, IN" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Label htmlFor="pickup">Pickup Location</Label>
+                      <Input id="pickup" {...register('pickup')} placeholder="Munster Office" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.pickup && <p className="text-xs text-red-500 font-bold">{errors.pickup.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="delivery">Delivery City/Facility</Label>
-                      <Input id="delivery" {...register('delivery')} placeholder="Gary, IN" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Label htmlFor="delivery">Delivery Destination</Label>
+                      <Input id="delivery" {...register('delivery')} placeholder="Dental Lab / Pharmacy" className="bg-mmc-light border-0 rounded-xl py-6" />
                       {errors.delivery && <p className="text-xs text-red-500 font-bold">{errors.delivery.message}</p>}
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Delivery Details / Message (Optional)</Label>
-                    <Textarea id="message" {...register('message')} placeholder="e.g. STAT Lab Specimens, Pharmacy Route..." className="bg-mmc-light border-0 rounded-xl min-h-[120px]" />
+                    <Label htmlFor="message">Small Delivery Details (Optional)</Label>
+                    <Textarea id="message" {...register('message')} placeholder="e.g. 2 crowns, 5 prescriptions, small office supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px]" />
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-8 text-lg font-bold shadow-airbnb">
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Processing...
+                        Dispatching Unit...
                       </>
                     ) : (
-                      'Request Service'
+                      'Request Pickup'
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    By submitting, you agree to be contacted via phone or email for service coordination.
+                    Small-parcel medical specialty. Agile Jeep transport.
                   </p>
                 </form>
               )}

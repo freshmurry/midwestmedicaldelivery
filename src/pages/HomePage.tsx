@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Truck, ShieldCheck, Clock, Activity, MapPin, CheckCircle2 } from 'lucide-react';
+import { Pill, Package, Zap, Activity, MapPin, CheckCircle2, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
@@ -11,18 +11,18 @@ const fadeIn = {
 };
 const stagger = {
   initial: {},
-  animate: { 
-    transition: { 
-      staggerChildren: 0.1 
-    } 
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
   }
 };
 export function HomePage() {
   return (
     <>
       <SEO
-        title="Fast & Secure Medical Courier"
-        description="Reliable medical courier services in Northwest Indiana. HIPAA compliant specimen transport, prescription delivery, and medical equipment logistics."
+        title="Small-Parcel Medical Courier for NWI Clinics"
+        description="Fast small-parcel medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Agile Jeep Wrangler transport for sensitive small items."
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
@@ -35,25 +35,25 @@ export function HomePage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="inline-flex items-center gap-2 bg-mmc-teal/10 text-mmc-teal px-4 py-2 rounded-full text-sm font-bold tracking-tight">
-                <Activity className="h-4 w-4" />
-                NOW SERVING ALL OF NORTHWEST INDIANA
+                <Zap className="h-4 w-4" />
+                AGILE JEEP WRANGLER TRANSPORT
               </div>
               <h1 className="text-5xl md:text-7xl font-black text-mmc-dark leading-[1.1] tracking-tight">
-                Reliable Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Delivery</span> Solutions.
+                Small-Parcel Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Courier</span> for Clinics.
               </h1>
               <p className="text-xl text-mmc-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Fast, secure, and HIPAA-compliant courier services for labs, pharmacies, and healthcare providers in Lake & Porter Counties.
+                Fast, secure, and compact delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Lake & Porter Counties.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg shadow-airbnb hover:-translate-y-1 transition-all">
-                  <Link to="/contact">Request Delivery</Link>
+                  <Link to="/contact">Request Pickup</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-2 border-mmc-dark text-mmc-dark hover:bg-mmc-dark hover:text-white rounded-2xl px-10 py-7 text-lg transition-all">
-                  <Link to="/services">Our Services</Link>
+                  <Link to="/services">Clinic Services</Link>
                 </Button>
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 pt-4">
-                {['HIPAA Compliant', 'OSHA 10 Certified', 'Fully Insured'].map((text, i) => (
+                {['Small Cargo Specialist', 'HIPAA Compliant', 'Fully Insured'].map((text, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
                     <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
                     {text}
@@ -69,9 +69,9 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-airbnb relative">
                 <img
-                  src="https://images.unsplash.com/photo-1541123287012-70691500f48f?auto=format&fit=crop&q=80&w=800"
-                  alt="MMC Professional Delivery Vehicle"
-                  className="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
+                  src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800"
+                  alt="Agile Jeep Wrangler Delivery Vehicle"
+                  className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent" />
               </div>
@@ -90,10 +90,10 @@ export function HomePage() {
             variants={stagger}
           >
             {[
-              { label: 'Delivery Time', value: '< 90m', sub: 'For STAT requests' },
-              { label: 'Compliance', value: '100%', sub: 'HIPAA & OSHA' },
-              { label: 'Coverage', value: '12+', sub: 'NWI Cities' },
-              { label: 'Service', value: '24/7', sub: 'Emergency Support' }
+              { label: 'Precision Handling', value: '100%', sub: 'No Bulk Cargo' },
+              { label: 'Clinic Hubs', value: '12+', sub: 'Active NWI Cities' },
+              { label: 'Transport', value: 'Agile', sub: 'Jeep Wrangler Fleet' },
+              { label: 'Service', value: '24/7', sub: 'Small Parcel Dispatch' }
             ].map((stat, i) => (
               <motion.div key={i} className="text-center space-y-1" variants={fadeIn}>
                 <div className="text-3xl md:text-4xl font-black text-mmc-teal">{stat.value}</div>
@@ -114,9 +114,9 @@ export function HomePage() {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Why Choose MMC</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Precision handling for precious cargo.</h3>
-            <p className="text-lg text-mmc-gray">We aren't just a delivery service. We are a specialized extension of your healthcare facility.</p>
+            <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Focused Expertise</h2>
+            <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Precision for sensitive small cargo.</h3>
+            <p className="text-lg text-mmc-gray">We've traded heavy vans for agile Jeep transport to better serve local dental, pharmacy, and outpatient clinics.</p>
           </motion.div>
           <motion.div
             className="grid md:grid-cols-3 gap-8"
@@ -126,9 +126,9 @@ export function HomePage() {
             variants={stagger}
           >
             {[
-              { icon: ShieldCheck, title: 'Strict Compliance', desc: 'Every driver is HIPAA trained and OSHA 10 certified, ensuring chain of custody and biohazard safety.' },
-              { icon: Clock, title: 'Unmatched Speed', desc: 'Our STAT delivery protocols guarantee the fastest possible transport for time-sensitive lab specimens.' },
-              { icon: Truck, title: 'Real-time Reliability', desc: 'Modern tracking and dedicated dispatch ensure you always know exactly where your delivery is.' }
+              { icon: Package, title: 'Dental & Ortho', desc: 'Secure transport for non-biohazard crowns, molds, and retainers. We handle the bridge between the lab and your clinic.' },
+              { icon: Pill, title: 'Pharmacy Precision', desc: 'Pharmacy-to-patient and office delivery for sensitive medications. Agile routing ensures zero-delay patient care.' },
+              { icon: Heart, title: 'Vet & Outpatient', desc: 'Urgent supplies and document transport for veterinary and outpatient facilities that need small items fast.' }
             ].map((feature, i) => (
               <motion.div
                 key={i}
@@ -151,16 +151,16 @@ export function HomePage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-mmc-teal opacity-10 skew-x-12 translate-x-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <motion.div 
-              className="space-y-6" 
-              initial={{ opacity: 0, x: -20 }} 
-              whileInView={{ opacity: 1, x: 0 }} 
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-black max-w-xl">Localized expertise across Northwest Indiana.</h2>
-              <p className="text-lg text-gray-400 max-w-lg">From Merrillville to Crown Point, we know the NWI medical corridor like the back of our hand.</p>
+              <h2 className="text-4xl md:text-5xl font-black max-w-xl">Streamline small medical logistics for your office.</h2>
+              <p className="text-lg text-gray-400 max-w-lg">Dedicated routes for clinics that need a courier partner who understands small-parcel precision.</p>
               <Button asChild variant="outline" className="border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl">
-                <Link to="/areas">View Coverage Map</Link>
+                <Link to="/areas">Explore Clinic Routes</Link>
               </Button>
             </motion.div>
             <motion.div
@@ -190,11 +190,11 @@ export function HomePage() {
             viewport={{ once: true }}
           >
             <div className="absolute inset-0 bg-black/5 pointer-events-none" />
-            <h2 className="text-4xl md:text-6xl font-black mb-8">Ready to streamline your medical logistics?</h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Contact us today for a custom quote or to request an immediate pickup.</p>
+            <h2 className="text-4xl md:text-6xl font-black mb-8">Ready to upgrade your clinic delivery?</h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Contact our small-parcel dispatch team today for immediate pickup or scheduled clinic routes.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-white text-mmc-teal hover:bg-gray-100 rounded-2xl px-10 py-7 text-lg font-bold">
-                <Link to="/contact">Request a Pickup</Link>
+                <Link to="/contact">Request Pickup</Link>
               </Button>
               <a href="tel:2195550123" className="inline-flex items-center justify-center gap-2 bg-mmc-dark text-white hover:bg-black rounded-2xl px-10 py-7 text-lg font-bold transition-all">
                 Call Now: (219) 555-0123

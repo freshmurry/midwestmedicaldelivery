@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Package, Zap, ShieldAlert } from 'lucide-react';
+import { ShieldCheck, Package, ShieldAlert } from 'lucide-react';
 const cities = [
   'Gary', 'Hammond', 'East Chicago', 'Munster', 'Highland',
   'Schererville', 'Dyer', 'Merrillville', 'Crown Point', 'St. John', 'Hobart'
@@ -70,16 +70,16 @@ export function Footer() {
           </div>
           {/* Contact Info */}
           <div>
-            <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Small Parcel Dispatch</h3>
+            <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Dispatch Support</h3>
             <div className="space-y-4">
               <p className="text-mmc-gray text-sm">
                 Local NWI Clinic Specialist
               </p>
-              <a href="tel:2195550123" className="block text-mmc-dark font-bold hover:text-mmc-teal transition-colors">
-                (219) 555-0123
-              </a>
-              <p className="text-mmc-gray text-sm">
-                Optimized for Small Sensitive Items
+              <Link to="/contact" className="block text-mmc-dark font-bold hover:text-mmc-teal transition-colors underline decoration-mmc-teal/30 underline-offset-4">
+                Submit Delivery Request
+              </Link>
+              <p className="text-mmc-gray text-xs">
+                Inquiries are monitored 24/7 for clinic partners.
               </p>
             </div>
           </div>

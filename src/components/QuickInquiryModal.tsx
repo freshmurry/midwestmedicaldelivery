@@ -57,7 +57,6 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        // Subtle delay for visual feedback of "processing"
         await new Promise(resolve => setTimeout(resolve, 600));
         onSuccess();
         reset();
@@ -66,7 +65,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       }
     } catch (error) {
       toast.error('Submission Failed', {
-        description: 'Please call small-parcel dispatch at (219) 555-0123.',
+        description: 'Please use our contact form or try again shortly for immediate dispatch assistance.',
       });
     } finally {
       setIsSubmitting(false);
@@ -106,7 +105,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="phone" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Phone</Label>
-          <Input id="phone" type="tel" {...register('phone')} placeholder="(219) 555-0123" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal" />
+          <Input id="phone" type="tel" {...register('phone')} placeholder="(XXX) XXX-XXXX" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal" />
           {errors.phone && <p className="text-[10px] text-red-500 font-bold">{errors.phone.message}</p>}
         </div>
         <div className="space-y-1.5">
@@ -159,7 +158,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        {trigger ?? <Button className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-xl focus-visible:ring-2">Clinic Inquiry</Button>}
+        {trigger ?? <Button className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-xl focus-visible:ring-2 ring-offset-2 ring-mmc-teal">Clinic Inquiry</Button>}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[550px] max-h-[95vh] overflow-y-auto rounded-3xl p-6 md:p-10 border-none shadow-2xl">
         <AnimatePresence mode="wait">
@@ -184,7 +183,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               animate={{ opacity: 1, scale: 1 }}
               className="py-12 flex flex-col items-center text-center space-y-6"
             >
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1.1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 10 }}
@@ -195,7 +194,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               <div className="space-y-2">
                 <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
                 <p className="text-mmc-gray text-lg max-w-xs mx-auto">
-                  Our small-parcel dispatch team has assigned your request to a professional courier unit. Expect a follow-up within 1 hour.
+                  Our small-parcel dispatch team has assigned your request to a professional courier unit. Expect a follow-up shortly.
                 </p>
               </div>
               <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all focus-visible:ring-2 ring-mmc-teal">

@@ -103,16 +103,13 @@ export function ServiceAreasPage() {
               <QuickInquiryModal
                 trigger={
                   <Button size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-8 h-14 text-lg font-bold w-full sm:w-auto">
-                    Check Clinic Route
+                    Get Route Quote
                   </Button>
                 }
               />
-              <a
-                href="tel:2195550123"
-                className="inline-flex items-center justify-center h-14 px-8 rounded-2xl border-2 border-white/20 text-white font-bold hover:bg-white/10 transition-colors w-full sm:w-auto"
-              >
-                Call Small-Parcel Dispatch
-              </a>
+              <Button asChild variant="outline" className="border-2 border-white/20 text-white font-bold hover:bg-white/10 rounded-2xl px-8 h-14 text-lg w-full sm:w-auto transition-colors">
+                <Link to="/contact">Contact Support</Link>
+              </Button>
             </div>
           </div>
         </div>

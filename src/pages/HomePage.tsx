@@ -4,6 +4,7 @@ import { Pill, Package, Zap, Activity, MapPin, CheckCircle2, Heart } from 'lucid
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
+import { QuickInquiryModal } from '@/components/QuickInquiryModal';
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -48,9 +49,13 @@ export function HomePage() {
                 <Button asChild size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg shadow-airbnb hover:-translate-y-1 transition-all">
                   <Link to="/contact">Request Pickup</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-2 border-mmc-dark text-mmc-dark hover:bg-mmc-dark hover:text-white rounded-2xl px-10 py-7 text-lg transition-all">
-                  <Link to="/services">Clinic Services</Link>
-                </Button>
+                <QuickInquiryModal 
+                  trigger={
+                    <Button variant="outline" size="lg" className="border-2 border-mmc-dark text-mmc-dark hover:bg-mmc-dark hover:text-white rounded-2xl px-10 py-7 text-lg transition-all">
+                      Get Route Quote
+                    </Button>
+                  }
+                />
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 pt-4">
                 {['Small Cargo Specialist', 'HIPAA Compliant', 'Professional Fleet'].map((text, i) => (
@@ -93,7 +98,7 @@ export function HomePage() {
               { label: 'Precision Handling', value: '100%', sub: 'No Bulk Cargo' },
               { label: 'Clinic Hubs', value: '12+', sub: 'Active NWI Cities' },
               { label: 'Transport', value: 'Rapid', sub: 'Modern Courier Fleet' },
-              { label: 'Service', value: '24/7', sub: 'Small Parcel Dispatch' }
+              { label: 'Response', value: 'Instant', sub: 'Digital Inquiry Team' }
             ].map((stat, i) => (
               <motion.div key={i} className="text-center space-y-1" variants={fadeIn}>
                 <div className="text-3xl md:text-4xl font-black text-mmc-teal">{stat.value}</div>
@@ -196,9 +201,13 @@ export function HomePage() {
               <Button asChild size="lg" className="bg-white text-mmc-teal hover:bg-gray-100 rounded-2xl px-10 py-7 text-lg font-bold">
                 <Link to="/contact">Request Pickup</Link>
               </Button>
-              <a href="tel:2195550123" className="inline-flex items-center justify-center gap-2 bg-mmc-dark text-white hover:bg-black rounded-2xl px-10 py-7 text-lg font-bold transition-all">
-                Call Now: (219) 555-0123
-              </a>
+              <QuickInquiryModal 
+                trigger={
+                  <Button size="lg" className="bg-mmc-dark text-white hover:bg-black rounded-2xl px-10 py-7 text-lg font-bold transition-all">
+                    Request Quote
+                  </Button>
+                }
+              />
             </div>
           </motion.div>
         </div>

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { SEO } from '@/components/SEO';
-import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2, Package } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2, Package, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -43,7 +43,7 @@ export function ContactPage() {
       }
     } catch (error) {
       toast.error('Submission Failed', {
-        description: "Please call our dispatch line directly for immediate assistance."
+        description: "Please try again or use our inquiry form for priority handling."
       });
     } finally {
       setIsSubmitting(false);
@@ -63,18 +63,18 @@ export function ContactPage() {
               <div className="space-y-6">
                 <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Clinic <span className="text-mmc-teal">Dispatch.</span></h1>
                 <p className="text-xl text-mmc-gray leading-relaxed">
-                  Need a pickup for a dental mold or urgent prescription? Our small-parcel dispatch team is standing by to coordinate your clinic routes.
+                  Need a pickup for a dental mold or urgent prescription? Our small-parcel dispatch team is standing by to coordinate your clinic routes via digital inquiry.
                 </p>
               </div>
               <div className="space-y-8">
                 <div className="flex gap-6">
                   <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center shrink-0">
-                    <Phone className="h-6 w-6 text-mmc-teal" />
+                    <MessageSquare className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Small Parcel Dispatch</h3>
-                    <p className="text-mmc-gray">(219) 555-0123</p>
-                    <p className="text-xs text-mmc-teal font-bold uppercase mt-1">24/7 STAT Available</p>
+                    <h3 className="text-lg font-bold text-mmc-dark">Digital Inquiry</h3>
+                    <p className="text-mmc-gray">Verified Clinic Dispatch</p>
+                    <p className="text-xs text-mmc-teal font-bold uppercase mt-1">24/7 Monitoring</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
@@ -126,35 +126,35 @@ export function ContactPage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Clinic / Contact Name</Label>
-                      <Input id="name" {...register('name')} placeholder="Community Dental" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Input id="name" {...register('name')} placeholder="Community Dental" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                       {errors.name && <p className="text-xs text-red-500 font-bold">{errors.name.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" {...register('phone')} placeholder="(219) 000-0000" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Input id="phone" {...register('phone')} placeholder="(XXX) XXX-XXXX" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                       {errors.phone && <p className="text-xs text-red-500 font-bold">{errors.phone.message}</p>}
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" {...register('email')} placeholder="office@clinic.com" className="bg-mmc-light border-0 rounded-xl py-6" />
+                    <Input id="email" type="email" {...register('email')} placeholder="office@clinic.com" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                     {errors.email && <p className="text-xs text-red-500 font-bold">{errors.email.message}</p>}
                   </div>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="pickup">Pickup Location</Label>
-                      <Input id="pickup" {...register('pickup')} placeholder="Munster Office" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Input id="pickup" {...register('pickup')} placeholder="Munster Office" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                       {errors.pickup && <p className="text-xs text-red-500 font-bold">{errors.pickup.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="delivery">Delivery Destination</Label>
-                      <Input id="delivery" {...register('delivery')} placeholder="Dental Lab / Pharmacy" className="bg-mmc-light border-0 rounded-xl py-6" />
+                      <Input id="delivery" {...register('delivery')} placeholder="Dental Lab / Pharmacy" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                       {errors.delivery && <p className="text-xs text-red-500 font-bold">{errors.delivery.message}</p>}
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Small Delivery Details (Optional)</Label>
-                    <Textarea id="message" {...register('message')} placeholder="e.g. 2 crowns, 5 prescriptions, small office supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px]" />
+                    <Textarea id="message" {...register('message')} placeholder="e.g. 2 crowns, 5 prescriptions, small office supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px] focus:ring-2 focus:ring-mmc-teal" />
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-8 text-lg font-bold shadow-airbnb">
                     {isSubmitting ? (

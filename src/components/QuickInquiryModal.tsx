@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -76,7 +77,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="facilityType" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Facility Type</Label>
-          <Select onValueChange={(val) => setValue('facilityType', val, { shouldValidate: true })}>
+          <Select name="facilityType" onValueChange={(val) => setValue('facilityType', val, { shouldValidate: true })}>
             <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
@@ -116,7 +117,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="serviceNeeded" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Service Needed</Label>
-        <Select onValueChange={(val) => setValue('serviceNeeded', val, { shouldValidate: true })}>
+        <Select name="serviceNeeded" onValueChange={(val) => setValue('serviceNeeded', val, { shouldValidate: true })}>
           <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal">
             <SelectValue placeholder="Select service" />
           </SelectTrigger>
@@ -173,6 +174,9 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                 <DialogTitle className="text-2xl md:text-3xl font-black text-mmc-dark tracking-tight">
                   Inquiry for <span className="text-mmc-teal">Providers</span>
                 </DialogTitle>
+                <DialogDescription className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                  Fill out this form to submit a quick inquiry for your clinic's small parcel courier needs. Our team will respond promptly with dispatch options.
+                </DialogDescription>
               </DialogHeader>
               <InquiryFormContent onSuccess={handleSuccess} />
             </motion.div>
@@ -193,9 +197,9 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               </motion.div>
               <div className="space-y-2">
                 <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
-                <p className="text-mmc-gray text-lg max-w-xs mx-auto">
+                <DialogDescription className="text-mmc-gray text-lg max-w-xs mx-auto">
                   Our small-parcel dispatch team has assigned your request to a professional courier unit. Expect a follow-up shortly.
-                </p>
+                </DialogDescription>
               </div>
               <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all focus-visible:ring-2 ring-mmc-teal">
                 Close

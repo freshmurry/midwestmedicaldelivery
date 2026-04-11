@@ -13,13 +13,16 @@ const navigationMapping = [
   { name: 'Contact', path: '/contact' },
 ];
 export function Footer() {
+  const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
   return (
     <footer className="bg-mmc-light border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand & Certs */}
           <div className="space-y-8">
-            <Logo variant="primary" className="h-14" />
+            <Link to="/" className="inline-block hover:opacity-80 transition-opacity">
+              <Logo variant="primary" className="h-14" />
+            </Link>
             <p className="text-mmc-gray text-sm leading-relaxed">
               Specialized small-parcel medical courier for Lake County & Northwest Indiana. Serving dental, pharmacy, and clinic hubs with HIPAA and OSHA 10 compliance.
             </p>
@@ -56,7 +59,11 @@ export function Footer() {
             <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Lake County Coverage</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
               {cities.map((city) => (
-                <Link key={city} to="/areas" className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium">
+                <Link 
+                  key={city} 
+                  to={`/areas#${slugify(city)}`} 
+                  className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium"
+                >
                   {city}, IN
                 </Link>
               ))}

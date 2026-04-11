@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { SEO } from '@/components/SEO';
-import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2, Package, MessageSquare } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, Loader2, CheckCircle2, Package, MessageSquare, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,6 +21,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [lastRequest, setLastRequest] = useState<ContactFormValues | null>(null);
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
   });
@@ -33,21 +34,32 @@ export function ContactPage() {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        setIsSuccess(true);
-        toast.success('Request Received', {
-          description: "Our small-parcel dispatch team will contact you shortly."
+        // Build mailto trigger
+        const subject = `MMC Delivery Request: ${data.name}`;
+        const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
+        window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        toast.success('Request routed to dispatch', {
+          description: "Complete the submission in your email client for immediate logging."
         });
+        setLastRequest(data);
+        setIsSuccess(true);
         reset();
       } else {
         throw new Error('Failed to send');
       }
     } catch (error) {
       toast.error('Submission Failed', {
-        description: "Please try again or use our inquiry form for priority handling."
+        description: "Please check your connection or copy your details below."
       });
     } finally {
       setIsSubmitting(false);
     }
+  };
+  const copySummary = () => {
+    if (!lastRequest) return;
+    const summary = `MMC Pickup Request\nClinic: ${lastRequest.name}\nPickup: ${lastRequest.pickup}\nDelivery: ${lastRequest.delivery}`;
+    navigator.clipboard.writeText(summary);
+    toast.success('Request summary copied');
   };
   return (
     <>
@@ -109,17 +121,40 @@ export function ContactPage() {
             {/* Contact Form */}
             <div className="bg-white border border-gray-100 rounded-[3rem] p-8 md:p-12 shadow-airbnb relative">
               {isSuccess ? (
-                <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12 animate-in fade-in zoom-in">
-                  <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center mb-4">
+                <div className="h-full flex flex-col items-center justify-center text-center space-y-8 py-12 animate-in fade-in zoom-in">
+                  <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center">
                     <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
                   </div>
-                  <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
-                  <p className="text-mmc-gray text-lg max-w-sm">
-                    Thank you. Our small-parcel dispatch is assigning your pickup to a medical courier unit now.
-                  </p>
-                  <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl">
-                    New Request
-                  </Button>
+                  <div className="space-y-4">
+                    <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
+                    <p className="text-mmc-gray text-lg max-w-sm mx-auto">
+                      Your request was routed to dispatch. Please finalize the email in your client.
+                    </p>
+                  </div>
+                  {lastRequest && (
+                    <div className="w-full bg-mmc-light p-6 rounded-2xl text-left space-y-2 border border-gray-100">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-mmc-teal">Route Information</p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-[10px] text-mmc-gray uppercase">From</p>
+                          <p className="text-xs font-bold text-mmc-dark">{lastRequest.pickup}</p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-mmc-gray uppercase">To</p>
+                          <p className="text-xs font-bold text-mmc-dark">{lastRequest.delivery}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex flex-col w-full gap-4">
+                    <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl font-bold py-6 text-mmc-dark border-2 border-mmc-dark">
+                      Send New Request
+                    </Button>
+                    <Button variant="ghost" onClick={copySummary} className="text-mmc-teal font-bold gap-2">
+                      <Copy className="h-4 w-4" />
+                      Copy Request Fallback
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -160,14 +195,14 @@ export function ContactPage() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Dispatching Unit...
+                        Routing to Dispatch...
                       </>
                     ) : (
                       'Request Pickup'
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Small-parcel medical specialty. Professional Medical Fleet.
+                    Email-routed small-parcel specialty. Professional Medical Fleet.
                   </p>
                 </form>
               )}

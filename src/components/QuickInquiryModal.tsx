@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Loader2, CheckCircle2 } from 'lucide-react';
+import { Loader2, CheckCircle2, Clipboard, Copy } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -34,7 +34,7 @@ const inquirySchema = z.object({
   message: z.string().optional(),
 });
 type InquiryFormValues = z.infer<typeof inquirySchema>;
-function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
+function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues) => void }) {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const {
     register,
@@ -58,15 +58,22 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         body: JSON.stringify(data),
       });
       if (response.ok) {
+        // Construct mailto link
+        const subject = `MMC Provider Inquiry: ${data.facilityName}`;
+        const body = `Facility: ${data.facilityName} (${data.facilityType})\nContact: ${data.contactName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceNeeded}\nDetails: ${data.message || 'N/A'}`;
+        window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        toast.success('Inquiry routed to dispatch', {
+          description: 'Please complete the email submission in your mail client.',
+        });
         await new Promise(resolve => setTimeout(resolve, 800));
-        onSuccess();
+        onSuccess(data);
         reset();
       } else {
         throw new Error('Submission failed');
       }
     } catch (error) {
       toast.error('Submission Failed', {
-        description: 'Please use our contact form or try again shortly for immediate dispatch assistance.',
+        description: 'Please try again or use the main contact form for assistance.',
       });
     } finally {
       setIsSubmitting(false);
@@ -137,29 +144,38 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         <Textarea id="message" {...register('message')} placeholder="Specify items (e.g. 5 Rx bags, 1 dental box)..." className="bg-mmc-light border-0 rounded-xl min-h-[80px] focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
       </div>
       <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-airbnb mt-2 transition-all">
-        {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Dispatching Unit...</> : 'Send Clinic Inquiry'}
+        {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Dispatching...</> : 'Send Clinic Inquiry'}
       </Button>
     </form>
   );
 }
 export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
+  const [lastData, setLastData] = React.useState<InquiryFormValues | null>(null);
   const [isSuccess, setIsSuccess] = React.useState(false);
-  const handleSuccess = () => setIsSuccess(true);
+  const handleSuccess = (data: InquiryFormValues) => {
+    setLastData(data);
+    setIsSuccess(true);
+  };
+  const handleCopy = () => {
+    if (!lastData) return;
+    const summary = `Facility: ${lastData.facilityName}\nService: ${lastData.serviceNeeded}\nPhone: ${lastData.phone}`;
+    navigator.clipboard.writeText(summary);
+    toast.success('Summary copied to clipboard');
+  };
   const onOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
     if (!isOpen) {
-      setTimeout(() => setIsSuccess(false), 300);
+      setTimeout(() => {
+        setIsSuccess(false);
+        setLastData(null);
+      }, 300);
     }
-  };
-  const handleClose = () => {
-    setOpen(false);
-    setTimeout(() => setIsSuccess(false), 300);
   };
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        {trigger ?? <Button className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-xl focus-visible:ring-2 ring-offset-2 ring-mmc-teal">Clinic Inquiry</Button>}
+        {trigger ?? <Button className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-xl focus-visible:ring-2 ring-offset-2 ring-mmc-teal font-bold px-6">Clinic Inquiry</Button>}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[550px] max-h-[95vh] overflow-y-auto rounded-3xl p-6 md:p-10 border-none shadow-2xl">
         <AnimatePresence mode="wait">
@@ -174,8 +190,8 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                 <DialogTitle className="text-2xl md:text-3xl font-black text-mmc-dark tracking-tight">
                   Inquiry for <span className="text-mmc-teal">Providers</span>
                 </DialogTitle>
-                <DialogDescription className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Fill out this form to submit a quick inquiry for your clinic's small parcel courier needs.
+                <DialogDescription className="mt-4 text-sm text-muted-foreground leading-relaxed font-medium">
+                  Submit a quick inquiry for your clinic's small parcel courier needs. Direct routing to dispatch enabled.
                 </DialogDescription>
               </DialogHeader>
               <InquiryFormContent onSuccess={handleSuccess} />
@@ -185,26 +201,33 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               key="success"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="py-12 flex flex-col items-center text-center space-y-6"
-              aria-live="polite"
+              className="py-8 flex flex-col items-center text-center space-y-6"
             >
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
-                className="w-24 h-24 bg-mmc-teal/10 rounded-full flex items-center justify-center"
-              >
-                <CheckCircle2 className="h-12 w-12 text-mmc-teal" />
-              </motion.div>
-              <div className="space-y-2">
-                <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
-                <DialogDescription className="text-mmc-gray text-lg max-w-xs mx-auto">
-                  Our small-parcel dispatch team has assigned your request to a professional courier unit.
-                </DialogDescription>
+              <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center">
+                <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
               </div>
-              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all font-bold py-6">
-                Close
-              </Button>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-black text-mmc-dark">Inquiry Sent!</h2>
+                <p className="text-mmc-gray text-base max-w-xs mx-auto">
+                  Your request has been routed to dispatch. Check your mail client to finish sending.
+                </p>
+              </div>
+              {lastData && (
+                <div className="w-full bg-mmc-light p-4 rounded-2xl text-left border border-gray-100 space-y-1">
+                  <p className="text-[10px] font-black uppercase text-mmc-teal mb-1">Request Summary</p>
+                  <p className="text-sm font-bold text-mmc-dark">{lastData.facilityName}</p>
+                  <p className="text-xs text-mmc-gray">{lastData.serviceNeeded}</p>
+                </div>
+              )}
+              <div className="flex flex-col w-full gap-3 pt-4">
+                <Button onClick={() => setOpen(false)} className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-6 font-bold shadow-lg">
+                  Finished
+                </Button>
+                <Button variant="ghost" onClick={handleCopy} className="text-mmc-teal hover:bg-mmc-teal/5 font-bold gap-2">
+                  <Copy className="h-4 w-4" />
+                  Copy Details Fallback
+                </Button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

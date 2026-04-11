@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
 import { MapPin, Navigation, Info } from 'lucide-react';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';
@@ -43,6 +43,17 @@ const regions = [
   }
 ];
 export function ServiceAreasPage() {
+  const { hash } = useLocation();
+  React.useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [hash]);
+  const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
   return (
     <>
       <SEO
@@ -65,7 +76,11 @@ export function ServiceAreasPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {regions.map((region, i) => (
-              <section key={i} className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+              <section 
+                key={i} 
+                id={slugify(region.city)}
+                className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 scroll-mt-24"
+              >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center group-hover:bg-mmc-teal transition-colors">
                     <MapPin className="h-6 w-6 text-mmc-teal group-hover:text-white" />

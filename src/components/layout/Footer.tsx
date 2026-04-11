@@ -18,8 +18,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand & Certs */}
-          <div className="space-y-6">
-            <Logo className="h-12" variant="primary" />
+          <div className="space-y-8">
+            <Logo variant="primary" className="h-14" />
             <p className="text-mmc-gray text-sm leading-relaxed">
               Specialized small-parcel medical courier for Lake County & Northwest Indiana. Serving dental, pharmacy, and clinic hubs with HIPAA and OSHA 10 compliance.
             </p>
@@ -44,7 +44,7 @@ export function Footer() {
             <ul className="space-y-4">
               {navigationMapping.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.path} className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium">
+                  <Link to={item.path} className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-bold">
                     {item.name}
                   </Link>
                 </li>
@@ -56,7 +56,7 @@ export function Footer() {
             <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Lake County Coverage</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
               {cities.map((city) => (
-                <Link key={city} to="/areas" className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm">
+                <Link key={city} to="/areas" className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium">
                   {city}, IN
                 </Link>
               ))}
@@ -66,10 +66,10 @@ export function Footer() {
           <div className="space-y-6">
             <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Dispatch Support</h3>
             <div className="space-y-4">
-              <p className="text-mmc-gray text-sm font-medium">
+              <p className="text-mmc-gray text-sm font-bold">
                 Lake County Clinic Specialist
               </p>
-              <Link to="/contact" className="block text-mmc-dark font-black hover:text-mmc-teal transition-colors underline decoration-mmc-teal/30 underline-offset-4 text-lg">
+              <Link to="/contact" className="block text-mmc-dark font-black hover:text-mmc-teal transition-colors underline decoration-mmc-teal/30 underline-offset-4 text-lg italic tracking-tight">
                 Submit Delivery Request
               </Link>
               <p className="text-mmc-gray text-xs leading-relaxed">
@@ -80,9 +80,9 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-xs text-mmc-gray leading-relaxed text-center max-w-4xl mx-auto">
-            Midwest Medical Delivery (MMC) provides specialized small-medical courier services in Gary, Hammond, Munster, and across Lake County, Indiana. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Our professional fleet ensures precision handling for sensitive small items across the NWI region. Fully HIPAA compliant and OSHA 10 safety certified.
+            Midwest Medical Delivery (MMC) provides specialized small-medical courier services in Gary, Hammond, Munster, and across Lake County, Indiana. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified.
           </p>
-          <div className="mt-6 text-center text-[10px] font-bold text-mmc-gray uppercase tracking-widest">
+          <div className="mt-6 text-center text-[10px] font-black text-mmc-gray uppercase tracking-widest">
             © {new Date().getFullYear()} Midwest Medical Delivery. Licensed & Insured.
           </div>
         </div>

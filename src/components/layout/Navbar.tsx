@@ -17,13 +17,14 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 md:h-20 items-center">
-          {/* Logo */}
-          <Link 
-            to="/" 
+        <div className="flex justify-between h-20 items-center">
+          {/* Logo Link */}
+          <Link
+            to="/"
             className="hover:opacity-80 transition-all active:scale-95 duration-200 flex items-center"
+            aria-label="MMC Home"
           >
-            <Logo className="h-10" />
+            <Logo className="h-12" />
           </Link>
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
@@ -32,7 +33,7 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-sm font-semibold transition-colors hover:text-mmc-teal",
+                  "text-sm font-bold transition-colors hover:text-mmc-teal tracking-tight",
                   location.pathname === link.path
                     ? "text-mmc-teal"
                     : "text-mmc-dark"

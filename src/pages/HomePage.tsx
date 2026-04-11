@@ -23,7 +23,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   "name": "Midwest Medical Delivery (MMC)",
-  "image": "https://images.unsplash.com/photo-1512418490979-92798ccc93a0?auto=format&fit=crop&q=80&w=1200",
+  "image": "https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200",
   "description": "Specialized small-parcel medical courier for Lake County clinics.",
   "address": {
     "@type": "PostalAddress",
@@ -95,14 +95,14 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
-                  src="https://images.unsplash.com/photo-1512418490979-92798ccc93a0?auto=format&fit=crop&q=80&w=1200"
-                  alt="MMC Medical Courier Vehicle in Lake County"
+                  src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200"
+                  alt="MMC Black Jeep Wrangler Medical Courier Vehicle"
                   loading="eager"
-                  className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/10 to-transparent pointer-events-none" />
                 <div className="absolute top-6 right-6 z-10">
-                  <Logo variant="alt" className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl" showText={false} />
+                  <Logo variant="alt" showText={false} className="shadow-2xl" />
                 </div>
               </div>
             </motion.div>
@@ -146,7 +146,6 @@ export function HomePage() {
           >
             <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Focused Expertise</h2>
             <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Built for Lake County Clinics.</h3>
-            <h3 className="sr-only">Specialized Courier for Gary, Hammond, and Munster.</h3>
             <p className="text-lg text-mmc-gray">We've refined our logistics specifically for Lake County dental offices and pharmacies.</p>
           </motion.div>
           <motion.div

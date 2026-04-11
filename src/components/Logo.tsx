@@ -63,7 +63,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
           )}
           style={{ color: variant === 'monochrome' ? 'currentColor' : undefined }}
         >
-          Midwest Medical Delivery
+          Midwest Medical Courier
         </span>
       )}
     </div>

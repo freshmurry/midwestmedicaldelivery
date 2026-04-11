@@ -38,10 +38,10 @@ export function HomePage() {
             >
               <div className="inline-flex items-center gap-2 bg-mmc-teal/10 text-mmc-teal px-4 py-2 rounded-full text-sm font-bold tracking-tight">
                 <Zap className="h-4 w-4" />
-                MEDICAL DELIVERY SPECIALIST
+                MIDWEST MEDICAL COURIER
               </div>
               <h1 className="text-5xl md:text-7xl font-black text-mmc-dark leading-[1.1] tracking-tight">
-                Secure Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Logistics</span> for Clinics.
+                Secure Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Delivery</span>
               </h1>
               <p className="text-xl text-mmc-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Fast, secure, and professional delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Northwest Indiana.
@@ -76,7 +76,7 @@ export function HomePage() {
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
                   src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200"
-                  alt="MMC Professional Medical Delivery Vehicle"
+                  alt="Midwest Medical Courier Professional Vehicle"
                   loading="eager"
                   className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
                   style={{ objectPosition: 'center 40%' }}
@@ -161,7 +161,7 @@ export function HomePage() {
                 <div className="aspect-video rounded-3xl overflow-hidden shadow-airbnb relative">
                   <img
                     src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200"
-                    alt="MMC Courier Delivering Clinical Packages"
+                    alt="Midwest Medical Courier Delivering Clinical Packages"
                     loading="lazy"
                     className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
                   />

@@ -186,7 +186,7 @@ export function ContactPage() {
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Email-routed regional logistics. Professional Medical Fleet.
+                    Email-routed regional logistics. Midwest Medical Courier.
                   </p>
                 </form>
               )}

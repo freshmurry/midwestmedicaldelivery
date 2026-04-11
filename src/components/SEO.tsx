@@ -7,7 +7,7 @@ interface SEOProps {
   schema?: object;
 }
 export function SEO({ title, description, canonical, schema }: SEOProps) {
-  const fullTitle = `${title} | MMC Northwest Indiana Medical & Dental Courier`;
+  const fullTitle = `${title} | Midwest Medical Courier`;
   const siteUrl = 'https://midwestmedicaldelivery.com';
   return (
     <Helmet>

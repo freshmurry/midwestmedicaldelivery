@@ -72,7 +72,7 @@ export function ServicesPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Clinical Logistics <span className="text-mmc-teal">Specialists.</span></h1>
+            <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Midwest Medical <span className="text-mmc-teal">Courier.</span></h1>
             <p className="text-xl text-mmc-gray leading-relaxed">
               We focus exclusively on sensitive deliveries for local clinics. We provide professional, secure transport tailored to your office's specific needs.
             </p>
@@ -117,7 +117,7 @@ export function ServicesPage() {
             <div className="flex-1 space-y-8 relative z-10">
               <h2 className="text-4xl md:text-5xl font-black leading-tight">Built for Local Pharmacies, Clinics, and Dental Practices</h2>
               <p className="text-lg text-gray-400">
-                While we maintain full compliance, we've optimized our operations for clinical scenarios and non-biohazard materials that require a professional, specialized touch.
+                While we maintain full compliance, Midwest Medical Courier has optimized operations for clinical scenarios and non-biohazard materials that require a professional, specialized touch.
               </p>
               <ul className="space-y-4">
                 {[
@@ -137,7 +137,7 @@ export function ServicesPage() {
               <div className="aspect-square bg-mmc-light rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/5">
                 <img
                   src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800"
-                  alt="MMC Secure Medical Handover"
+                  alt="Midwest Medical Courier Secure Handover"
                   loading="lazy"
                   className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
                 />

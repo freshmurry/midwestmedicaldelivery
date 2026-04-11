@@ -85,10 +85,10 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-xs text-mmc-gray leading-relaxed text-center max-w-4xl mx-auto">
-            Midwest Medical Delivery (MMC) provides specialized professional medical delivery services across the Northwest Indiana region. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified for professional regional medical logistics.
+            Midwest Medical Courier (MMC) provides specialized professional medical delivery services across the Northwest Indiana region. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified for professional regional medical logistics.
           </p>
           <div className="mt-6 text-center text-[10px] font-black text-mmc-gray uppercase tracking-widest">
-            © {new Date().getFullYear()} Midwest Medical Delivery. Licensed & Insured.
+            © {new Date().getFullYear()} Midwest Medical Courier. Licensed & Insured.
           </div>
         </div>
       </div>

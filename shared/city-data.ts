@@ -12,7 +12,7 @@ export const CITY_DATA: Record<string, CitySEO> = {
     name: 'Gary',
     heroTitle: 'Medical Courier Gary, Indiana',
     metaDescription: 'Specialized medical courier in Gary, IN. Fast delivery for dental prosthetics and pharmacy prescriptions near Broadway and I-94.',
-    aboutText: `Midwest Medical Delivery (MMC) provides Gary, Indiana with professional medical courier services tailored for sensitive clinical parcels. We understand the unique logistical needs of healthcare providers along the Broadway medical corridor and near the Gary SouthShore Rail Link. Our fleet is optimized for navigating Gary's urban layout, ensuring that dental molds, pharmacy prescriptions, and clinic supplies reach their destination with high-speed precision.
+    aboutText: `Midwest Medical Courier (MMC) provides Gary, Indiana with professional medical courier services tailored for sensitive clinical parcels. We understand the unique logistical needs of healthcare providers along the Broadway medical corridor and near the Gary SouthShore Rail Link. Our fleet is optimized for navigating Gary's urban layout, ensuring that dental molds, pharmacy prescriptions, and clinic supplies reach their destination with high-speed precision.
 In a city with a rich industrial history, MMC brings a modern, tech-focused approach to medical logistics. We prioritize chain-of-custody for every delivery, ensuring that sensitive patient materials are handled with the highest security standards. Our couriers are familiar with the access routes near Indiana University Northwest and Methodist Hospitals, providing local clinics with a reliable partner for daily routing or emergency STAT deliveries. Whether you are a dental lab sending crowns to a downtown office or a pharmacy coordinating patient-ready medications, our Gary-focused routes offer the security and HIPAA compliance your facility demands.`,
     landmarks: ['Broadway Corridor', 'I-94 Junction', 'Methodist Hospital Area']
   },
@@ -20,7 +20,7 @@ In a city with a rich industrial history, MMC brings a modern, tech-focused appr
     slug: 'hammond',
     name: 'Hammond',
     heroTitle: 'Medical Courier Hammond, Indiana',
-    metaDescription: 'Trusted medical delivery in Hammond, IN. Secure transport for dental labs and pharmacies along Calumet Avenue and Indianapolis Blvd.',
+    metaDescription: 'Trusted medical courier in Hammond, IN. Secure transport for dental labs and pharmacies along Calumet Avenue and Indianapolis Blvd.',
     aboutText: `Our Hammond medical courier services focus on the high-density clinical areas along Calumet Avenue and Indianapolis Boulevard. At MMC, we specialize in clinical logistics, recognizing that dental offices and pharmacies in Hammond require a professional partner that prioritizes speed and secure handover. We bridge the gap between regional labs and local providers with a fleet that offers unparalleled regional reliability.
 Navigating the Hammond-Munster border requires local expertise, which our dispatch team provides daily. We support Hammond healthcare facilities by offering scheduled routes that integrate seamlessly into office workflows. From orthodontic molds to specialized pharmacy bags, our transport protocols are designed to meet OSHA 10 standards and HIPAA regulations. By focusing on professional medical transport, we ensure your clinic's items are handled with dedicated care, maintaining the integrity of sensitive dental prosthetics and urgent medical paperwork throughout the Hammond region.`,
     landmarks: ['Calumet Avenue', 'Indianapolis Blvd', 'Purdue Northwest Area']
@@ -38,7 +38,7 @@ Our commitment to East Chicago healthcare providers involves more than just driv
     slug: 'munster',
     name: 'Munster',
     heroTitle: 'Medical Courier Munster, Indiana',
-    metaDescription: 'Elite medical delivery for Munster, IN clinics and labs. Specialized logistics along 45th Street and Calumet Ave.',
+    metaDescription: 'Elite medical courier for Munster, IN clinics and labs. Specialized logistics along 45th Street and Calumet Ave.',
     aboutText: `Munster serves as a major healthcare hub for Northwest Indiana, and MMC is proud to be the premier medical courier for the town's numerous specialist offices and outpatient centers. Our Munster medical delivery services are centered around the high-activity corridors of 45th Street and Calumet Avenue. We provide dental labs and pharmacies with a sophisticated logistics solution that matches the high standards of Munster's medical community.
 For Munster providers, chain-of-custody and professional handling are non-negotiable. Our team is trained in HIPAA-compliant protocols, ensuring that every dental mold or prescription bag is tracked and hand-delivered to clinic staff. We avoid the pitfalls of general transport by using a fleet designed for clinical logistics, allowing us to navigate Munster's busy medical office parks with agility. Whether you are coordinating between Community Hospital facilities or independent private practices, MMC offers the regional expertise and reliability required to keep Munster's healthcare moving efficiently.`,
     landmarks: ['45th Street Corridor', 'Community Hospital Area', 'Centennial Park Hub']
@@ -65,7 +65,7 @@ Our Schererville services are built on the foundation of professional medical lo
     slug: 'dyer',
     name: 'Dyer',
     heroTitle: 'Medical Courier Dyer, Indiana',
-    metaDescription: 'Professional medical delivery in Dyer, IN. Secure courier for clinics near Sheffield Ave and US-30.',
+    metaDescription: 'Professional medical courier in Dyer, IN. Secure courier for clinics near Sheffield Ave and US-30.',
     aboutText: `Dyer's position on the western edge of Lake County makes it a critical service area for MMC. We provide Dyer medical offices and dental labs with a dedicated courier service that understands the nuances of regional transport. Our Dyer routes are optimized for the Sheffield Avenue and US-30 areas, ensuring that medical items move quickly between local clinics and larger regional hubs.
 In Dyer, we focus on providing a "boutique" logistics experience for medical professionals. We recognize that a dental mold or a prescription bag is not just a package—it's a critical component of patient care. Our couriers are trained to handle these items with the respect and security they deserve. For Dyer pharmacies and outpatient facilities, MMC offers a level of HIPAA-compliant reliability that standard delivery services cannot match. We pride ourselves on our ability to integrate into the daily workflow of Dyer clinics, providing scheduled pickups and deliveries that healthcare teams can count on.`,
     landmarks: ['Sheffield Ave', 'Franciscan Health Area', 'US-30 Corridor']
@@ -83,7 +83,7 @@ Merrillville's busy thoroughfares and professional plazas demand a courier with 
     slug: 'crown-point',
     name: 'Crown Point',
     heroTitle: 'Medical Courier Crown Point, Indiana',
-    metaDescription: 'Reliable medical delivery in Crown Point, IN. Specialized transport for clinics near the Square and I-65.',
+    metaDescription: 'Reliable medical courier in Crown Point, IN. Specialized transport for clinics near the Square and I-65.',
     aboutText: `Crown Point's growing medical community deserves a courier service that matches its professional standards. MMC provides Crown Point dental offices and pharmacies with specialized clinical logistics that navigate the historic Square and the expanding medical corridors near I-65. We are the preferred partner for Crown Point providers who require secure, HIPAA-compliant transport for sensitive clinical items.
 Our Crown Point medical courier routes are designed for speed and security. We understand that as Crown Point continues to grow, the demand for high-quality medical logistics increases. Whether it's the daily movement of dental prosthetics from a lab to a specialist office or the urgent delivery of prescriptions to a patient facility, MMC offers the professional response times the Crown Point community expects. Our couriers are local experts, ensuring that even during peak hours or community events, your facility's medical deliveries reach their destination without delay.`,
     landmarks: ['The Square', 'I-65 Interchange', 'Franciscan Health Crown Point']
@@ -101,7 +101,7 @@ For St. John healthcare providers, MMC offers a level of service that emphasizes
     slug: 'hobart',
     name: 'Hobart',
     heroTitle: 'Medical Courier Hobart, Indiana',
-    metaDescription: 'Trusted medical delivery in Hobart, IN. Specialized logistics for clinics and pharmacies near St. Mary Medical Center.',
+    metaDescription: 'Trusted medical courier in Hobart, IN. Specialized logistics for clinics and pharmacies near St. Mary Medical Center.',
     aboutText: `Hobart medical providers rely on MMC for the professional movement of sensitive clinical items. Our Hobart medical courier services are centered around the St. Mary Medical Center area and the surrounding professional plazas. We provide Hobart pharmacies and dental offices with a logistics solution that is both fast and secure, ensuring that patient materials are handled with the utmost care.
 In Hobart, we focus on building lasting partnerships with local clinics. We understand that every facility has its own unique rhythm, which is why we offer flexible routing and responsive dispatch support. Our Hobart couriers are trained in the specific requirements of medical logistics, from OSHA 10 safety standards to HIPAA privacy regulations. By focusing exclusively on medical cargo like dental molds and prescriptions, MMC ensures that Hobart providers receive a specialized service that is optimized for the unique needs of the healthcare industry.`,
     landmarks: ['St. Mary Medical Center', 'Route 6 Corridor', 'Lake George Area']
@@ -110,7 +110,7 @@ In Hobart, we focus on building lasting partnerships with local clinics. We unde
     slug: 'whiting',
     name: 'Whiting',
     heroTitle: 'Medical Courier Whiting, Indiana',
-    metaDescription: 'Professional medical delivery in Whiting, IN. Fast, secure transport for dental offices and pharmacies near 119th Street and the lakefront.',
+    metaDescription: 'Professional medical courier in Whiting, IN. Fast, secure transport for dental offices and pharmacies near 119th Street and the lakefront.',
     aboutText: `Whiting's unique lakefront position and dense community require a medical courier that understands local navigation and clinical urgency. MMC provides Whiting dental offices, pharmacies, and outpatient clinics with a dedicated logistics partner for the secure transport of non-biohazard medical items. Our routes frequently service the 119th Street corridor and facilities near the BP refinery, ensuring rapid response times for local healthcare providers.
 We recognize that Whiting clinics demand a high level of professionalism and chain-of-custody security. Whether transporting dental molds to regional labs or delivering urgent pharmacy prescriptions, our couriers handle every parcel with HIPAA-compliant precision. By utilizing a professional medical fleet, MMC navigates Whiting's historic streets with agility, providing a reliable, daily logistics solution that allows your medical staff to focus entirely on patient care.`,
     landmarks: ['119th Street Corridor', 'Whiting Lakefront Park', 'Indianapolis Blvd Medical Area']
@@ -128,7 +128,7 @@ Our commitment to Cedar Lake providers centers on speed, security, and professio
     slug: 'griffith',
     name: 'Griffith',
     heroTitle: 'Medical Courier Griffith, Indiana',
-    metaDescription: 'Elite medical delivery for Griffith, IN. Professional transport for dental labs and pharmacies near Broad Street.',
+    metaDescription: 'Elite medical courier for Griffith, IN. Professional transport for dental labs and pharmacies near Broad Street.',
     aboutText: `Griffith's central location in Lake County makes it a vital hub for regional medical logistics. MMC provides Griffith dental offices, vet clinics, and pharmacies with rapid, secure courier services tailored to clinical needs. Navigating the busy Broad Street area and the town's historic rail crossings, our professional medical fleet ensures that sensitive clinical parcels reach their destinations without delay.
 We specialize in the meticulous handling of non-biohazard medical items, from orthodontic retainers to high-priority pharmacy bags. For Griffith healthcare providers, MMC offers a logistics partnership built on trust and compliance. Our couriers are OSHA 10 certified and trained in strict chain-of-custody protocols, ensuring that every delivery in Griffith is executed with the professional precision that modern clinical care demands.`,
     landmarks: ['Broad Street Corridor', 'Griffith Central Park Area', 'Ridge Road Junction']

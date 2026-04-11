@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Pill, Package, Zap, MapPin, CheckCircle2, Heart, ShieldCheck, Box } from 'lucide-react';
+import { Pill, Package, Zap, CheckCircle2, ShieldCheck, Box, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
@@ -23,8 +23,8 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title="Lake County Small-Parcel Medical Courier"
-        description="Fast professional medical delivery for Dental, Pharmacy & Vet Clinics in Lake County, Indiana. Secure transport for sensitive small items across NWI."
+        title="Regional Small-Parcel Medical Courier"
+        description="Fast professional medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Secure transport for sensitive small items across the region."
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
@@ -38,13 +38,13 @@ export function HomePage() {
             >
               <div className="inline-flex items-center gap-2 bg-mmc-teal/10 text-mmc-teal px-4 py-2 rounded-full text-sm font-bold tracking-tight">
                 <Zap className="h-4 w-4" />
-                LAKE COUNTY SPECIALIST
+                REGIONAL CLINIC SPECIALIST
               </div>
               <h1 className="text-5xl md:text-7xl font-black text-mmc-dark leading-[1.1] tracking-tight">
                 Small-Parcel Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Courier</span> for Clinics.
               </h1>
               <p className="text-xl text-mmc-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Fast, secure, and professional delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Lake County & NWI.
+                Fast, secure, and professional delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Northwest Indiana.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="z-10 bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg shadow-lg hover:-translate-y-1 transition-all">
@@ -59,7 +59,7 @@ export function HomePage() {
                 />
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 pt-4">
-                {['Small Cargo Only', 'HIPAA Compliant', 'Lake County Focus'].map((text, i) => (
+                {['Small Cargo Only', 'HIPAA Compliant', 'Regional Focus'].map((text, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
                     <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
                     {text}
@@ -76,7 +76,7 @@ export function HomePage() {
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
                   src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200"
-                  alt="MMC Black Jeep Wrangler Medical Courier Vehicle"
+                  alt="MMC Black Medical Courier Vehicle"
                   loading="eager"
                   className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
                   style={{ objectPosition: 'center 40%' }}
@@ -101,7 +101,7 @@ export function HomePage() {
             variants={stagger}
           >
             {[
-              { label: 'Lake County', value: '100%', sub: 'Local Hub focus' },
+              { label: 'Regional', value: '100%', sub: 'Local Hub focus' },
               { label: 'Clinic Partners', value: '50+', sub: 'NWI Coverage' },
               { label: 'Transport', value: 'Secure', sub: 'Small Parcels only' },
               { label: 'Response', value: 'Instant', sub: 'Dispatch Monitoring' }
@@ -161,15 +161,10 @@ export function HomePage() {
                 <div className="aspect-video rounded-3xl overflow-hidden shadow-airbnb relative">
                   <img
                     src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200"
-                    alt="MMC Courier Delivering Small Dental Medical Packages to Local Clinic"
+                    alt="MMC Courier Delivering Small Dental Medical Packages"
                     loading="lazy"
                     className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
                   />
-                  <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-2">
-                    <span className="bg-mmc-dark/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Dental</span>
-                    <span className="bg-mmc-teal/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Medical</span>
-                    <span className="bg-red-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Urgent</span>
-                  </div>
                 </div>
               </div>
             </motion.div>
@@ -187,8 +182,8 @@ export function HomePage() {
             variants={fadeIn}
           >
             <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Focused Expertise</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Built for Lake County Clinics.</h3>
-            <p className="text-lg text-mmc-gray">Refined logistics specifically for Lake County dental offices and pharmacies.</p>
+            <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Built for Regional Clinics.</h3>
+            <p className="text-lg text-mmc-gray">Refined logistics specifically for regional dental offices and pharmacies.</p>
           </motion.div>
           <motion.div
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
@@ -198,7 +193,7 @@ export function HomePage() {
             variants={stagger}
           >
             {[
-              { icon: Package, title: 'Dental & Ortho', desc: 'Secure transport for crowns, molds, and retainers between Lake County labs and clinics.' },
+              { icon: Package, title: 'Dental & Ortho', desc: 'Secure transport for crowns, molds, and retainers between labs and clinics.' },
               { icon: Pill, title: 'Pharmacy Routing', desc: 'High-priority prescription delivery for facilities that need a dedicated professional partner.' },
               { icon: Heart, title: 'Vet & Supplies', desc: 'Urgent supplies and document transport for veterinary hospitals throughout the NWI region.' }
             ].map((feature, i) => (
@@ -228,8 +223,8 @@ export function HomePage() {
             viewport={{ once: true }}
           >
             <div className="absolute inset-0 bg-black/5 pointer-events-none" />
-            <h2 className="text-4xl md:text-6xl font-black mb-8 relative z-10">Upgrade Your Lake County Logistics.</h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto relative z-10">Contact our dispatch team today for immediate pickup or scheduled NWI clinic routes.</p>
+            <h2 className="text-4xl md:text-6xl font-black mb-8 relative z-10">Upgrade Your Regional Logistics.</h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto relative z-10">Contact our dispatch team today for immediate pickup or scheduled clinic routes.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
               <Button asChild size="lg" className="bg-white text-mmc-teal hover:bg-gray-100 rounded-2xl px-10 py-7 text-lg font-bold">
                 <Link to="/contact">Request Pickup</Link>

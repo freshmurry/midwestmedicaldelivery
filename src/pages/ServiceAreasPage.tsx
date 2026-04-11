@@ -53,7 +53,6 @@ export function ServiceAreasPage() {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
-        // Timeout ensures the layout has stabilized before scrolling
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -64,21 +63,21 @@ export function ServiceAreasPage() {
   return (
     <>
       <SEO
-        title="Lake County Coverage Map"
-        description="Fast professional delivery for Dental, Pharmacy, and Vet clinics in Gary, Hammond, Munster, Hobart, and across Lake County. View our NWI coverage area."
+        title="Regional Coverage Map"
+        description="Fast professional delivery for Dental, Pharmacy, and Vet clinics across Gary, Hammond, Munster, and the Northwest Indiana region."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 md:py-10 lg:py-12">
           <div className="max-w-3xl mb-12 md:mb-16 space-y-4 md:space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mmc-teal/10 text-mmc-teal text-xs font-bold uppercase tracking-widest">
               <Navigation className="h-3 w-3" />
-              Lake County Coverage
+              Service Coverage Area
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-mmc-dark leading-tight">
-              Lake County <span className="text-mmc-teal">Network.</span>
+              Regional <span className="text-mmc-teal">Network.</span>
             </h1>
             <p className="text-lg md:text-xl text-mmc-gray leading-relaxed max-w-2xl">
-              Our professional courier fleet is strategically positioned to serve Lake County and strategic NWI clinic hubs with unparalleled local speed.
+              Our professional courier fleet is strategically positioned to serve local clinics and regional hubs with unparalleled local speed.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -108,9 +107,9 @@ export function ServiceAreasPage() {
           </div>
           <div className="mt-16 md:mt-24 p-8 md:p-16 bg-mmc-dark rounded-[2.5rem] md:rounded-[4rem] text-center space-y-6 md:space-y-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-mmc-teal opacity-10 rounded-full -mr-20 -mt-20 blur-3xl pointer-events-none" />
-            <h2 className="text-3xl md:text-4xl font-black text-white relative z-10">Lake County Provider?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-white relative z-10">Local Clinic Provider?</h2>
             <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed relative z-10">
-              We specialize in Lake County medical logistics. If you're in Gary, Hammond, Munster, Hobart, or nearby, we've got you covered.
+              We specialize in regional medical logistics. If your facility is within our coverage area, we have a solution for your small-parcel needs.
             </p>
             <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
               <QuickInquiryModal

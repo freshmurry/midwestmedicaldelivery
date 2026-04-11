@@ -2,13 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
 import { Award, ShieldCheck, Zap, ShieldAlert, Package } from 'lucide-react';
-import { Logo } from '@/components/Logo';
 export function AboutPage() {
   return (
     <>
       <SEO
-        title="About Lake County Specialty"
-        description="MMC specializes in professional medical delivery for Lake County clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure NWI transport."
+        title="About Regional Specialty"
+        description="MMC specializes in professional medical delivery for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure transport."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -21,7 +20,7 @@ export function AboutPage() {
             >
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-6xl font-black text-mmc-dark leading-tight">
-                  Lake County <span className="text-mmc-teal">Specialists.</span>
+                  Regional <span className="text-mmc-teal">Specialists.</span>
                 </h1>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
@@ -39,16 +38,16 @@ export function AboutPage() {
                 </div>
               </div>
               <p className="text-xl text-mmc-gray leading-relaxed">
-                Midwest Medical Delivery (MMC) provides Lake County and the surrounding NWI region with the professional precision that dental prosthetics and pharmacy prescriptions require.
+                Midwest Medical Delivery (MMC) provides the Northwest Indiana region with the professional precision that dental prosthetics and pharmacy prescriptions require.
               </p>
               <p className="text-lg text-mmc-gray leading-relaxed">
-                We've invested in a dedicated medical transport fleet, navigating Lake County urban routes with agility and ensuring small parcels never share space with bulk industrial freight.
+                We've invested in a dedicated medical transport fleet, navigating urban routes with agility and ensuring small parcels never share space with bulk industrial freight.
               </p>
               <div className="grid sm:grid-cols-2 gap-8 pt-4">
                 {[
                   { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for patient facility delivery.' },
                   { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },
-                  { icon: Zap, title: 'NWI Local Experts', desc: 'Professional response times across the Lake County network.' },
+                  { icon: Zap, title: 'Regional Experts', desc: 'Professional response times across the clinic network.' },
                   { icon: Package, title: 'Small-Parcel Elite', desc: 'Exclusively handling dental and clinic medical parcels.' }
                 ].map((item, i) => (
                   <motion.div
@@ -88,9 +87,8 @@ export function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                <Logo variant="primary" showText={false} className="mb-2" />
-                <div className="text-2xl font-black text-mmc-dark">Lake Co. Hub</div>
-                <p className="text-sm font-bold text-mmc-dark leading-tight">Focusing exclusively on Lake County parcel logistics for over 50 local clinics.</p>
+                <div className="text-2xl font-black text-mmc-dark">Regional Logistics</div>
+                <p className="text-sm font-bold text-mmc-dark leading-tight">Providing professional medical parcel logistics for over 50 regional clinic partners.</p>
               </motion.div>
             </motion.div>
           </div>

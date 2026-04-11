@@ -21,10 +21,10 @@ export function Footer() {
           {/* Brand & Certs */}
           <div className="space-y-8">
             <Link to="/" className="inline-block hover:opacity-80 transition-opacity">
-              <Logo variant="primary" className="h-14" />
+              <Logo variant="primary" />
             </Link>
             <p className="text-mmc-gray text-sm leading-relaxed">
-              Specialized small-parcel medical courier for Lake County & Northwest Indiana. Serving dental, pharmacy, and clinic hubs with HIPAA and OSHA 10 compliance.
+              Specialized small-parcel medical courier for Northwest Indiana clinics, pharmacies, and dental labs. Professional logistics with HIPAA and OSHA 10 compliance.
             </p>
             <div className="flex flex-wrap gap-2.5">
               <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-[9px] font-black text-mmc-dark shadow-sm whitespace-nowrap">
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
           {/* Service Areas */}
           <div>
-            <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Lake County Coverage</h3>
+            <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Service Coverage</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
               {cities.map((city) => (
                 <Link
@@ -74,7 +74,7 @@ export function Footer() {
             <h3 className="text-sm font-black text-mmc-dark uppercase tracking-wider mb-6">Dispatch Support</h3>
             <div className="space-y-4">
               <p className="text-mmc-gray text-sm font-bold">
-                Lake County Clinic Specialist
+                Clinic Specialist Team
               </p>
               <Link to="/contact" className="block text-mmc-dark font-black hover:text-mmc-teal transition-colors underline decoration-mmc-teal/30 underline-offset-4 text-lg italic tracking-tight">
                 Submit Delivery Request
@@ -87,7 +87,7 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-xs text-mmc-gray leading-relaxed text-center max-w-4xl mx-auto">
-            Midwest Medical Delivery (MMC) provides specialized small-medical courier services in Gary, Hammond, Munster, Hobart, and across Lake County, Indiana. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified.
+            Midwest Medical Delivery (MMC) provides specialized small-medical courier services in Gary, Hammond, Munster, and across the Northwest Indiana region. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified.
           </p>
           <div className="mt-6 text-center text-[10px] font-black text-mmc-gray uppercase tracking-widest">
             © {new Date().getFullYear()} Midwest Medical Delivery. Licensed & Insured.

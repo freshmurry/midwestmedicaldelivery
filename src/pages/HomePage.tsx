@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';
+import { Logo } from '@/components/Logo';
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -96,11 +97,14 @@ export function HomePage() {
                 <img
                   src="https://images.unsplash.com/photo-1512418490979-92798ccc93a0?auto=format&fit=crop&q=80&w=1200"
                   alt="MMC Medical Courier Vehicle in Lake County"
-                  fetchpriority="high"
+                  fetchPriority="high"
                   loading="eager"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/20 to-transparent pointer-events-none" />
+                <div className="absolute top-6 right-6 z-10">
+                  <Logo variant="alt" className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl" showText={false} />
+                </div>
               </div>
             </motion.div>
           </div>

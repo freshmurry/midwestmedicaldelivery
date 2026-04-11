@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
 import { Award, ShieldCheck, Zap, ShieldAlert } from 'lucide-react';
+import { Logo } from '@/components/Logo';
 export function AboutPage() {
   return (
     <>
@@ -19,7 +20,7 @@ export function AboutPage() {
               transition={{ duration: 0.7 }}
             >
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Lake County <span className="text-mmc-teal">Specialists.</span></h1>
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Lake County <span style={{ color: '#00A699' }}>Specialists.</span></h1>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
                     <ShieldCheck className="h-3 w-3 text-mmc-teal" />
@@ -84,7 +85,8 @@ export function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                <div className="text-4xl font-black text-mmc-teal">Lake Co.</div>
+                <Logo variant="primary" showText={false} className="mb-2" />
+                <div className="text-2xl font-black text-mmc-dark">Lake Co. Hub</div>
                 <p className="text-sm font-bold text-mmc-dark leading-tight">Focusing exclusively on Lake County parcel logistics.</p>
               </motion.div>
             </motion.div>

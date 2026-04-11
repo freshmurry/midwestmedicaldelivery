@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Package, ShieldAlert } from 'lucide-react';
+import { Logo } from '@/components/Logo';
 const cities = [
   'Gary', 'Hammond', 'Munster', 'Highland', 'Schererville', 'Dyer', 'Merrillville', 'Crown Point', 'East Chicago', 'Hobart'
 ];
@@ -18,13 +19,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand & Certs */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-black text-mmc-dark">MMC</span>
-              <div className="flex gap-0.5">
-                <div className="w-0.5 h-4 bg-mmc-teal -skew-x-12" />
-                <div className="w-0.5 h-4 bg-mmc-teal -skew-x-12 opacity-60" />
-              </div>
-            </div>
+            <Logo className="h-12" variant="primary" />
             <p className="text-mmc-gray text-sm leading-relaxed">
               Specialized small-parcel medical courier for Lake County & Northwest Indiana. Serving dental, pharmacy, and clinic hubs with HIPAA and OSHA 10 compliance.
             </p>

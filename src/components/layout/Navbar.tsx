@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/Logo';
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
@@ -18,17 +19,8 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 md:h-20 items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-tighter text-mmc-dark">
-                MMC
-              </span>
-            </div>
-            <div className="flex gap-1">
-              <div className="w-1 h-6 bg-mmc-teal -skew-x-12" />
-              <div className="w-1 h-6 bg-mmc-teal -skew-x-12 opacity-70" />
-              <div className="w-1 h-6 bg-mmc-teal -skew-x-12 opacity-40" />
-            </div>
+          <Link to="/" className="hover:opacity-90 transition-opacity active:scale-95 duration-200">
+            <Logo className="h-10" />
           </Link>
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">

@@ -21,7 +21,7 @@ export function Navbar() {
           <Link
             to="/"
             className="hover:opacity-80 transition-all active:scale-95 duration-200 flex items-center"
-            aria-label="MMC Home"
+            aria-label="MMD Home"
           >
             <Logo className="h-12" />
           </Link>

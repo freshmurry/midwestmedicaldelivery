@@ -47,7 +47,7 @@ export function CityPage({ city }: CityPageProps) {
                 </span>
               </h1>
               <p className="text-xl text-mmc-gray leading-relaxed max-w-xl">
-                Midwest Medical Courier provides specialized professional medical logistics for {city.name} clinics, pharmacies, and dental practices. Secure and HIPAA compliant.
+                Midwest Medical Delivery provides specialized professional medical logistics for {city.name} clinics, pharmacies, and dental practices. Secure and HIPAA compliant.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button asChild size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg font-bold shadow-lg h-auto">

@@ -58,7 +58,6 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        // Realistic processing delay for feedback
         await new Promise(resolve => setTimeout(resolve, 800));
         onSuccess();
         reset();
@@ -79,7 +78,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         <div className="space-y-1.5">
           <Label htmlFor="facilityType" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Facility Type</Label>
           <Select name="facilityType" onValueChange={(val) => setValue('facilityType', val, { shouldValidate: true })}>
-            <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal">
+            <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
@@ -95,31 +94,31 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="facilityName" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Facility Name</Label>
-          <Input id="facilityName" {...register('facilityName')} placeholder="Midwest Dental Lab" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal" />
+          <Input id="facilityName" {...register('facilityName')} placeholder="Midwest Dental Lab" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
           {errors.facilityName && <p className="text-[10px] text-red-500 font-bold">{errors.facilityName.message}</p>}
         </div>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="contactName" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Contact Name</Label>
-        <Input id="contactName" {...register('contactName')} placeholder="Contact Person" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal" />
+        <Input id="contactName" {...register('contactName')} placeholder="Contact Person" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
         {errors.contactName && <p className="text-[10px] text-red-500 font-bold">{errors.contactName.message}</p>}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="phone" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Phone</Label>
-          <Input id="phone" type="tel" {...register('phone')} placeholder="(XXX) XXX-XXXX" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal" />
+          <Input id="phone" type="tel" {...register('phone')} placeholder="(XXX) XXX-XXXX" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
           {errors.phone && <p className="text-[10px] text-red-500 font-bold">{errors.phone.message}</p>}
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="email" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Email</Label>
-          <Input id="email" type="email" {...register('email')} placeholder="office@facility.com" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal" />
+          <Input id="email" type="email" {...register('email')} placeholder="office@facility.com" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
           {errors.email && <p className="text-[10px] text-red-500 font-bold">{errors.email.message}</p>}
         </div>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="serviceNeeded" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Service Needed</Label>
         <Select name="serviceNeeded" onValueChange={(val) => setValue('serviceNeeded', val, { shouldValidate: true })}>
-          <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal">
+          <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2">
             <SelectValue placeholder="Select service" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
@@ -135,9 +134,9 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="message" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Small Parcel Details</Label>
-        <Textarea id="message" {...register('message')} placeholder="Specify items (e.g. 5 Rx bags, 1 dental box)..." className="bg-mmc-light border-0 rounded-xl min-h-[80px] focus:ring-2 focus:ring-mmc-teal" />
+        <Textarea id="message" {...register('message')} placeholder="Specify items (e.g. 5 Rx bags, 1 dental box)..." className="bg-mmc-light border-0 rounded-xl min-h-[80px] focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
       </div>
-      <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-airbnb mt-2 focus-visible:ring-offset-2 transition-all">
+      <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-airbnb mt-2 transition-all">
         {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Dispatching Unit...</> : 'Send Clinic Inquiry'}
       </Button>
     </form>
@@ -150,7 +149,6 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
   const onOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
     if (!isOpen) {
-      // Clear success state after modal close animation
       setTimeout(() => setIsSuccess(false), 300);
     }
   };
@@ -177,7 +175,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                   Inquiry for <span className="text-mmc-teal">Providers</span>
                 </DialogTitle>
                 <DialogDescription className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Fill out this form to submit a quick inquiry for your clinic's small parcel courier needs. Our team will respond promptly with dispatch options.
+                  Fill out this form to submit a quick inquiry for your clinic's small parcel courier needs.
                 </DialogDescription>
               </DialogHeader>
               <InquiryFormContent onSuccess={handleSuccess} />
@@ -188,22 +186,23 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               className="py-12 flex flex-col items-center text-center space-y-6"
+              aria-live="polite"
             >
               <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1.1, opacity: 1 }}
-                transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+                className="w-24 h-24 bg-mmc-teal/10 rounded-full flex items-center justify-center"
               >
-                <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
+                <CheckCircle2 className="h-12 w-12 text-mmc-teal" />
               </motion.div>
               <div className="space-y-2">
                 <h2 className="text-3xl font-black text-mmc-dark">Request Logged!</h2>
                 <DialogDescription className="text-mmc-gray text-lg max-w-xs mx-auto">
-                  Our small-parcel dispatch team has assigned your request to a professional courier unit. Expect a follow-up shortly.
+                  Our small-parcel dispatch team has assigned your request to a professional courier unit.
                 </DialogDescription>
               </div>
-              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all focus-visible:ring-2 ring-mmc-teal font-bold py-6">
+              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all font-bold py-6">
                 Close
               </Button>
             </motion.div>

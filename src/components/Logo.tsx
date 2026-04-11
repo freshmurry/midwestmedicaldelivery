@@ -9,11 +9,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   const teal = "#00A699";
   const dark = "#222222";
   const gray = "#555555";
-  // Define colors based on variant
-  const textColor = variant === 'monochrome' ? 'currentColor' : dark;
-  const subTextColor = variant === 'monochrome' ? 'currentColor' : gray;
   const stripeColor = variant === 'monochrome' ? 'currentColor' : teal;
-  // The "MMC" text component
   const BrandingText = (
     <div className="flex flex-col leading-none">
       <span
@@ -38,36 +34,35 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
       )}
     </div>
   );
-  // The Three Speed Stripes Motif (100/60/30 opacity)
   const SpeedStripes = (
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 32 24"
       className="h-full w-auto shrink-0"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* Stripe 1: 100% Opacity */}
+      {/* Stripe 1: 100% Opacity - Centered with more breathing room */}
       <path
-        d="M7 6L4 18"
+        d="M10 5L6 19"
         stroke={stripeColor}
-        strokeWidth="3.5"
+        strokeWidth="3"
         strokeLinecap="round"
         className="opacity-100"
       />
       {/* Stripe 2: 60% Opacity */}
       <path
-        d="M12 6L9 18"
+        d="M16 5L12 19"
         stroke={stripeColor}
-        strokeWidth="3.5"
+        strokeWidth="3"
         strokeLinecap="round"
         className="opacity-60"
       />
       {/* Stripe 3: 30% Opacity */}
       <path
-        d="M17 6L14 18"
+        d="M22 5L18 19"
         stroke={stripeColor}
-        strokeWidth="3.5"
+        strokeWidth="3"
         strokeLinecap="round"
         className="opacity-30"
       />
@@ -84,9 +79,9 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
     );
   }
   return (
-    <div className={cn("flex items-center gap-3 h-12", className)}>
+    <div className={cn("flex items-end gap-2.5 h-12 pb-1", className)}>
       {BrandingText}
-      <div className="h-2/3">
+      <div className="h-6 mb-0.5">
         {SpeedStripes}
       </div>
     </div>

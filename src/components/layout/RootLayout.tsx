@@ -15,10 +15,10 @@ export function RootLayout({ children }: RootLayoutProps) {
       </main>
       <Footer />
       {/* Mobile Sticky CTA Triggering Inquiry Modal */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none">
-        <div className="pointer-events-auto">
-          {/* Backdrop gradient with pointer-events-none to prevent touch block */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent -z-10 pointer-events-none" />
+      <div className="md:hidden fixed bottom-0 left-0 w-full z-50 pointer-events-none">
+        <div className="relative p-4 pointer-events-auto">
+          {/* Refined gradient backdrop strictly behind the button area */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/95 to-transparent -z-10 pointer-events-none" />
           <QuickInquiryModal
             trigger={
               <button

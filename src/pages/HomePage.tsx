@@ -19,32 +19,12 @@ const stagger = {
     }
   }
 };
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "name": "Midwest Medical Delivery (MMC)",
-  "image": "https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200",
-  "description": "Specialized small-parcel medical courier for Lake County clinics.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Gary",
-    "addressRegion": "IN",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 41.5934,
-    "longitude": -87.3464
-  },
-  "url": "https://midwestmedicaldelivery.com"
-};
 export function HomePage() {
   return (
     <>
       <SEO
         title="Lake County Small-Parcel Medical Courier"
         description="Fast professional medical delivery for Dental, Pharmacy & Vet Clinics in Lake County, Indiana. Secure transport for sensitive small items across NWI."
-        schema={localBusinessSchema}
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
@@ -103,7 +83,7 @@ export function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/10 to-transparent pointer-events-none" />
                 <div className="absolute top-6 right-6 z-10">
-                  <Logo variant="alt" showText={false} className="shadow-2xl ring-1 ring-black/5" />
+                  <Logo variant="alt" showText={false} className="shadow-2xl ring-1 ring-black/5 backdrop-blur-sm" />
                 </div>
               </div>
             </motion.div>
@@ -135,11 +115,11 @@ export function HomePage() {
           </motion.div>
         </div>
       </section>
-      {/* Operational Precision: Service in Action */}
+      {/* Operational Precision */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
-            <motion.div 
+            <motion.div
               className="flex-1 space-y-8"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -149,7 +129,7 @@ export function HomePage() {
                 <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Operational Proof</h2>
                 <h3 className="text-4xl md:text-5xl font-black text-mmc-dark leading-tight">Hand-to-Hand <span className="text-mmc-teal">Security.</span></h3>
                 <p className="text-xl text-mmc-gray leading-relaxed">
-                  Our couriers aren't just drivers; they are trained medical logistics professionals. We specialize in the high-stakes handover of dental molds and sensitive prescriptions directly to your clinic staff.
+                  Our couriers are trained medical logistics professionals. We specialize in the high-stakes handover of dental molds and sensitive prescriptions directly to your clinic staff.
                 </p>
               </div>
               <ul className="grid sm:grid-cols-2 gap-6">
@@ -170,7 +150,7 @@ export function HomePage() {
                 <Link to="/about">Our Certification Standards</Link>
               </Button>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="flex-1 w-full"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -185,7 +165,6 @@ export function HomePage() {
                     loading="lazy"
                     className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
                   />
-                  {/* Decorative Label Overlay to simulate requested "DENTAL MEDICAL URGENT" branding */}
                   <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-2">
                     <span className="bg-mmc-dark/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Dental</span>
                     <span className="bg-mmc-teal/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Medical</span>
@@ -209,10 +188,10 @@ export function HomePage() {
           >
             <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Focused Expertise</h2>
             <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Built for Lake County Clinics.</h3>
-            <p className="text-lg text-mmc-gray">We've refined our logistics specifically for Lake County dental offices and pharmacies.</p>
+            <p className="text-lg text-mmc-gray">Refined logistics specifically for Lake County dental offices and pharmacies.</p>
           </motion.div>
           <motion.div
-            className="grid md:grid-cols-3 gap-8"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-100px" }}
@@ -237,40 +216,6 @@ export function HomePage() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </section>
-      {/* Area Callout */}
-      <section className="py-24 bg-mmc-dark text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-mmc-teal opacity-10 skew-x-12 translate-x-20 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-5xl font-black max-w-xl">Dominant Lake County Medical Routes.</h2>
-              <p className="text-lg text-gray-400 max-w-lg">Dedicated small-parcel routes for clinics that need local precision across Gary, Hammond, and Munster.</p>
-              <Button asChild variant="outline" className="border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl transition-colors">
-                <Link to="/areas">View Coverage Map</Link>
-              </Button>
-            </motion.div>
-            <motion.div
-              className="grid grid-cols-2 gap-4 w-full md:w-auto"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={stagger}
-            >
-              {['Gary', 'Hammond', 'Munster', 'Highland'].map((city) => (
-                <motion.div key={city} variants={fadeIn} className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-mmc-teal" />
-                  <span className="font-bold">{city}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
         </div>
       </section>
       {/* CTA Section */}

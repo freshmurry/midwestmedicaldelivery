@@ -16,7 +16,6 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMinYMid meet"
     >
-      {/* Stripe 1: 100% Opacity */}
       <path
         d="M6 3L2 17"
         stroke={stripeColor}
@@ -24,7 +23,6 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         strokeLinecap="round"
         className="opacity-100"
       />
-      {/* Stripe 2: 60% Opacity */}
       <path
         d="M12 3L8 17"
         stroke={stripeColor}
@@ -32,7 +30,6 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         strokeLinecap="round"
         className="opacity-60"
       />
-      {/* Stripe 3: 30% Opacity */}
       <path
         d="M18 3L14 17"
         stroke={stripeColor}
@@ -44,7 +41,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   );
   const LogoContent = (
     <div className="flex flex-col leading-none">
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1.5">
         <span
           className={cn(
             "text-2xl font-black tracking-tighter italic select-none",
@@ -61,8 +58,8 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
       {showText && (
         <span
           className={cn(
-            "text-[8px] font-bold uppercase tracking-[0.15em] whitespace-nowrap mt-0.5 select-none opacity-80",
-            variant === 'monochrome' ? "" : "text-mmc-gray"
+            "text-[8px] font-extrabold uppercase tracking-[0.2em] whitespace-nowrap mt-1 select-none",
+            variant === 'monochrome' ? "opacity-90" : "text-mmc-gray opacity-80"
           )}
           style={{ color: variant === 'monochrome' ? 'currentColor' : undefined }}
         >
@@ -73,13 +70,13 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   );
   if (variant === 'alt') {
     return (
-      <div className={cn("flex items-center p-3 rounded-2xl bg-white/90 backdrop-blur-md shadow-xl", className)}>
+      <div className={cn("flex items-center p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-airbnb", className)}>
         {LogoContent}
       </div>
     );
   }
   return (
-    <div className={cn("flex flex-col justify-center h-12", className)}>
+    <div className={cn("flex flex-col justify-center min-h-[48px]", className)}>
       {LogoContent}
     </div>
   );

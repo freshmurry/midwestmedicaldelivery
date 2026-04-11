@@ -5,50 +5,10 @@ import { MapPin, Navigation, Info } from 'lucide-react';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';
 import { Button } from '@/components/ui/button';
 import { CityMap } from '@/components/CityMap';
-const regions = [
-  {
-    city: 'Gary',
-    description: 'Serving dental offices and local pharmacies across Gary, IN. We prioritize fast transport for orthodontic molds through the downtown medical corridor.'
-  },
-  {
-    city: 'Hammond',
-    description: 'Expert dental and pharmacy courier routes in Hammond. Our units navigate local clinics along Calumet Ave with precision small-parcel handling.'
-  },
-  {
-    city: 'Munster',
-    description: 'Dedicated small-parcel logistics for the Munster dental corridor. Reliable delivery for specialist dental offices and outpatient centers daily.'
-  },
-  {
-    city: 'Schererville',
-    description: 'Precision vet and pharmacy delivery for Schererville providers. Ensuring small, sensitive items reach your clinic without bulk courier delays.'
-  },
-  {
-    city: 'Merrillville',
-    description: 'Central hub for clinic-to-clinic small deliveries in Merrillville. Supporting dental labs and pharmacies with secure medical transport.'
-  },
-  {
-    city: 'Crown Point',
-    description: 'Fast clinic courier service across Crown Point. From dental crowns to urgent prescriptions, we provide secure transport for the medical community.'
-  },
-  {
-    city: 'East Chicago',
-    description: 'Reliable pharmacy and dental delivery for East Chicago. Our professional fleet prioritizes safety and speed for small medical parcels.'
-  },
-  {
-    city: 'Highland',
-    description: 'Focused courier services for Highland dental and pharmacy hubs. Seamless integration for your daily outpatient delivery needs.'
-  },
-  {
-    city: 'Dyer',
-    description: 'Trusted partner for small clinics in Dyer. Secure transport for sensitive dental prosthetics and patient-ready prescriptions.'
-  },
-  {
-    city: 'Hobart',
-    description: 'Specialized medical courier support for Hobart clinics and pharmacies. We ensure consistent, high-speed routing for dental prosthetics and clinical supplies.'
-  }
-];
+import { CITY_DATA } from '@shared/city-data';
 export function ServiceAreasPage() {
   const { hash } = useLocation();
+  const regions = Object.values(CITY_DATA);
   React.useEffect(() => {
     if (hash) {
       const id = hash.replace('#', '');
@@ -60,7 +20,6 @@ export function ServiceAreasPage() {
       }
     }
   }, [hash]);
-  const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
   return (
     <>
       <SEO
@@ -81,42 +40,48 @@ export function ServiceAreasPage() {
               Our professional courier fleet is strategically positioned to serve local clinics and regional hubs with unparalleled local speed.
             </p>
           </div>
-
           {/* Lake County Map Section */}
           <div className="mb-24 space-y-10">
-            <div className="flex items-end justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="space-y-2">
                 <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Interactive Network</h2>
                 <h3 className="text-3xl md:text-4xl font-black text-mmc-dark">Lake County Coverage</h3>
               </div>
-              <p className="hidden md:block text-xs font-bold text-mmc-gray uppercase tracking-wider max-w-[200px] text-right">
+              <p className="text-xs font-bold text-mmc-gray uppercase tracking-wider max-w-[200px] sm:text-right">
                 Click any marker to view localized city-specific clinical logistics.
               </p>
             </div>
             <CityMap />
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {regions.map((region, i) => (
+            {regions.map((city) => (
               <section
-                key={i}
-                id={slugify(region.city)}
-                className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 scroll-mt-24"
+                key={city.slug}
+                id={city.slug}
+                className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 scroll-mt-24 flex flex-col"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center group-hover:bg-mmc-teal transition-colors">
+                  <div className="w-12 h-12 bg-mmc-light rounded-2xl flex items-center justify-center group-hover:bg-mmc-teal transition-colors shrink-0">
                     <MapPin className="h-6 w-6 text-mmc-teal group-hover:text-white" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-black text-mmc-dark group-hover:text-mmc-teal transition-colors leading-tight">
-                    {region.city}, IN
+                    {city.name}, IN
                   </h2>
                 </div>
-                <p className="text-mmc-gray text-sm md:text-base leading-relaxed mb-6 min-h-[80px]">
-                  {region.description}
+                <p className="text-mmc-gray text-sm md:text-base leading-relaxed mb-6 flex-grow">
+                  {city.metaDescription}
                 </p>
-                <div className="flex items-center gap-2 text-xs font-bold text-mmc-teal bg-mmc-teal/5 w-fit px-3 py-1.5 rounded-full">
-                  <Info className="h-3.5 w-3.5" />
-                  Clinic Routes Available
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-xs font-bold text-mmc-teal bg-mmc-teal/5 w-fit px-3 py-1.5 rounded-full">
+                    <Info className="h-3.5 w-3.5" />
+                    Clinic Routes Available
+                  </div>
+                  <Link 
+                    to={`/${city.slug}`} 
+                    className="inline-flex items-center text-sm font-black text-mmc-dark hover:text-mmc-teal transition-colors"
+                  >
+                    View City Details <Navigation className="ml-2 h-4 w-4" />
+                  </Link>
                 </div>
               </section>
             ))}

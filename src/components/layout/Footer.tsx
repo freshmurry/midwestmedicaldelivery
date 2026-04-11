@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Package, ShieldAlert } from 'lucide-react';
 import { Logo } from '@/components/Logo';
-const cities = [
-  'Gary', 'Hammond', 'Munster', 'Highland', 'Schererville', 'Dyer', 'Merrillville', 'Crown Point', 'East Chicago', 'Hobart'
-];
+import { CITY_DATA } from '@shared/city-data';
 const navigationMapping = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
@@ -13,7 +11,7 @@ const navigationMapping = [
   { name: 'Contact', path: '/contact' },
 ];
 export function Footer() {
-  const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
+  const cities = Object.values(CITY_DATA);
   return (
     <footer className="bg-mmc-light border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -60,11 +58,11 @@ export function Footer() {
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
               {cities.map((city) => (
                 <Link
-                  key={city}
-                  to={`/${slugify(city)}`}
+                  key={city.slug}
+                  to={`/${city.slug}`}
                   className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium"
                 >
-                  {city}, IN
+                  {city.name}, IN
                 </Link>
               ))}
             </div>

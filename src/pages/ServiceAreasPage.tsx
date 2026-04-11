@@ -40,6 +40,10 @@ const regions = [
   {
     city: 'Dyer',
     description: 'Trusted partner for small clinics in Dyer. Secure transport for sensitive dental prosthetics and patient-ready prescriptions.'
+  },
+  {
+    city: 'Hobart',
+    description: 'Specialized medical courier support for Hobart clinics and pharmacies. We ensure consistent, high-speed routing for dental prosthetics and clinical supplies.'
   }
 ];
 export function ServiceAreasPage() {
@@ -49,7 +53,10 @@ export function ServiceAreasPage() {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        // Timeout ensures the layout has stabilized before scrolling
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       }
     }
   }, [hash]);
@@ -58,7 +65,7 @@ export function ServiceAreasPage() {
     <>
       <SEO
         title="Lake County Coverage Map"
-        description="Fast professional delivery for Dental, Pharmacy, and Vet clinics in Gary, Hammond, Munster, and across Lake County. View our NWI coverage area."
+        description="Fast professional delivery for Dental, Pharmacy, and Vet clinics in Gary, Hammond, Munster, Hobart, and across Lake County. View our NWI coverage area."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 md:py-10 lg:py-12">
@@ -76,8 +83,8 @@ export function ServiceAreasPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {regions.map((region, i) => (
-              <section 
-                key={i} 
+              <section
+                key={i}
                 id={slugify(region.city)}
                 className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 scroll-mt-24"
               >
@@ -103,7 +110,7 @@ export function ServiceAreasPage() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-mmc-teal opacity-10 rounded-full -mr-20 -mt-20 blur-3xl pointer-events-none" />
             <h2 className="text-3xl md:text-4xl font-black text-white relative z-10">Lake County Provider?</h2>
             <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed relative z-10">
-              We specialize in Lake County medical logistics. If you're in Gary, Hammond, Munster, or nearby, we've got you covered.
+              We specialize in Lake County medical logistics. If you're in Gary, Hammond, Munster, Hobart, or nearby, we've got you covered.
             </p>
             <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
               <QuickInquiryModal

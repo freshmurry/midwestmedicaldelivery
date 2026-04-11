@@ -7,9 +7,9 @@ interface LogoProps {
 }
 export function Logo({ variant = 'primary', className, showText = true }: LogoProps) {
   // Brand Colors
-  const blue = "#1E40AF";
   const teal = "#00A699";
   const gray = "#555555";
+  const dark = "#222222";
   if (variant === 'alt') {
     return (
       <div className={cn("flex items-center gap-3", className)}>
@@ -32,8 +32,8 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         </svg>
         {showText && (
           <div className="flex flex-col leading-tight">
-            <span className="text-xl font-black tracking-tighter text-white">MMC</span>
-            <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest whitespace-nowrap">
+            <span className="text-xl font-black tracking-tighter text-mmc-dark">MMC</span>
+            <span className="text-[10px] font-bold text-mmc-gray uppercase tracking-widest whitespace-nowrap">
               Midwest Medical
             </span>
           </div>
@@ -41,20 +41,20 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
       </div>
     );
   }
-  const textColor = variant === 'monochrome' ? 'currentColor' : blue;
   const stripeColor = variant === 'monochrome' ? 'currentColor' : teal;
+  const textColor = variant === 'monochrome' ? 'currentColor' : dark;
   const subTextColor = variant === 'monochrome' ? 'currentColor' : gray;
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <div className="flex flex-col leading-none">
-        <span 
-          className="text-2xl font-black tracking-tighter italic" 
+        <span
+          className="text-2xl font-black tracking-tighter italic"
           style={{ color: textColor }}
         >
           MMC
         </span>
         {showText && (
-          <span 
+          <span
             className="text-[9px] font-bold uppercase tracking-[0.2em] whitespace-nowrap mt-0.5"
             style={{ color: subTextColor }}
           >
@@ -69,7 +69,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M7 6L4 18M12 6L9 18M17 6L14 18"
+          d="M7 6L4 18"
           stroke={stripeColor}
           strokeWidth="3.5"
           strokeLinecap="round"

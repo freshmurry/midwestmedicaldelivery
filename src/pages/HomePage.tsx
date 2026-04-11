@@ -97,7 +97,6 @@ export function HomePage() {
                 <img
                   src="https://images.unsplash.com/photo-1512418490979-92798ccc93a0?auto=format&fit=crop&q=80&w=1200"
                   alt="MMC Medical Courier Vehicle in Lake County"
-                  fetchPriority="high"
                   loading="eager"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
@@ -147,6 +146,7 @@ export function HomePage() {
           >
             <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Focused Expertise</h2>
             <h3 className="text-4xl md:text-5xl font-black text-mmc-dark">Built for Lake County Clinics.</h3>
+            <h3 className="sr-only">Specialized Courier for Gary, Hammond, and Munster.</h3>
             <p className="text-lg text-mmc-gray">We've refined our logistics specifically for Lake County dental offices and pharmacies.</p>
           </motion.div>
           <motion.div

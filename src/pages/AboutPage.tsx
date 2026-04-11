@@ -20,18 +20,20 @@ export function AboutPage() {
               transition={{ duration: 0.7 }}
             >
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Lake County <span style={{ color: '#00A699' }}>Specialists.</span></h1>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
-                    <ShieldCheck className="h-3 w-3 text-mmc-teal" />
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark leading-tight">
+                  Lake County <span className="text-mmc-teal">Specialists.</span>
+                </h1>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-md">
+                    <ShieldCheck className="h-3.5 w-3.5 text-mmc-teal" />
                     HIPAA Compliant
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
-                    <ShieldAlert className="h-3 w-3 text-mmc-teal" />
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-md">
+                    <ShieldAlert className="h-3.5 w-3.5 text-mmc-teal" />
                     OSHA 10 Certified
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
-                    <Award className="h-3 w-3 text-mmc-teal" />
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-md">
+                    <Award className="h-3.5 w-3.5 text-mmc-teal" />
                     Licensed & Insured
                   </span>
                 </div>
@@ -42,7 +44,7 @@ export function AboutPage() {
               <p className="text-lg text-mmc-gray leading-relaxed">
                 We've invested in a dedicated medical transport fleet, navigating Lake County urban routes with agility and ensuring small parcels never share space with bulk industrial freight.
               </p>
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-8 pt-4">
                 {[
                   { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for patient facility delivery.' },
                   { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },

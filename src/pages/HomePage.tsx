@@ -23,8 +23,8 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title="Regional Small-Parcel Medical Courier"
-        description="Fast professional medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Secure transport for sensitive small items across the region."
+        title="Regional Medical Delivery Specialist"
+        description="Professional medical courier for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Secure transport for sensitive clinical materials across the region."
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">
@@ -38,10 +38,10 @@ export function HomePage() {
             >
               <div className="inline-flex items-center gap-2 bg-mmc-teal/10 text-mmc-teal px-4 py-2 rounded-full text-sm font-bold tracking-tight">
                 <Zap className="h-4 w-4" />
-                REGIONAL CLINIC SPECIALIST
+                MEDICAL DELIVERY SPECIALIST
               </div>
               <h1 className="text-5xl md:text-7xl font-black text-mmc-dark leading-[1.1] tracking-tight">
-                Small-Parcel Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Courier</span> for Clinics.
+                Secure Medical <span className="text-mmc-teal underline decoration-4 underline-offset-8">Logistics</span> for Clinics.
               </h1>
               <p className="text-xl text-mmc-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Fast, secure, and professional delivery for dental prosthetics, pharmacy prescriptions, and clinic supplies across Northwest Indiana.
@@ -59,7 +59,7 @@ export function HomePage() {
                 />
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 pt-4">
-                {['Small Cargo Only', 'HIPAA Compliant', 'Regional Focus'].map((text, i) => (
+                {['Clinic Optimized', 'HIPAA Compliant', 'Regional Focus'].map((text, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm font-bold text-mmc-dark">
                     <CheckCircle2 className="h-5 w-5 text-mmc-teal" />
                     {text}
@@ -76,7 +76,7 @@ export function HomePage() {
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
                   src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200"
-                  alt="MMC Black Medical Courier Vehicle"
+                  alt="MMC Professional Medical Delivery Vehicle"
                   loading="eager"
                   className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
                   style={{ objectPosition: 'center 40%' }}
@@ -103,7 +103,7 @@ export function HomePage() {
             {[
               { label: 'Regional', value: '100%', sub: 'Local Hub focus' },
               { label: 'Clinic Partners', value: '50+', sub: 'NWI Coverage' },
-              { label: 'Transport', value: 'Secure', sub: 'Small Parcels only' },
+              { label: 'Transport', value: 'Secure', sub: 'Clinical focus' },
               { label: 'Response', value: 'Instant', sub: 'Dispatch Monitoring' }
             ].map((stat, i) => (
               <motion.div key={i} className="text-center space-y-1" variants={fadeIn}>
@@ -135,7 +135,7 @@ export function HomePage() {
               <ul className="grid sm:grid-cols-2 gap-6">
                 {[
                   { icon: ShieldCheck, title: 'Chain of Custody', text: 'Logged handovers for all PHI-sensitive items.' },
-                  { icon: Box, title: 'Small Parcel Focus', text: 'Optimized for dental lab boxes and pharmacy bags.' },
+                  { icon: Box, title: 'Clinic Logistics', text: 'Optimized for dental lab materials and pharmacy bags.' },
                 ].map((item, i) => (
                   <li key={i} className="space-y-2">
                     <div className="flex items-center gap-2 text-mmc-teal">
@@ -161,7 +161,7 @@ export function HomePage() {
                 <div className="aspect-video rounded-3xl overflow-hidden shadow-airbnb relative">
                   <img
                     src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200"
-                    alt="MMC Courier Delivering Small Dental Medical Packages"
+                    alt="MMC Courier Delivering Clinical Packages"
                     loading="lazy"
                     className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
                   />

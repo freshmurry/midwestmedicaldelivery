@@ -58,7 +58,6 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        // Construct mailto link
         const subject = `MMC Provider Inquiry: ${data.facilityName}`;
         const body = `Facility: ${data.facilityName} (${data.facilityType})\nContact: ${data.contactName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceNeeded}\nDetails: ${data.message || 'N/A'}`;
         window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -94,7 +93,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
               <SelectItem value="Vet Clinic">Vet Clinic</SelectItem>
               <SelectItem value="Medical Supply Store">Medical Supply Store</SelectItem>
               <SelectItem value="Outpatient Clinic">Outpatient Clinic</SelectItem>
-              <SelectItem value="Other Small Facility">Other Small Facility</SelectItem>
+              <SelectItem value="Other Facility">Other Facility</SelectItem>
             </SelectContent>
           </Select>
           {errors.facilityType && <p className="text-[10px] text-red-500 font-bold">{errors.facilityType.message}</p>}
@@ -131,17 +130,17 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
           <SelectContent className="rounded-xl">
             <SelectItem value="Prescription Delivery">Prescription Delivery</SelectItem>
             <SelectItem value="Dental Prosthetics/Molds">Dental Prosthetics/Molds</SelectItem>
-            <SelectItem value="Small Medical Supplies">Small Medical Supplies</SelectItem>
+            <SelectItem value="Medical Supplies">Medical Supplies</SelectItem>
             <SelectItem value="Vet Clinic Transport">Vet Clinic Transport</SelectItem>
-            <SelectItem value="STAT Small Parcel">STAT Small Parcel</SelectItem>
+            <SelectItem value="STAT Delivery">STAT Delivery</SelectItem>
             <SelectItem value="Other">Other</SelectItem>
           </SelectContent>
         </Select>
         {errors.serviceNeeded && <p className="text-[10px] text-red-500 font-bold">{errors.serviceNeeded.message}</p>}
       </div>
       <div className="space-y-1.5">
-        <Label htmlFor="message" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Small Parcel Details</Label>
-        <Textarea id="message" {...register('message')} placeholder="Specify items (e.g. 5 Rx bags, 1 dental box)..." className="bg-mmc-light border-0 rounded-xl min-h-[80px] focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
+        <Label htmlFor="message" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Delivery Details</Label>
+        <Textarea id="message" {...register('message')} placeholder="Medical items, supplies, or documentation..." className="bg-mmc-light border-0 rounded-xl min-h-[80px] focus:ring-2 focus:ring-mmc-teal ring-offset-2" />
       </div>
       <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-airbnb mt-2 transition-all">
         {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Dispatching...</> : 'Send Clinic Inquiry'}
@@ -191,7 +190,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                   Inquiry for <span className="text-mmc-teal">Providers</span>
                 </DialogTitle>
                 <DialogDescription className="mt-4 text-sm text-muted-foreground leading-relaxed font-medium">
-                  Submit a quick inquiry for your clinic's small parcel courier needs. Direct routing to dispatch enabled.
+                  Submit a quick inquiry for your clinic's medical courier needs. Direct routing to dispatch enabled.
                 </DialogDescription>
               </DialogHeader>
               <InquiryFormContent onSuccess={handleSuccess} />
@@ -212,13 +211,6 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                   Your request has been routed to dispatch. Check your mail client to finish sending.
                 </p>
               </div>
-              {lastData && (
-                <div className="w-full bg-mmc-light p-4 rounded-2xl text-left border border-gray-100 space-y-1">
-                  <p className="text-[10px] font-black uppercase text-mmc-teal mb-1">Request Summary</p>
-                  <p className="text-sm font-bold text-mmc-dark">{lastData.facilityName}</p>
-                  <p className="text-xs text-mmc-gray">{lastData.serviceNeeded}</p>
-                </div>
-              )}
               <div className="flex flex-col w-full gap-3 pt-4">
                 <Button onClick={() => setOpen(false)} className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-6 font-bold shadow-lg">
                   Finished

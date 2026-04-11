@@ -15,7 +15,7 @@ const services = [
   {
     title: 'Prescription Delivery',
     icon: Pill,
-    desc: 'Rapid pharmacy-to-patient and facility delivery. Secure handling for sensitive medication and high-priority patient documentation.',
+    desc: 'Rapid pharmacy-to-patient and facility delivery. Secure handling for sensitive medication and high-priority clinical documentation.',
     benefits: ['Rapid Optimized Routing', 'Proof of Delivery', 'Pharmacy Verified']
   },
   {
@@ -25,10 +25,10 @@ const services = [
     benefits: ['Gentle Handling', 'Non-Biohazard Only', 'Stat Lab Links']
   },
   {
-    title: 'Small Medical Supplies',
+    title: 'Medical Supplies',
     icon: Box,
-    desc: 'Delivery of outpatient supplies, PPE, and localized medical equipment too small for big-box couriers but too sensitive for mail.',
-    benefits: ['Compact Secure Cargo', 'No Bulk Crowding', 'Clinic-to-Clinic']
+    desc: 'Delivery of outpatient supplies, PPE, and localized medical equipment with professional security and clinical handling.',
+    benefits: ['Secure Clinical Cargo', 'Clinic-to-Clinic', 'Professional Transport']
   },
   {
     title: 'Vet Clinic Transport',
@@ -37,15 +37,15 @@ const services = [
     benefits: ['Animal Health Focus', 'Fast Clinic Pickup', 'Local Area Experts']
   },
   {
-    title: 'Inter-Office Small Deliveries',
+    title: 'Inter-Office Logistics',
     icon: Files,
-    desc: 'Scheduled routing between local clinic campuses for physical records, small instruments, and internal clinic paperwork.',
-    benefits: ['Compact & Discreet', 'Fixed Daily Routes', 'Secure Logbooks']
+    desc: 'Scheduled routing between local clinic campuses for physical records, instruments, and internal clinical paperwork.',
+    benefits: ['Professional & Discreet', 'Fixed Daily Routes', 'Secure Logbooks']
   },
   {
     title: 'After-Hours Precision',
     icon: Clock,
-    desc: 'Emergency small-parcel response for dental labs or pharmacies needing immediate night or weekend movement of small items.',
+    desc: 'Emergency clinical response for labs or pharmacies needing immediate night or weekend movement of sensitive items.',
     benefits: ['24/7 Dispatch', 'Specialized Fleet Access', 'NWI Local Focus']
   }
 ];
@@ -61,8 +61,8 @@ export function ServicesPage() {
   return (
     <>
       <SEO
-        title="Small-Parcel Clinic Services"
-        description="Specialized medical courier services for dental labs, pharmacies, and vet clinics. Professional transport for sensitive small parcels."
+        title="Clinical Medical Courier Services"
+        description="Specialized medical courier services for dental labs, pharmacies, and vet clinics. Professional transport for sensitive clinical materials."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -72,9 +72,9 @@ export function ServicesPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Precision Small <span className="text-mmc-teal">Parcels.</span></h1>
+            <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Clinical Logistics <span className="text-mmc-teal">Specialists.</span></h1>
             <p className="text-xl text-mmc-gray leading-relaxed">
-              We focus exclusively on small, sensitive deliveries for local clinics. No bulk vans, no industrial cargo—just professional, secure transport for your office's specific needs.
+              We focus exclusively on sensitive deliveries for local clinics. We provide professional, secure transport tailored to your office's specific needs.
             </p>
           </motion.div>
           <motion.div
@@ -106,7 +106,7 @@ export function ServicesPage() {
               </motion.div>
             ))}
           </motion.div>
-          {/* Service Commitment with Operational Visual */}
+          {/* Service Commitment */}
           <motion.div
             className="mt-24 bg-mmc-dark rounded-[3rem] p-10 md:p-20 text-white flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -117,14 +117,14 @@ export function ServicesPage() {
             <div className="flex-1 space-y-8 relative z-10">
               <h2 className="text-4xl md:text-5xl font-black leading-tight">Built for Local Pharmacies, Clinics, and Dental Practices</h2>
               <p className="text-lg text-gray-400">
-                While we maintain full compliance, we've optimized our operations for low-PHI scenarios and non-biohazard small items that require a more delicate, professional touch than standard couriers.
+                While we maintain full compliance, we've optimized our operations for clinical scenarios and non-biohazard materials that require a professional, specialized touch.
               </p>
               <ul className="space-y-4">
                 {[
-                  'Professional medical courier fleet for urban speed',
+                  'Professional medical courier fleet for urban agility',
                   'Specialized non-biohazard dental mold handling',
                   'Low-PHI pharmacy-verified protocols',
-                  'Small-parcel optimized cargo areas'
+                  'Clinic-optimized secure transport'
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 font-bold">
                     <div className="w-2 h-2 bg-mmc-teal rounded-full" />
@@ -135,9 +135,9 @@ export function ServicesPage() {
             </div>
             <div className="flex-1 w-full relative z-10">
               <div className="aspect-square bg-mmc-light rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/5">
-                <img 
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" 
-                  alt="MMC Secure Small Parcel Handover"
+                <img
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800"
+                  alt="MMC Secure Medical Handover"
                   loading="lazy"
                   className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
                 />

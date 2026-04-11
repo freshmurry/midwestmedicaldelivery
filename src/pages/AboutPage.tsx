@@ -6,8 +6,8 @@ export function AboutPage() {
   return (
     <>
       <SEO
-        title="About Regional Specialty"
-        description="MMC specializes in professional medical delivery for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure transport."
+        title="About Our Medical Logistics Specialization"
+        description="MMC specializes in professional medical delivery for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -20,7 +20,7 @@ export function AboutPage() {
             >
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-6xl font-black text-mmc-dark leading-tight">
-                  Regional <span className="text-mmc-teal">Specialists.</span>
+                  Medical Logistics <span className="text-mmc-teal">Elite.</span>
                 </h1>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
@@ -38,17 +38,17 @@ export function AboutPage() {
                 </div>
               </div>
               <p className="text-xl text-mmc-gray leading-relaxed">
-                Midwest Medical Delivery (MMC) provides the Northwest Indiana region with the professional precision that dental prosthetics and pharmacy prescriptions require.
+                Midwest Medical Delivery (MMC) provides the Northwest Indiana region with the professional precision that clinical healthcare demands.
               </p>
               <p className="text-lg text-mmc-gray leading-relaxed">
-                We've invested in a dedicated medical transport fleet, navigating urban routes with agility and ensuring small parcels never share space with bulk industrial freight.
+                We've invested in a professional medical fleet, navigating urban routes with agility and ensuring clinical materials are handled with dedicated security and compliance.
               </p>
               <div className="grid sm:grid-cols-2 gap-8 pt-4">
                 {[
-                  { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for patient facility delivery.' },
+                  { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for facility delivery.' },
                   { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },
                   { icon: Zap, title: 'Regional Experts', desc: 'Professional response times across the clinic network.' },
-                  { icon: Package, title: 'Small-Parcel Elite', desc: 'Exclusively handling dental and clinic medical parcels.' }
+                  { icon: Package, title: 'Clinical Specialization', desc: 'Exclusively handling dental and medical parcels.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -75,7 +75,7 @@ export function AboutPage() {
               <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-2xl border border-gray-100">
                 <img
                   src="https://images.unsplash.com/photo-1559839734-2b71f1e3c77d?auto=format&fit=crop&q=80&w=800"
-                  alt="Secure Medical Parcel Handling in Professional Fleet"
+                  alt="Secure Medical Handling in Professional Fleet"
                   loading="lazy"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
@@ -88,7 +88,7 @@ export function AboutPage() {
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
                 <div className="text-2xl font-black text-mmc-dark">Regional Logistics</div>
-                <p className="text-sm font-bold text-mmc-dark leading-tight">Providing professional medical parcel logistics for over 50 regional clinic partners.</p>
+                <p className="text-sm font-bold text-mmc-dark leading-tight">Providing professional medical logistics for over 50 regional clinic partners.</p>
               </motion.div>
             </motion.div>
           </div>

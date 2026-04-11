@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  MapPin, 
-  Zap, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  ShieldCheck,
+  MapPin,
+  Zap,
+  ArrowRight,
+  CheckCircle2,
   Building2,
   Clock
 } from 'lucide-react';
@@ -20,7 +20,7 @@ interface CityPageProps {
 export function CityPage({ city }: CityPageProps) {
   return (
     <>
-      <SEO 
+      <SEO
         title={city.heroTitle}
         description={city.metaDescription}
         canonical={`/${city.slug}`}
@@ -29,7 +29,7 @@ export function CityPage({ city }: CityPageProps) {
       <section className="bg-white pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div 
+            <motion.div
               className="flex-1 space-y-8"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -47,13 +47,13 @@ export function CityPage({ city }: CityPageProps) {
                 </span>
               </h1>
               <p className="text-xl text-mmc-gray leading-relaxed max-w-xl">
-                Specialized small-parcel logistics for {city.name} clinics, pharmacies, and dental practices. Professional, secure, and HIPAA compliant.
+                Specialized professional medical logistics for {city.name} clinics, pharmacies, and dental practices. Secure and HIPAA compliant.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button asChild size="lg" className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg font-bold shadow-lg h-auto">
                   <Link to="/contact">Request {city.name} Pickup</Link>
                 </Button>
-                <QuickInquiryModal 
+                <QuickInquiryModal
                   trigger={
                     <Button variant="outline" size="lg" className="border-2 border-mmc-dark text-mmc-dark hover:bg-mmc-dark hover:text-white rounded-2xl px-10 py-7 text-lg font-bold h-auto">
                       Get Local Quote
@@ -72,7 +72,7 @@ export function CityPage({ city }: CityPageProps) {
                 </div>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="flex-1 w-full"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -89,7 +89,6 @@ export function CityPage({ city }: CityPageProps) {
                       </div>
                    </div>
                 </div>
-                {/* Stylized background lines */}
                 <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
                   <path d="M0 20 L100 80 M0 50 L100 50 M0 80 L100 20" stroke="currentColor" strokeWidth="0.5" />
                 </svg>
@@ -105,7 +104,7 @@ export function CityPage({ city }: CityPageProps) {
             <div className="lg:col-span-2 space-y-12">
               <div className="prose prose-lg max-w-none">
                 <h2 className="text-3xl md:text-4xl font-black text-mmc-dark mb-8">
-                  Small-Parcel Specialists in <span className="text-mmc-teal">{city.name}</span>
+                  Medical Delivery Specialists in <span className="text-mmc-teal">{city.name}</span>
                 </h2>
                 {city.aboutText.split('\n\n').map((para, i) => (
                   <p key={i} className="text-mmc-gray text-lg leading-relaxed mb-6">
@@ -130,7 +129,7 @@ export function CityPage({ city }: CityPageProps) {
                   <Zap className="h-8 w-8 text-mmc-teal mb-4" />
                   <h3 className="text-xl font-bold text-mmc-dark mb-2">Service Intensity</h3>
                   <p className="text-sm text-mmc-gray leading-relaxed">
-                    High-density routing in the {city.name} sector ensures we can provide rapid pickups for dental labs and pharmacies across Lake County.
+                    High-density routing in the {city.name} sector ensures we can provide rapid pickups for healthcare facilities across Lake County.
                   </p>
                 </div>
               </div>
@@ -143,7 +142,7 @@ export function CityPage({ city }: CityPageProps) {
                     'HIPAA & OSHA 10 Certified',
                     'Chain-of-Custody Protocols',
                     'Professional Medical Fleet',
-                    'Small Parcel Optimization',
+                    'Clinic Route Optimization',
                     'Real-Time Dispatch Logs',
                     'Regional Local Expertise'
                   ].map((benefit, i) => (
@@ -164,7 +163,7 @@ export function CityPage({ city }: CityPageProps) {
                 <p className="text-xs text-mmc-gray mb-6 font-bold leading-relaxed">
                   We specialize in daily scheduled pickups for {city.name} dental offices and outpatient facilities.
                 </p>
-                <QuickInquiryModal 
+                <QuickInquiryModal
                   trigger={
                     <Button variant="link" className="text-mmc-teal font-black p-0 h-auto gap-2 group">
                       Inquire About Routes

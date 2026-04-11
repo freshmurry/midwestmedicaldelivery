@@ -24,7 +24,7 @@ export function ServiceAreasPage() {
     <>
       <SEO
         title="Regional Coverage Map"
-        description="Fast professional delivery for Dental, Pharmacy, and Vet clinics across Gary, Hammond, Munster, and the Northwest Indiana region."
+        description="Professional medical delivery for Dental, Pharmacy, and Vet clinics across Gary, Hammond, Munster, and the Northwest Indiana region."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 md:py-10 lg:py-12">
@@ -37,7 +37,7 @@ export function ServiceAreasPage() {
               Regional <span className="text-mmc-teal">Network.</span>
             </h1>
             <p className="text-lg md:text-xl text-mmc-gray leading-relaxed max-w-2xl">
-              Our professional courier fleet is strategically positioned to serve local clinics and regional hubs with unparalleled local speed.
+              Our professional medical fleet is strategically positioned to serve local clinics and regional hubs with unparalleled local speed.
             </p>
           </div>
           {/* Lake County Map Section */}
@@ -48,7 +48,7 @@ export function ServiceAreasPage() {
                 <h3 className="text-3xl md:text-4xl font-black text-mmc-dark">Lake County Coverage</h3>
               </div>
               <p className="text-xs font-bold text-mmc-gray uppercase tracking-wider max-w-[200px] sm:text-right">
-                Click any marker to view localized city-specific clinical logistics.
+                Explore our clinic logistics network across Northwest Indiana.
               </p>
             </div>
             <CityMap />
@@ -76,8 +76,8 @@ export function ServiceAreasPage() {
                     <Info className="h-3.5 w-3.5" />
                     Clinic Routes Available
                   </div>
-                  <Link 
-                    to={`/${city.slug}`} 
+                  <Link
+                    to={`/${city.slug}`}
                     className="inline-flex items-center text-sm font-black text-mmc-dark hover:text-mmc-teal transition-colors"
                   >
                     View City Details <Navigation className="ml-2 h-4 w-4" />
@@ -90,7 +90,7 @@ export function ServiceAreasPage() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-mmc-teal opacity-10 rounded-full -mr-20 -mt-20 blur-3xl pointer-events-none" />
             <h2 className="text-3xl md:text-4xl font-black text-white relative z-10">Local Clinic Provider?</h2>
             <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed relative z-10">
-              We specialize in regional medical logistics. If your facility is within our coverage area, we have a solution for your small-parcel needs.
+              We specialize in regional clinical logistics. If your facility is within our coverage area, we have a solution for your secure delivery needs.
             </p>
             <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
               <QuickInquiryModal

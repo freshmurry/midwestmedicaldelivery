@@ -34,7 +34,6 @@ export function ContactPage() {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        // Build mailto trigger
         const subject = `MMC Delivery Request: ${data.name}`;
         const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
         window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -64,8 +63,8 @@ export function ContactPage() {
   return (
     <>
       <SEO
-        title="Request Small-Parcel Pickup"
-        description="Contact MMC for dental office, pharmacy, or vet clinic deliveries. Specialist small-parcel medical courier dispatch for Northwest Indiana."
+        title="Request Medical Pickup"
+        description="Contact MMC for dental office, pharmacy, or vet clinic deliveries. Specialist medical courier dispatch for Northwest Indiana."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -73,9 +72,9 @@ export function ContactPage() {
             {/* Contact Info */}
             <div className="space-y-12">
               <div className="space-y-6">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Clinic <span className="text-mmc-teal">Dispatch.</span></h1>
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Medical <span className="text-mmc-teal">Dispatch.</span></h1>
                 <p className="text-xl text-mmc-gray leading-relaxed">
-                  Need a pickup for a dental mold or urgent prescription? Our small-parcel dispatch team is standing by to coordinate your regional clinic routes via digital inquiry.
+                  Need a pickup for a dental mold or urgent prescription? Our professional dispatch team is standing by to coordinate your regional clinical routes via digital inquiry.
                 </p>
               </div>
               <div className="space-y-8">
@@ -85,7 +84,7 @@ export function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-mmc-dark">Digital Inquiry</h3>
-                    <p className="text-mmc-gray">Verified Clinic Dispatch</p>
+                    <p className="text-mmc-gray">Verified Clinical Dispatch</p>
                     <p className="text-xs text-mmc-teal font-bold uppercase mt-1">24/7 Monitoring</p>
                   </div>
                 </div>
@@ -103,15 +102,15 @@ export function ContactPage() {
                     <Package className="h-6 w-6 text-mmc-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-mmc-dark">Logistics Type</h3>
-                    <p className="text-mmc-gray">Small parcels only (Molds, Rx, Supplies)</p>
-                    <p className="text-mmc-gray">Optimized Professional Routes</p>
+                    <h3 className="text-lg font-bold text-mmc-dark">Logistics Focus</h3>
+                    <p className="text-mmc-gray">Professional Medical Transport (Molds, Rx, Supplies)</p>
+                    <p className="text-mmc-gray">Optimized Regional Routes</p>
                   </div>
                 </div>
               </div>
               <div className="p-8 bg-mmc-dark rounded-3xl text-white">
                 <h3 className="text-xl font-bold mb-4">Dedicated Regional Coverage</h3>
-                <p className="text-gray-400 mb-6">Serving Northwest Indiana clinics with professional regional routes and selective border connections for high-priority small cargo.</p>
+                <p className="text-gray-400 mb-6">Serving Northwest Indiana clinics with professional regional routes and selective border connections for high-priority clinical cargo.</p>
                 <div className="flex items-center gap-2 text-mmc-teal font-bold">
                   <MapPin className="h-5 w-5" />
                   NWI Local Network
@@ -131,21 +130,6 @@ export function ContactPage() {
                       Your request was routed to dispatch. Please finalize the email in your client.
                     </p>
                   </div>
-                  {lastRequest && (
-                    <div className="w-full bg-mmc-light p-6 rounded-2xl text-left space-y-2 border border-gray-100">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-mmc-teal">Route Information</p>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-[10px] text-mmc-gray uppercase">From</p>
-                          <p className="text-xs font-bold text-mmc-dark">{lastRequest.pickup}</p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] text-mmc-gray uppercase">To</p>
-                          <p className="text-xs font-bold text-mmc-dark">{lastRequest.delivery}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                   <div className="flex flex-col w-full gap-4">
                     <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-xl font-bold py-6 text-mmc-dark border-2 border-mmc-dark">
                       Send New Request
@@ -188,8 +172,8 @@ export function ContactPage() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Small Delivery Details (Optional)</Label>
-                    <Textarea id="message" {...register('message')} placeholder="e.g. 2 dental boxes, 5 prescription bags, small office supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px] focus:ring-2 focus:ring-mmc-teal" />
+                    <Label htmlFor="message">Delivery Details (Optional)</Label>
+                    <Textarea id="message" {...register('message')} placeholder="e.g. Dental molds, prescription bags, clinical supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px] focus:ring-2 focus:ring-mmc-teal" />
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-8 text-lg font-bold shadow-airbnb">
                     {isSubmitting ? (
@@ -202,7 +186,7 @@ export function ContactPage() {
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Email-routed regional specialty. Professional Medical Fleet.
+                    Email-routed regional logistics. Professional Medical Fleet.
                   </p>
                 </form>
               )}

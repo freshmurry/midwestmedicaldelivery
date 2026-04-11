@@ -75,7 +75,7 @@ export function ContactPage() {
               <div className="space-y-6">
                 <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Clinic <span className="text-mmc-teal">Dispatch.</span></h1>
                 <p className="text-xl text-mmc-gray leading-relaxed">
-                  Need a pickup for a dental mold or urgent prescription? Our small-parcel dispatch team is standing by to coordinate your clinic routes via digital inquiry.
+                  Need a pickup for a dental mold or urgent prescription? Our small-parcel dispatch team is standing by to coordinate your regional clinic routes via digital inquiry.
                 </p>
               </div>
               <div className="space-y-8">
@@ -110,8 +110,8 @@ export function ContactPage() {
                 </div>
               </div>
               <div className="p-8 bg-mmc-dark rounded-3xl text-white">
-                <h3 className="text-xl font-bold mb-4">Dedicated Clinic Coverage</h3>
-                <p className="text-gray-400 mb-6">Serving local Lake County and Northwest Indiana clinics with selective border routes for high-priority small cargo.</p>
+                <h3 className="text-xl font-bold mb-4">Dedicated Regional Coverage</h3>
+                <p className="text-gray-400 mb-6">Serving Northwest Indiana clinics with professional regional routes and selective border connections for high-priority small cargo.</p>
                 <div className="flex items-center gap-2 text-mmc-teal font-bold">
                   <MapPin className="h-5 w-5" />
                   NWI Local Network
@@ -161,7 +161,7 @@ export function ContactPage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Clinic / Contact Name</Label>
-                      <Input id="name" {...register('name')} placeholder="Community Dental" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                      <Input id="name" {...register('name')} placeholder="Regional Health Clinic" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                       {errors.name && <p className="text-xs text-red-500 font-bold">{errors.name.message}</p>}
                     </div>
                     <div className="space-y-2">
@@ -178,7 +178,7 @@ export function ContactPage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="pickup">Pickup Location</Label>
-                      <Input id="pickup" {...register('pickup')} placeholder="Munster Office" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
+                      <Input id="pickup" {...register('pickup')} placeholder="Local Clinic Office" className="bg-mmc-light border-0 rounded-xl py-6 focus:ring-2 focus:ring-mmc-teal" />
                       {errors.pickup && <p className="text-xs text-red-500 font-bold">{errors.pickup.message}</p>}
                     </div>
                     <div className="space-y-2">
@@ -189,7 +189,7 @@ export function ContactPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Small Delivery Details (Optional)</Label>
-                    <Textarea id="message" {...register('message')} placeholder="e.g. 2 crowns, 5 prescriptions, small office supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px] focus:ring-2 focus:ring-mmc-teal" />
+                    <Textarea id="message" {...register('message')} placeholder="e.g. 2 dental boxes, 5 prescription bags, small office supplies..." className="bg-mmc-light border-0 rounded-xl min-h-[120px] focus:ring-2 focus:ring-mmc-teal" />
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-8 text-lg font-bold shadow-airbnb">
                     {isSubmitting ? (
@@ -202,7 +202,7 @@ export function ContactPage() {
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Email-routed small-parcel specialty. Professional Medical Fleet.
+                    Email-routed regional specialty. Professional Medical Fleet.
                   </p>
                 </form>
               )}

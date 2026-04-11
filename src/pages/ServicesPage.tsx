@@ -88,7 +88,7 @@ export function ServicesPage() {
                 key={i}
                 variants={cardVariants}
                 whileHover={{ y: -5 }}
-                className="flex flex-col bg-white border border-gray-100 rounded-[2rem] p-8 shadow-sm hover:shadow-airbnb transition-all group"
+                className="flex flex-col bg-white border border-gray-100 rounded-[2rem] p-8 shadow-sm hover:shadow-mmc-teal/20 hover:shadow-2xl transition-all group"
               >
                 <div className="w-16 h-16 bg-mmc-light rounded-2xl flex items-center justify-center mb-8 group-hover:bg-mmc-teal transition-all duration-300 group-hover:scale-110">
                   <s.icon className="h-8 w-8 text-mmc-teal group-hover:text-white" />
@@ -106,14 +106,14 @@ export function ServicesPage() {
               </motion.div>
             ))}
           </motion.div>
-          {/* Service Commitment */}
+          {/* Service Commitment with Operational Visual */}
           <motion.div
             className="mt-24 bg-mmc-dark rounded-[3rem] p-10 md:p-20 text-white flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-mmc-teal/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-mmc-teal/20 to-transparent pointer-events-none" />
             <div className="flex-1 space-y-8 relative z-10">
               <h2 className="text-4xl md:text-5xl font-black">Built for Local Clinics</h2>
               <p className="text-lg text-gray-400">
@@ -133,17 +133,18 @@ export function ServicesPage() {
                 ))}
               </ul>
             </div>
-            <div className="flex-1 w-full grid grid-cols-2 gap-4 relative z-10">
-              <motion.div whileHover={{ scale: 1.05 }} className="aspect-square bg-white/5 rounded-3xl flex flex-col items-center justify-center p-6 text-center border border-white/10">
-                <Zap className="h-10 w-10 text-mmc-teal mb-4" />
-                <div className="text-3xl font-black mb-1">Rapid</div>
-                <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Fleet Coverage</div>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} className="aspect-square bg-white/5 rounded-3xl flex flex-col items-center justify-center p-6 text-center border border-white/10">
-                <ShieldCheck className="h-10 w-10 text-mmc-teal mb-4" />
-                <div className="text-3xl font-black mb-1">Secure</div>
-                <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Small Parcels</div>
-              </motion.div>
+            <div className="flex-1 w-full relative z-10">
+              <div className="aspect-square bg-mmc-light rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/5">
+                <img 
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" 
+                  alt="MMC Secure Small Parcel Handover"
+                  loading="lazy"
+                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-mmc-teal p-6 md:p-10 rounded-[2.5rem] shadow-2xl animate-bounce-subtle">
+                <ShieldCheck className="h-10 w-10 md:h-16 md:w-16 text-white" />
+              </div>
             </div>
           </motion.div>
         </div>

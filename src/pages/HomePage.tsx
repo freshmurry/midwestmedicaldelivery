@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Pill, Package, Zap, MapPin, CheckCircle2, Heart } from 'lucide-react';
+import { Pill, Package, Zap, MapPin, CheckCircle2, Heart, ShieldCheck, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
@@ -135,8 +135,70 @@ export function HomePage() {
           </motion.div>
         </div>
       </section>
-      {/* Service Highlights */}
+      {/* Operational Precision: Service in Action */}
       <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+            <motion.div 
+              className="flex-1 space-y-8"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-4">
+                <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Operational Proof</h2>
+                <h3 className="text-4xl md:text-5xl font-black text-mmc-dark leading-tight">Hand-to-Hand <span className="text-mmc-teal">Security.</span></h3>
+                <p className="text-xl text-mmc-gray leading-relaxed">
+                  Our couriers aren't just drivers; they are trained medical logistics professionals. We specialize in the high-stakes handover of dental molds and sensitive prescriptions directly to your clinic staff.
+                </p>
+              </div>
+              <ul className="grid sm:grid-cols-2 gap-6">
+                {[
+                  { icon: ShieldCheck, title: 'Chain of Custody', text: 'Logged handovers for all PHI-sensitive items.' },
+                  { icon: Box, title: 'Small Parcel Focus', text: 'Optimized for dental lab boxes and pharmacy bags.' },
+                ].map((item, i) => (
+                  <li key={i} className="space-y-2">
+                    <div className="flex items-center gap-2 text-mmc-teal">
+                      <item.icon className="h-5 w-5" />
+                      <span className="font-black uppercase tracking-wider text-xs">{item.title}</span>
+                    </div>
+                    <p className="text-sm text-mmc-gray">{item.text}</p>
+                  </li>
+                ))}
+              </ul>
+              <Button asChild variant="outline" className="border-2 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl py-6 px-8 transition-all font-bold">
+                <Link to="/about">Our Certification Standards</Link>
+              </Button>
+            </motion.div>
+            <motion.div 
+              className="flex-1 w-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-mmc-teal/5 rounded-[2.5rem] -z-10 group-hover:bg-mmc-teal/10 transition-colors" />
+                <div className="aspect-video rounded-3xl overflow-hidden shadow-airbnb relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200"
+                    alt="MMC Courier Delivering Small Dental Medical Packages to Local Clinic"
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
+                  />
+                  {/* Decorative Label Overlay to simulate requested "DENTAL MEDICAL URGENT" branding */}
+                  <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-2">
+                    <span className="bg-mmc-dark/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Dental</span>
+                    <span className="bg-mmc-teal/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Medical</span>
+                    <span className="bg-red-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase">Urgent</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      {/* Service Highlights */}
+      <section className="py-24 bg-mmc-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16 space-y-4"

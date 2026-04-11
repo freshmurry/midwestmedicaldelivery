@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
-import { Award, ShieldCheck, Zap, ShieldAlert } from 'lucide-react';
+import { Award, ShieldCheck, Zap, ShieldAlert, Package } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 export function AboutPage() {
   return (
@@ -24,16 +24,16 @@ export function AboutPage() {
                   Lake County <span className="text-mmc-teal">Specialists.</span>
                 </h1>
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-md">
-                    <ShieldCheck className="h-3.5 w-3.5 text-mmc-teal" />
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
+                    <ShieldCheck className="h-4 w-4 text-mmc-teal" />
                     HIPAA Compliant
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-md">
-                    <ShieldAlert className="h-3.5 w-3.5 text-mmc-teal" />
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
+                    <ShieldAlert className="h-4 w-4 text-mmc-teal" />
                     OSHA 10 Certified
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-md">
-                    <Award className="h-3.5 w-3.5 text-mmc-teal" />
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mmc-dark text-white text-[11px] font-black uppercase tracking-widest shadow-xl border border-white/10">
+                    <Award className="h-4 w-4 text-mmc-teal" />
                     Licensed & Insured
                   </span>
                 </div>
@@ -49,7 +49,7 @@ export function AboutPage() {
                   { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for patient facility delivery.' },
                   { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },
                   { icon: Zap, title: 'NWI Local Experts', desc: 'Professional response times across the Lake County network.' },
-                  { icon: ShieldAlert, title: 'Safety First', desc: 'Rigorous OSHA 10 standards for medical handling.' }
+                  { icon: Package, title: 'Small-Parcel Elite', desc: 'Exclusively handling dental and clinic medical parcels.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -75,21 +75,22 @@ export function AboutPage() {
             >
               <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=800"
-                  alt="Professional Medical Delivery to Lake County Clinic"
+                  src="https://images.unsplash.com/photo-1559839734-2b71f1e3c77d?auto=format&fit=crop&q=80&w=800"
+                  alt="Secure Medical Parcel Handling in Professional Fleet"
                   loading="lazy"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-mmc-dark/40 to-transparent pointer-events-none" />
               </div>
               <motion.div
-                className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[2.5rem] shadow-xl max-w-xs space-y-4 border border-gray-100 hidden md:block"
+                className="absolute -bottom-10 -left-10 bg-white/90 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-airbnb max-w-xs space-y-4 border border-white/20 hidden md:block z-20"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
                 <Logo variant="primary" showText={false} className="mb-2" />
                 <div className="text-2xl font-black text-mmc-dark">Lake Co. Hub</div>
-                <p className="text-sm font-bold text-mmc-dark leading-tight">Focusing exclusively on Lake County parcel logistics.</p>
+                <p className="text-sm font-bold text-mmc-dark leading-tight">Focusing exclusively on Lake County parcel logistics for over 50 local clinics.</p>
               </motion.div>
             </motion.div>
           </div>

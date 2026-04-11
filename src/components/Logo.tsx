@@ -49,7 +49,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
           )}
           style={{ color: variant === 'monochrome' ? 'currentColor' : undefined }}
         >
-          MMC
+          MMD
         </span>
         <div className="h-5 flex items-center">
           {SpeedStripes}
@@ -63,7 +63,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
           )}
           style={{ color: variant === 'monochrome' ? 'currentColor' : undefined }}
         >
-          Midwest Medical Courier
+          Midwest Medical Delivery
         </span>
       )}
     </div>

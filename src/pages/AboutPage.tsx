@@ -7,7 +7,7 @@ export function AboutPage() {
     <>
       <SEO
         title="About Our Medical Logistics Specialization"
-        description="MMC specializes in professional medical courier services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport."
+        description="MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -38,7 +38,7 @@ export function AboutPage() {
                 </div>
               </div>
               <p className="text-xl text-mmc-gray leading-relaxed">
-                Midwest Medical Courier (MMC) provides the Northwest Indiana region with the professional precision that clinical healthcare demands.
+                Midwest Medical Delivery (MMD) provides the Northwest Indiana region with the professional precision that clinical healthcare demands.
               </p>
               <p className="text-lg text-mmc-gray leading-relaxed">
                 We've invested in a professional medical fleet, navigating urban routes with agility and ensuring clinical materials are handled with dedicated security and compliance.

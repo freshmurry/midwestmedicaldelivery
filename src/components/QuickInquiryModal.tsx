@@ -51,7 +51,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
   });
   const onSubmit = async (data: InquiryFormValues) => {
     setIsSubmitting(true);
-    const subject = `MMC Provider Inquiry: ${data.facilityName}`;
+    const subject = `MMD Provider Inquiry: ${data.facilityName}`;
     const body = `Facility: ${data.facilityName} (${data.facilityType})\nContact: ${data.contactName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceNeeded}\nDetails: ${data.message || 'N/A'}`;
     try {
       await fetch('/api/contact', {
@@ -185,7 +185,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                   Inquiry for <span className="text-mmc-teal">Providers</span>
                 </DialogTitle>
                 <DialogDescription className="mt-4 text-sm text-muted-foreground leading-relaxed font-medium">
-                  Submit a quick inquiry for your clinic's medical courier needs. Direct routing to dispatch enabled.
+                  Submit a quick inquiry for your clinic's medical delivery needs. Direct routing to dispatch enabled.
                 </DialogDescription>
               </DialogHeader>
               <InquiryFormContent onSuccess={handleSuccess} />

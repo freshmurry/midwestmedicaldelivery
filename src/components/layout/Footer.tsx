@@ -22,7 +22,7 @@ export function Footer() {
               <Logo variant="primary" />
             </Link>
             <p className="text-mmc-gray text-sm leading-relaxed">
-              Specialized medical courier for clinics, pharmacies, and dental labs across Northwest Indiana. Professional regional logistics with HIPAA and OSHA 10 compliance.
+              Specialized medical delivery for clinics, pharmacies, and dental labs across Northwest Indiana. Professional regional logistics with HIPAA and OSHA 10 compliance.
             </p>
             <div className="flex flex-wrap gap-2.5">
               <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-[9px] font-black text-mmc-dark shadow-sm whitespace-nowrap">
@@ -85,10 +85,10 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-xs text-mmc-gray leading-relaxed text-center max-w-4xl mx-auto">
-            Midwest Medical Courier (MMC) provides specialized professional medical delivery services across the Northwest Indiana region. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified for professional regional medical logistics.
+            Midwest Medical Delivery (MMD) provides specialized professional medical delivery services across the Northwest Indiana region. We focus on non-biohazard delivery of dental crowns, prosthetics, and pharmacy prescriptions for outpatient facilities. Fully HIPAA compliant and OSHA 10 safety certified for professional regional medical logistics.
           </p>
           <div className="mt-6 text-center text-[10px] font-black text-mmc-gray uppercase tracking-widest">
-            © {new Date().getFullYear()} Midwest Medical Courier. Licensed & Insured.
+            © {new Date().getFullYear()} Midwest Medical Delivery. Licensed & Insured.
           </div>
         </div>
       </div>

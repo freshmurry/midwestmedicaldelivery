@@ -27,7 +27,7 @@ export function ContactPage() {
   });
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
-    const subject = `MMC Delivery Request: ${data.name}`;
+    const subject = `MMD Delivery Request: ${data.name}`;
     const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
     try {
       await fetch('/api/contact', {
@@ -50,7 +50,7 @@ export function ContactPage() {
   };
   const copySummary = () => {
     if (!lastRequest) return;
-    const summary = `MMC Pickup Request\nClinic: ${lastRequest.name}\nPickup: ${lastRequest.pickup}\nDelivery: ${lastRequest.delivery}`;
+    const summary = `MMD Pickup Request\nClinic: ${lastRequest.name}\nPickup: ${lastRequest.pickup}\nDelivery: ${lastRequest.delivery}`;
     navigator.clipboard.writeText(summary);
     toast.success('Request summary copied');
   };
@@ -58,7 +58,7 @@ export function ContactPage() {
     <>
       <SEO
         title="Request Medical Pickup"
-        description="Contact MMC for dental office, pharmacy, or vet clinic deliveries. Specialist medical courier dispatch for Northwest Indiana."
+        description="Contact MMD for dental office, pharmacy, or vet clinic deliveries. Specialist medical delivery dispatch for Northwest Indiana."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -180,7 +180,7 @@ export function ContactPage() {
                     )}
                   </Button>
                   <p className="text-center text-xs text-mmc-gray font-medium">
-                    Email-routed regional logistics. Midwest Medical Courier.
+                    Email-routed regional logistics. Midwest Medical Delivery.
                   </p>
                 </form>
               )}

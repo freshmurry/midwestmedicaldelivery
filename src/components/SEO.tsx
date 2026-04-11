@@ -7,13 +7,13 @@ interface SEOProps {
   schema?: object;
 }
 export function SEO({ title, description, canonical, schema }: SEOProps) {
-  const fullTitle = `${title} | Midwest Medical Courier`;
+  const fullTitle = `${title} | Midwest Medical Delivery`;
   const siteUrl = 'https://midwestmedicaldelivery.com';
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content="professional medical courier Northwest Indiana, dental delivery NWI, pharmacy logistics Indiana, secure medical transport, Gary, Hammond, East Chicago, Munster, Highland, Schererville, Dyer, Merrillville, Crown Point, St. John, Hobart, Whiting, Cedar Lake, Griffith" />
+      <meta name="keywords" content="professional medical delivery Northwest Indiana, dental delivery NWI, pharmacy logistics Indiana, secure medical transport, Gary, Hammond, East Chicago, Munster, Highland, Schererville, Dyer, Merrillville, Crown Point, St. John, Hobart, Whiting, Cedar Lake, Griffith" />
       {canonical && <link rel="canonical" href={`${siteUrl}${canonical}`} />}
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

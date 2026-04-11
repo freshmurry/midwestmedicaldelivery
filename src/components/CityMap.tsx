@@ -9,22 +9,25 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 const markers = [
-  { id: 'gary', name: 'Gary', top: '22%', left: '55%' },
-  { id: 'hammond', name: 'Hammond', top: '25%', left: '15%' },
-  { id: 'east-chicago', name: 'East Chicago', top: '15%', left: '35%' },
-  { id: 'munster', name: 'Munster', top: '42%', left: '18%' },
-  { id: 'highland', name: 'Highland', top: '45%', left: '38%' },
-  { id: 'schererville', name: 'Schererville', top: '62%', left: '32%' },
-  { id: 'dyer', name: 'Dyer', top: '65%', left: '10%' },
-  { id: 'st-john', name: 'St. John', top: '82%', left: '22%' },
-  { id: 'merrillville', name: 'Merrillville', top: '65%', left: '58%' },
-  { id: 'crown-point', name: 'Crown Point', top: '88%', left: '52%' },
-  { id: 'hobart', name: 'Hobart', top: '55%', left: '80%' },
+  { id: 'whiting', name: 'Whiting', top: '14%', left: '25%' },
+  { id: 'east-chicago', name: 'East Chicago', top: '20%', left: '37%' },
+  { id: 'gary', name: 'Gary', top: '26%', left: '54%' },
+  { id: 'hammond', name: 'Hammond', top: '29%', left: '20%' },
+  { id: 'munster', name: 'Munster', top: '43%', left: '23%' },
+  { id: 'highland', name: 'Highland', top: '46%', left: '40%' },
+  { id: 'griffith', name: 'Griffith', top: '53%', left: '43%' },
+  { id: 'hobart', name: 'Hobart', top: '54%', left: '75%' },
+  { id: 'schererville', name: 'Schererville', top: '60%', left: '35%' },
+  { id: 'dyer', name: 'Dyer', top: '63%', left: '16%' },
+  { id: 'merrillville', name: 'Merrillville', top: '63%', left: '57%' },
+  { id: 'st-john', name: 'St. John', top: '77%', left: '26%' },
+  { id: 'crown-point', name: 'Crown Point', top: '82%', left: '52%' },
+  { id: 'cedar-lake', name: 'Cedar Lake', top: '90%', left: '26%' },
 ];
 export function CityMap() {
   const navigate = useNavigate();
   return (
-    <div className="relative w-full aspect-[16/10] md:aspect-[16/8] bg-[#F1F3F4] rounded-[3rem] overflow-hidden shadow-airbnb border-4 border-white group">
+    <div className="relative w-full aspect-[16/11] md:aspect-[16/9] bg-[#F1F3F4] rounded-[3rem] overflow-hidden shadow-airbnb border-4 border-white group">
       {/* Map Background Layer */}
       <div className="absolute inset-0">
         {/* Lake Michigan Graphic */}
@@ -93,7 +96,7 @@ export function CityMap() {
         </TooltipProvider>
       </div>
       {/* Map Decoration Inset */}
-      <div className="absolute bottom-6 right-6 z-30 flex flex-col items-end gap-2">
+      <div className="absolute bottom-6 right-6 z-30 flex flex-col items-end gap-2 pointer-events-none">
          <div className="bg-white/80 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20 text-right hidden md:block">
             <div className="text-[10px] font-black text-mmc-dark uppercase tracking-widest">Lake County Focus</div>
             <div className="text-[8px] font-bold text-mmc-gray uppercase">Regional Hub Network</div>
@@ -104,8 +107,8 @@ export function CityMap() {
          </div>
       </div>
       {/* Map Overlays for Road Labels */}
-      <div className="absolute top-[28%] left-[2%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter -rotate-6">Borman Expy (I-94)</div>
-      <div className="absolute top-[60%] left-[51%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter rotate-85 origin-left h-px">I-65 South</div>
+      <div className="absolute top-[28%] left-[2%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter -rotate-6 pointer-events-none">Borman Expy (I-94)</div>
+      <div className="absolute top-[60%] left-[51%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter rotate-85 origin-left h-px pointer-events-none">I-65 South</div>
     </div>
   );
 }

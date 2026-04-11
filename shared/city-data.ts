@@ -105,5 +105,32 @@ For St. John healthcare providers, MMC offers a level of service that emphasizes
     aboutText: `Hobart medical providers rely on MMC for the professional movement of sensitive clinical items. Our Hobart medical courier services are centered around the St. Mary Medical Center area and the surrounding professional plazas. We provide Hobart pharmacies and dental offices with a logistics solution that is both fast and secure, ensuring that patient materials are handled with the utmost care.
 In Hobart, we focus on building lasting partnerships with local clinics. We understand that every facility has its own unique rhythm, which is why we offer flexible routing and responsive dispatch support. Our Hobart couriers are trained in the specific requirements of medical logistics, from OSHA 10 safety standards to HIPAA privacy regulations. By focusing exclusively on medical cargo like dental molds and prescriptions, MMC ensures that Hobart providers receive a specialized service that is optimized for the unique needs of the healthcare industry.`,
     landmarks: ['St. Mary Medical Center', 'Route 6 Corridor', 'Lake George Area']
+  },
+  whiting: {
+    slug: 'whiting',
+    name: 'Whiting',
+    heroTitle: 'Medical Courier Whiting, Indiana',
+    metaDescription: 'Professional medical delivery in Whiting, IN. Fast, secure transport for dental offices and pharmacies near 119th Street and the lakefront.',
+    aboutText: `Whiting's unique lakefront position and dense community require a medical courier that understands local navigation and clinical urgency. MMC provides Whiting dental offices, pharmacies, and outpatient clinics with a dedicated logistics partner for the secure transport of non-biohazard medical items. Our routes frequently service the 119th Street corridor and facilities near the BP refinery, ensuring rapid response times for local healthcare providers.
+We recognize that Whiting clinics demand a high level of professionalism and chain-of-custody security. Whether transporting dental molds to regional labs or delivering urgent pharmacy prescriptions, our couriers handle every parcel with HIPAA-compliant precision. By utilizing a professional medical fleet, MMC navigates Whiting's historic streets with agility, providing a reliable, daily logistics solution that allows your medical staff to focus entirely on patient care.`,
+    landmarks: ['119th Street Corridor', 'Whiting Lakefront Park', 'Indianapolis Blvd Medical Area']
+  },
+  'cedar-lake': {
+    slug: 'cedar-lake',
+    name: 'Cedar Lake',
+    heroTitle: 'Medical Courier Cedar Lake, Indiana',
+    metaDescription: 'Secure medical logistics in Cedar Lake, IN. Specialized courier services for clinics and pharmacies in South Lake County.',
+    aboutText: `As South Lake County continues to expand, Cedar Lake requires reliable, professional medical logistics to connect its growing healthcare facilities with the broader region. MMC offers Cedar Lake dental practices and pharmacies a specialized courier service focused on secure, non-biohazard transport. Our routes provide seamless access along US-41, bridging the gap between Cedar Lake clinics and major regional medical hubs.
+Our commitment to Cedar Lake providers centers on speed, security, and professional handling. We understand that transporting sensitive items like dental prosthetics or pharmacy prescriptions requires more than just a delivery driver; it requires a trained medical logistics specialist. MMC ensures that every delivery is tracked and handed over securely, maintaining HIPAA compliance and providing Cedar Lake's medical community with the dependable service needed to support exceptional patient outcomes.`,
+    landmarks: ['US-41 Corridor', 'Cedar Lake Town Center', 'South Lake County Hub']
+  },
+  griffith: {
+    slug: 'griffith',
+    name: 'Griffith',
+    heroTitle: 'Medical Courier Griffith, Indiana',
+    metaDescription: 'Elite medical delivery for Griffith, IN. Professional transport for dental labs and pharmacies near Broad Street.',
+    aboutText: `Griffith's central location in Lake County makes it a vital hub for regional medical logistics. MMC provides Griffith dental offices, vet clinics, and pharmacies with rapid, secure courier services tailored to clinical needs. Navigating the busy Broad Street area and the town's historic rail crossings, our professional medical fleet ensures that sensitive clinical parcels reach their destinations without delay.
+We specialize in the meticulous handling of non-biohazard medical items, from orthodontic retainers to high-priority pharmacy bags. For Griffith healthcare providers, MMC offers a logistics partnership built on trust and compliance. Our couriers are OSHA 10 certified and trained in strict chain-of-custody protocols, ensuring that every delivery in Griffith is executed with the professional precision that modern clinical care demands.`,
+    landmarks: ['Broad Street Corridor', 'Griffith Central Park Area', 'Ridge Road Junction']
   }
 };

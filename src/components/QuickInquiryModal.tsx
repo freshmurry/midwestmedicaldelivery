@@ -51,31 +51,26 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
   });
   const onSubmit = async (data: InquiryFormValues) => {
     setIsSubmitting(true);
+    const subject = `MMC Provider Inquiry: ${data.facilityName}`;
+    const body = `Facility: ${data.facilityName} (${data.facilityType})\nContact: ${data.contactName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceNeeded}\nDetails: ${data.message || 'N/A'}`;
     try {
-      const response = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (response.ok) {
-        const subject = `MMC Provider Inquiry: ${data.facilityName}`;
-        const body = `Facility: ${data.facilityName} (${data.facilityType})\nContact: ${data.contactName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceNeeded}\nDetails: ${data.message || 'N/A'}`;
-        window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        toast.success('Inquiry routed to dispatch', {
-          description: 'Please complete the email submission in your mail client.',
-        });
-        await new Promise(resolve => setTimeout(resolve, 800));
+    } catch (error) {
+      console.error('API logging failed', error);
+    } finally {
+      window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      toast.success('Inquiry routed to dispatch', {
+        description: 'Please complete the email submission in your mail client.',
+      });
+      setTimeout(() => {
         onSuccess(data);
         reset();
-      } else {
-        throw new Error('Submission failed');
-      }
-    } catch (error) {
-      toast.error('Submission Failed', {
-        description: 'Please try again or use the main contact form for assistance.',
-      });
-    } finally {
-      setIsSubmitting(false);
+        setIsSubmitting(false);
+      }, 800);
     }
   };
   return (

@@ -27,30 +27,24 @@ export function ContactPage() {
   });
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
+    const subject = `MMC Delivery Request: ${data.name}`;
+    const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
     try {
-      const response = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (response.ok) {
-        const subject = `MMC Delivery Request: ${data.name}`;
-        const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
-        window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        toast.success('Request routed to dispatch', {
-          description: "Complete the submission in your email client for immediate logging."
-        });
-        setLastRequest(data);
-        setIsSuccess(true);
-        reset();
-      } else {
-        throw new Error('Failed to send');
-      }
     } catch (error) {
-      toast.error('Submission Failed', {
-        description: "Please check your connection or copy your details below."
-      });
+      console.error('API logging failed', error);
     } finally {
+      window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      toast.success('Request routed to dispatch', {
+        description: "Complete the submission in your email client for immediate logging."
+      });
+      setLastRequest(data);
+      setIsSuccess(true);
+      reset();
       setIsSubmitting(false);
     }
   };

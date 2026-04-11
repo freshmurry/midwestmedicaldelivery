@@ -72,7 +72,7 @@ export function HomePage() {
                 </Button>
                 <QuickInquiryModal
                   trigger={
-                    <Button variant="outline" size="lg" className="z-10 border-2 border-mmc-dark text-mmc-dark hover:bg-mmc-dark hover:text-white rounded-2xl px-10 py-7 text-lg transition-all">
+                    <Button variant="outline" size="lg" className="z-10 border-2 border-mmc-dark text-mmc-dark hover:bg-mmc-dark hover:text-white rounded-2xl px-10 py-7 text-lg transition-all shadow-sm hover:shadow-md">
                       Get Route Quote
                     </Button>
                   }
@@ -99,10 +99,11 @@ export function HomePage() {
                   alt="MMC Black Jeep Wrangler Medical Courier Vehicle"
                   loading="eager"
                   className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
+                  style={{ objectPosition: 'center 40%' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-mmc-teal/10 to-transparent pointer-events-none" />
                 <div className="absolute top-6 right-6 z-10">
-                  <Logo variant="alt" showText={false} className="shadow-2xl" />
+                  <Logo variant="alt" showText={false} className="shadow-2xl ring-1 ring-black/5" />
                 </div>
               </div>
             </motion.div>
@@ -189,7 +190,7 @@ export function HomePage() {
             >
               <h2 className="text-4xl md:text-5xl font-black max-w-xl">Dominant Lake County Medical Routes.</h2>
               <p className="text-lg text-gray-400 max-w-lg">Dedicated small-parcel routes for clinics that need local precision across Gary, Hammond, and Munster.</p>
-              <Button asChild variant="outline" className="border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl">
+              <Button asChild variant="outline" className="border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white rounded-xl transition-colors">
                 <Link to="/areas">View Coverage Map</Link>
               </Button>
             </motion.div>

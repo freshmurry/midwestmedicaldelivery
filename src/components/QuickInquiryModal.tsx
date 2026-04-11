@@ -58,7 +58,8 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        await new Promise(resolve => setTimeout(resolve, 600));
+        // Realistic processing delay for feedback
+        await new Promise(resolve => setTimeout(resolve, 800));
         onSuccess();
         reset();
       } else {
@@ -136,7 +137,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: () => void }) {
         <Label htmlFor="message" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Small Parcel Details</Label>
         <Textarea id="message" {...register('message')} placeholder="Specify items (e.g. 5 Rx bags, 1 dental box)..." className="bg-mmc-light border-0 rounded-xl min-h-[80px] focus:ring-2 focus:ring-mmc-teal" />
       </div>
-      <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-airbnb mt-2 focus-visible:ring-offset-2">
+      <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-airbnb mt-2 focus-visible:ring-offset-2 transition-all">
         {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Dispatching Unit...</> : 'Send Clinic Inquiry'}
       </Button>
     </form>
@@ -149,6 +150,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
   const onOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
     if (!isOpen) {
+      // Clear success state after modal close animation
       setTimeout(() => setIsSuccess(false), 300);
     }
   };
@@ -201,7 +203,7 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
                   Our small-parcel dispatch team has assigned your request to a professional courier unit. Expect a follow-up shortly.
                 </DialogDescription>
               </div>
-              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all focus-visible:ring-2 ring-mmc-teal">
+              <Button onClick={handleClose} variant="outline" className="rounded-xl px-10 border-mmc-teal text-mmc-teal hover:bg-mmc-teal hover:text-white transition-all focus-visible:ring-2 ring-mmc-teal font-bold py-6">
                 Close
               </Button>
             </motion.div>

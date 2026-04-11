@@ -16,7 +16,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   // The "MMC" text component
   const BrandingText = (
     <div className="flex flex-col leading-none">
-      <span 
+      <span
         className={cn(
           "text-2xl font-black tracking-tighter italic select-none",
           variant === 'monochrome' ? "" : "text-mmc-dark"
@@ -26,7 +26,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         MMC
       </span>
       {showText && (
-        <span 
+        <span
           className={cn(
             "text-[9px] font-bold uppercase tracking-[0.2em] whitespace-nowrap mt-0.5 select-none",
             variant === 'monochrome' ? "" : "text-mmc-gray"
@@ -42,9 +42,10 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   const SpeedStripes = (
     <svg
       viewBox="0 0 24 24"
-      className="h-8 w-8 shrink-0"
+      className="h-full w-auto shrink-0"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid meet"
     >
       {/* Stripe 1: 100% Opacity */}
       <path
@@ -76,14 +77,18 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
     return (
       <div className={cn("flex items-center gap-3 p-3 rounded-2xl bg-white/90 backdrop-blur-md shadow-xl", className)}>
         {BrandingText}
-        {SpeedStripes}
+        <div className="h-8">
+          {SpeedStripes}
+        </div>
       </div>
     );
   }
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div className={cn("flex items-center gap-3 h-12", className)}>
       {BrandingText}
-      {SpeedStripes}
+      <div className="h-2/3">
+        {SpeedStripes}
+      </div>
     </div>
   );
 }

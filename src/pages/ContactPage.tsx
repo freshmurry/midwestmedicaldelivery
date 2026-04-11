@@ -99,7 +99,7 @@ export function ContactPage() {
               </div>
               <div className="p-8 bg-mmc-dark rounded-3xl text-white">
                 <h3 className="text-xl font-bold mb-4">Dedicated Clinic Coverage</h3>
-                <p className="text-gray-400 mb-6">Serving local Lake and Porter County clinics with selective border routes for high-priority small cargo.</p>
+                <p className="text-gray-400 mb-6">Serving local Lake County and Northwest Indiana clinics with selective border routes for high-priority small cargo.</p>
                 <div className="flex items-center gap-2 text-mmc-teal font-bold">
                   <MapPin className="h-5 w-5" />
                   NWI Local Network

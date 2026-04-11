@@ -9,13 +9,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 const markers = [
-  { id: 'whiting', name: 'Whiting', top: '14%', left: '25%' },
-  { id: 'east-chicago', name: 'East Chicago', top: '20%', left: '37%' },
+  { id: 'whiting', name: 'Whiting', top: '12%', left: '28%' },
+  { id: 'east-chicago', name: 'East Chicago', top: '22%', left: '40%' },
   { id: 'gary', name: 'Gary', top: '26%', left: '54%' },
-  { id: 'hammond', name: 'Hammond', top: '29%', left: '20%' },
+  { id: 'hammond', name: 'Hammond', top: '32%', left: '18%' },
   { id: 'munster', name: 'Munster', top: '43%', left: '23%' },
   { id: 'highland', name: 'Highland', top: '46%', left: '40%' },
-  { id: 'griffith', name: 'Griffith', top: '53%', left: '43%' },
+  { id: 'griffith', name: 'Griffith', top: '50%', left: '46%' },
   { id: 'hobart', name: 'Hobart', top: '54%', left: '75%' },
   { id: 'schererville', name: 'Schererville', top: '60%', left: '35%' },
   { id: 'dyer', name: 'Dyer', top: '63%', left: '16%' },
@@ -107,8 +107,8 @@ export function CityMap() {
          </div>
       </div>
       {/* Map Overlays for Road Labels */}
-      <div className="absolute top-[28%] left-[2%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter -rotate-6 pointer-events-none">Borman Expy (I-94)</div>
-      <div className="absolute top-[60%] left-[51%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter rotate-85 origin-left h-px pointer-events-none">I-65 South</div>
+      <div className="absolute top-[28%] left-[2%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter -rotate-6 pointer-events-none bg-white/50 px-1 rounded">Borman Expy (I-94)</div>
+      <div className="absolute top-[60%] left-[51%] z-10 text-[8px] font-bold text-gray-400 uppercase tracking-tighter rotate-85 origin-left h-px pointer-events-none bg-white/50 px-1 rounded">I-65 South</div>
     </div>
   );
 }

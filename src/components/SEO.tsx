@@ -13,7 +13,7 @@ export function SEO({ title, description, canonical, schema }: SEOProps) {
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content="professional medical delivery Northwest Indiana, dental courier NWI, pharmacy prescription delivery Indiana, secure medical courier NWI, professional clinic transport Northwest Indiana, NWI medical logistics, vet clinic transport NWI, medical courier Indiana, secure healthcare transport, medical courier Whiting, dental courier Cedar Lake, pharmacy delivery Griffith" />
+      <meta name="keywords" content="professional medical courier Northwest Indiana, dental delivery NWI, pharmacy logistics Indiana, secure medical transport, Gary, Hammond, East Chicago, Munster, Highland, Schererville, Dyer, Merrillville, Crown Point, St. John, Hobart, Whiting, Cedar Lake, Griffith" />
       {canonical && <link rel="canonical" href={`${siteUrl}${canonical}`} />}
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

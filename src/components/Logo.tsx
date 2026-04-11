@@ -58,7 +58,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
       {showText && (
         <span
           className={cn(
-            "text-[8px] font-extrabold uppercase tracking-[0.2em] whitespace-nowrap mt-1 select-none",
+            "text-[8px] font-extrabold uppercase tracking-[0.2em] whitespace-nowrap mt-1.5 select-none",
             variant === 'monochrome' ? "opacity-90" : "text-mmc-gray opacity-80"
           )}
           style={{ color: variant === 'monochrome' ? 'currentColor' : undefined }}

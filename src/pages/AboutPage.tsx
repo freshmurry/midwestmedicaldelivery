@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
-import { Award, ShieldCheck, Zap, Package, ShieldAlert } from 'lucide-react';
+import { Award, ShieldCheck, Zap, ShieldAlert } from 'lucide-react';
 export function AboutPage() {
   return (
     <>
       <SEO
-        title="About Our Small-Parcel Specialty"
-        description="Learn how MMC specializes in professional medical delivery for dental offices, pharmacies, and vet clinics in Northwest Indiana. OSHA 10 and HIPAA certified."
+        title="About Lake County Specialty"
+        description="MMC specializes in professional medical delivery for Lake County clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure NWI transport."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
@@ -19,8 +19,7 @@ export function AboutPage() {
               transition={{ duration: 0.7 }}
             >
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Specialized for <span className="text-mmc-teal">Clinics.</span></h1>
-                {/* Certification Badges */}
+                <h1 className="text-5xl md:text-6xl font-black text-mmc-dark">Lake County <span className="text-mmc-teal">Specialists.</span></h1>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
                     <ShieldCheck className="h-3 w-3 text-mmc-teal" />
@@ -32,22 +31,22 @@ export function AboutPage() {
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mmc-dark text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
                     <Award className="h-3 w-3 text-mmc-teal" />
-                    Fully Insured
+                    Licensed & Insured
                   </span>
                 </div>
               </div>
               <p className="text-xl text-mmc-gray leading-relaxed">
-                Midwest Medical Delivery (MMC) was founded to fill the gap in medical logistics: a courier that treats small dental prosthetics and pharmacy prescriptions with the precision they deserve.
+                Midwest Medical Delivery (MMC) provides Lake County and the surrounding NWI region with the professional precision that dental prosthetics and pharmacy prescriptions require.
               </p>
               <p className="text-lg text-mmc-gray leading-relaxed">
-                We've invested in a dedicated medical transport fleet, allowing us to navigate NWI urban routes faster while ensuring sensitive small cargo never shares space with heavy industrial freight.
+                We've invested in a dedicated medical transport fleet, navigating Lake County urban routes with agility and ensuring small parcels never share space with bulk industrial freight.
               </p>
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
-                  { icon: Award, title: 'Pharmacy Precision', desc: 'Optimized protocols for patient prescription delivery.' },
-                  { icon: ShieldCheck, title: 'HIPAA Compliant', desc: 'Compliant even in low-PHI clinic scenarios.' },
-                  { icon: Zap, title: 'Rapid Fleet Response', desc: 'Professional transport for faster local clinic routing.' },
-                  { icon: ShieldAlert, title: 'OSHA 10 Certified', desc: 'Rigorous safety standards for clinic-level handling.' }
+                  { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for patient facility delivery.' },
+                  { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },
+                  { icon: Zap, title: 'NWI Local Experts', desc: 'Professional response times across the Lake County network.' },
+                  { icon: ShieldAlert, title: 'Safety First', desc: 'Rigorous OSHA 10 standards for medical handling.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -56,7 +55,7 @@ export function AboutPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 + (i * 0.1) }}
                   >
-                    <div className="flex items-center gap-2 text-mmc-teal group-hover:translate-x-1 transition-transform">
+                    <div className="flex items-center gap-2 text-mmc-teal">
                       <item.icon className="h-5 w-5" />
                       <h3 className="font-black uppercase tracking-wider text-xs">{item.title}</h3>
                     </div>
@@ -71,46 +70,25 @@ export function AboutPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
             >
-              <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-airbnb border border-gray-100">
+              <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-2xl border border-gray-100">
                 <img
                   src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=800"
-                  alt="Professional Medical Courier Delivering Small Package to Local Clinic"
+                  alt="Professional Medical Delivery to Lake County Clinic"
+                  loading="lazy"
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <motion.div
-                className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[2.5rem] shadow-airbnb max-w-xs space-y-4 border border-gray-100 hidden md:block"
+                className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[2.5rem] shadow-xl max-w-xs space-y-4 border border-gray-100 hidden md:block"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                <div className="text-4xl font-black text-mmc-teal">Small</div>
-                <p className="text-sm font-bold text-mmc-dark leading-tight">Focusing exclusively on clinic-level parcel logistics.</p>
+                <div className="text-4xl font-black text-mmc-teal">Lake Co.</div>
+                <p className="text-sm font-bold text-mmc-dark leading-tight">Focusing exclusively on Lake County parcel logistics.</p>
               </motion.div>
             </motion.div>
           </div>
-          <motion.div
-            className="mt-32 max-w-4xl mx-auto text-center space-y-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-black text-mmc-dark">Redefining Clinic Logistics</h2>
-            <div className="grid md:grid-cols-2 gap-10 text-left">
-              <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-glow transition-shadow duration-500">
-                <h3 className="text-xl font-bold text-mmc-dark mb-4">Precision over Bulk</h3>
-                <p className="text-mmc-gray leading-relaxed">
-                  We don't do trucks or heavy pallets. By specializing in small-parcel medical courier work, we offer a more personalized, higher-security service for dental labs, pharmacies, and vet clinics that traditional delivery companies overlook.
-                </p>
-              </div>
-              <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-glow transition-shadow duration-500">
-                <h3 className="text-xl font-bold text-mmc-dark mb-4">Professional Delivery Fleet</h3>
-                <p className="text-mmc-gray leading-relaxed">
-                  Our professional delivery fleet is more than a branding choice—it's a strategic advantage. It allows us to access tight clinic parking lots and navigate NWI traffic with ease, ensuring your time-sensitive prescriptions or molds arrive ahead of schedule through professional fleet response.
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </>

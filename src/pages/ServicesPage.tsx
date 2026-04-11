@@ -115,7 +115,7 @@ export function ServicesPage() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-mmc-teal/20 to-transparent pointer-events-none" />
             <div className="flex-1 space-y-8 relative z-10">
-              <h2 className="text-4xl md:text-5xl font-black">Built for Local Clinics</h2>
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">Built for Local Pharmacies, Clinics, and Dental Practices</h2>
               <p className="text-lg text-gray-400">
                 While we maintain full compliance, we've optimized our operations for low-PHI scenarios and non-biohazard small items that require a more delicate, professional touch than standard couriers.
               </p>

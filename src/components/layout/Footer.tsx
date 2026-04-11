@@ -61,7 +61,7 @@ export function Footer() {
               {cities.map((city) => (
                 <Link
                   key={city}
-                  to={`/areas#${slugify(city)}`}
+                  to={`/${slugify(city)}`}
                   className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-medium"
                 >
                   {city}, IN

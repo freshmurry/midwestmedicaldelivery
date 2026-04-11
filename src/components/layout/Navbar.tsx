@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/Logo';
 const navLinks = [
-  { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
   { name: 'Service Areas', path: '/areas' },
   { name: 'About', path: '/about' },

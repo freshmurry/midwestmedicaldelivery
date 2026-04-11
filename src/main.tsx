@@ -20,6 +20,8 @@ import { ServicesPage } from '@/pages/ServicesPage';
 import { ServiceAreasPage } from '@/pages/ServiceAreasPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ContactPage } from '@/pages/ContactPage';
+import { CityPage } from '@/pages/CityPage';
+import { CITY_DATA } from '@shared/city-data';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -54,6 +56,12 @@ const router = createBrowserRouter([
     element: <RootLayout><ContactPage /></RootLayout>,
     errorElement: <RouteErrorBoundary />,
   },
+  // Local SEO Pages
+  ...Object.values(CITY_DATA).map(city => ({
+    path: `/${city.slug}`,
+    element: <RootLayout><CityPage city={city} /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  }))
 ]);
 const container = document.getElementById('root');
 if (!container) throw new Error('Failed to find the root element');

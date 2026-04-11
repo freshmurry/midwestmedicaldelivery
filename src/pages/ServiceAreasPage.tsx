@@ -4,6 +4,7 @@ import { SEO } from '@/components/SEO';
 import { MapPin, Navigation, Info } from 'lucide-react';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';
 import { Button } from '@/components/ui/button';
+import { CityMap } from '@/components/CityMap';
 const regions = [
   {
     city: 'Gary',
@@ -80,6 +81,21 @@ export function ServiceAreasPage() {
               Our professional courier fleet is strategically positioned to serve local clinics and regional hubs with unparalleled local speed.
             </p>
           </div>
+
+          {/* Lake County Map Section */}
+          <div className="mb-24 space-y-10">
+            <div className="flex items-end justify-between">
+              <div className="space-y-2">
+                <h2 className="text-sm font-black text-mmc-teal uppercase tracking-widest">Interactive Network</h2>
+                <h3 className="text-3xl md:text-4xl font-black text-mmc-dark">Lake County Coverage</h3>
+              </div>
+              <p className="hidden md:block text-xs font-bold text-mmc-gray uppercase tracking-wider max-w-[200px] text-right">
+                Click any marker to view localized city-specific clinical logistics.
+              </p>
+            </div>
+            <CityMap />
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {regions.map((region, i) => (
               <section

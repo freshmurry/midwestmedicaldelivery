@@ -28,14 +28,14 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         stroke={stripeColor}
         strokeWidth="3.5"
         strokeLinecap="round"
-        className="opacity-60"
+        style={{ opacity: 0.6 }}
       />
       <path
         d="M18 3L14 17"
         stroke={stripeColor}
         strokeWidth="3.5"
         strokeLinecap="round"
-        className="opacity-30"
+        style={{ opacity: 0.3 }}
       />
     </svg>
   );

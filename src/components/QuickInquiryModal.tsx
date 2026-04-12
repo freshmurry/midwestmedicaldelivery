@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Loader2, CheckCircle2, Clipboard, Copy } from 'lucide-react';
+import { Loader2, CheckCircle2, Copy } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -79,7 +79,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
         <div className="space-y-1.5">
           <Label htmlFor="facilityType" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Facility Type</Label>
           <Select name="facilityType" onValueChange={(val) => setValue('facilityType', val, { shouldValidate: true })}>
-            <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2">
+            <SelectTrigger aria-label="Select facility type" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
@@ -119,7 +119,7 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
       <div className="space-y-1.5">
         <Label htmlFor="serviceNeeded" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Service Needed</Label>
         <Select name="serviceNeeded" onValueChange={(val) => setValue('serviceNeeded', val, { shouldValidate: true })}>
-          <SelectTrigger className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2">
+          <SelectTrigger aria-label="Select service needed" className="bg-mmc-light border-0 rounded-xl py-5 h-auto focus:ring-2 focus:ring-mmc-teal ring-offset-2">
             <SelectValue placeholder="Select service" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
@@ -197,6 +197,10 @@ export function QuickInquiryModal({ trigger }: { trigger?: React.ReactNode }) {
               animate={{ opacity: 1, scale: 1 }}
               className="py-8 flex flex-col items-center text-center space-y-6"
             >
+              <DialogHeader className="sr-only">
+                <DialogTitle>Inquiry Sent Successfully</DialogTitle>
+                <DialogDescription>Your request has been routed to dispatch.</DialogDescription>
+              </DialogHeader>
               <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center">
                 <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
               </div>

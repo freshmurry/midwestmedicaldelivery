@@ -71,6 +71,7 @@ export function CityMap() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   onClick={() => navigate(`/${city.id}`)}
+                  aria-label={`View local routes for ${city.name}`}
                 >
                   {/* City Label - Always Visible */}
                   <div className="mb-1 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-sm border border-gray-200">

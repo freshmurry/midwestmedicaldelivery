@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ShieldCheck,
@@ -18,6 +18,10 @@ interface CityPageProps {
   city: CitySEO;
 }
 export function CityPage({ city }: CityPageProps) {
+  // Guard clause to handle missing city data gracefully
+  if (!city) {
+    return <Navigate to="/areas" replace />;
+  }
   return (
     <>
       <SEO
@@ -106,7 +110,7 @@ export function CityPage({ city }: CityPageProps) {
                 <h2 className="text-3xl md:text-4xl font-black text-mmc-dark mb-8">
                   Medical Delivery Specialists in <span className="text-mmc-teal">{city.name}</span>
                 </h2>
-                {city.aboutText.split('\n\n').map((para, i) => (
+                {city.aboutText?.split('\n\n').map((para, i) => (
                   <p key={i} className="text-mmc-gray text-lg leading-relaxed mb-6">
                     {para}
                   </p>
@@ -117,7 +121,7 @@ export function CityPage({ city }: CityPageProps) {
                   <Building2 className="h-8 w-8 text-mmc-teal mb-4" />
                   <h3 className="text-xl font-bold text-mmc-dark mb-2">Local Landmarks</h3>
                   <ul className="space-y-2">
-                    {city.landmarks.map((mark, i) => (
+                    {city.landmarks?.map((mark, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-mmc-gray font-medium">
                         <div className="w-1.5 h-1.5 bg-mmc-teal rounded-full" />
                         {mark}

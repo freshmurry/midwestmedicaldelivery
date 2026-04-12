@@ -78,6 +78,7 @@ export function HomePage() {
                   src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200"
                   alt="Midwest Medical Delivery Professional Vehicle"
                   loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
                   style={{ objectPosition: 'center 40%' }}
                 />
@@ -163,6 +164,7 @@ export function HomePage() {
                     src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200"
                     alt="Midwest Medical Delivery Delivering Clinical Packages"
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
                   />
                 </div>

@@ -6,6 +6,10 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
   // CONTACT & QUICK INQUIRY FORM HANDLER
   app.post('/api/contact', async (c) => {
     try {
+      const contentType = c.req.header('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        return bad(c, 'Content-Type must be application/json');
+      }
       const data = await c.req.json();
       // Basic validation for common fields
       if ((!data.name && !data.contactName) || !data.phone || !data.email) {
@@ -14,17 +18,18 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
       // Log the specific type of inquiry for backend monitoring
       const isInquiry = !!data.facilityType;
       console.log(
+        `[${new Date().toISOString()}]`,
         isInquiry ? '[MEDICAL PROVIDER INQUIRY]' : '[STANDARD CONTACT SUBMISSION]',
         JSON.stringify(data, null, 2)
       );
       // Simulate a realistic processing delay (200ms)
       await new Promise(resolve => setTimeout(resolve, 200));
-      return ok(c, { 
+      return ok(c, {
         message: 'Request received successfully',
         referenceId: crypto.randomUUID().slice(0, 8).toUpperCase()
       });
     } catch (e) {
-      console.error('[CONTACT_API_ERROR]', e);
+      console.error(`[${new Date().toISOString()}] [CONTACT_API_ERROR]`, e);
       return bad(c, 'Invalid request payload');
     }
   });

@@ -28,9 +28,9 @@ export function HomePage() {
     "url": "https://midwestmedicaldelivery.com",
     "email": "dispatch@midwestmedicaldelivery.com",
     "areaServed": [
-      "Gary, IN", "Hammond, IN", "East Chicago, IN", "Munster, IN", 
-      "Highland, IN", "Schererville, IN", "Dyer, IN", "Merrillville, IN", 
-      "Crown Point, IN", "St. John, IN", "Hobart, IN", "Whiting, IN", 
+      "Gary, IN", "Hammond, IN", "East Chicago, IN", "Munster, IN",
+      "Highland, IN", "Schererville, IN", "Dyer, IN", "Merrillville, IN",
+      "Crown Point, IN", "St. John, IN", "Hobart, IN", "Whiting, IN",
       "Cedar Lake, IN", "Griffith, IN"
     ],
     "openingHours": "Mo-Su 00:00-23:59"
@@ -91,9 +91,11 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
-                  src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200"
+                  src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200&fm=webp"
                   alt="Midwest Medical Delivery Professional Vehicle"
                   loading="eager"
+                  width={1200}
+                  height={900}
                   decoding="async"
                   className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
                   style={{ objectPosition: 'center 40%' }}
@@ -177,9 +179,11 @@ export function HomePage() {
                 <div className="absolute -inset-4 bg-mmc-teal/5 rounded-[2.5rem] -z-10 group-hover:bg-mmc-teal/10 transition-colors" />
                 <div className="aspect-video rounded-3xl overflow-hidden shadow-airbnb relative">
                   <img
-                    src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200"
+                    src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200&fm=webp"
                     alt="Midwest Medical Delivery Delivering Clinical Packages"
                     loading="lazy"
+                    width={1200}
+                    height={675}
                     decoding="async"
                     className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
                   />

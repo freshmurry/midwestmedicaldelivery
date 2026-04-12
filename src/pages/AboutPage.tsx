@@ -84,9 +84,11 @@ export function AboutPage() {
             >
               <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71f1e3c77d?auto=format&fit=crop&q=80&w=800"
+                  src="https://images.unsplash.com/photo-1559839734-2b71f1e3c77d?auto=format&fit=crop&q=80&w=800&fm=webp"
                   alt="Secure Medical Handling in Professional Fleet"
                   loading="lazy"
+                  width={800}
+                  height={1000}
                   className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-mmc-dark/40 to-transparent pointer-events-none" />

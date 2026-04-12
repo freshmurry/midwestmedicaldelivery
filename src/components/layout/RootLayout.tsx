@@ -3,10 +3,12 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { MessageCircle } from 'lucide-react';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';
+import { useAnalytics } from '@/hooks/use-analytics';
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 export function RootLayout({ children }: RootLayoutProps) {
+  useAnalytics();
   return (
     <div className="flex flex-col min-h-screen font-sans selection:bg-mmc-teal selection:text-white antialiased">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-white focus:text-mmc-dark">

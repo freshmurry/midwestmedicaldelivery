@@ -12,13 +12,21 @@ export function SEO({ title, description, canonical, schema, noindex }: SEOProps
   const location = useLocation();
   const fullTitle = `${title} | Midwest Medical Delivery`;
   const siteUrl = 'https://midwestmedicaldelivery.com';
-  const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${location.pathname}`;
+  // Ensure canonical URL is absolute
+  const canonicalPath = canonical || location.pathname;
+  const canonicalUrl = canonicalPath.startsWith('http') 
+    ? canonicalPath 
+    : `${siteUrl}${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`;
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content="professional medical delivery Northwest Indiana, dental delivery NWI, pharmacy logistics Indiana, secure medical transport, Gary, Hammond, East Chicago, Munster, Highland, Schererville, Dyer, Merrillville, Crown Point, St. John, Hobart, Whiting, Cedar Lake, Griffith" />
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow" />
+      )}
       <link rel="canonical" href={canonicalUrl} />
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

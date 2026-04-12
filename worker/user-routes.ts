@@ -2,6 +2,12 @@ import { Hono } from "hono";
 import type { Env } from './core-utils';
 import { UserEntity } from "./entities";
 import { ok, bad } from './core-utils';
+interface AppEnv extends Env {
+  EMAIL_PROVIDER?: string;
+  EMAIL_API_KEY?: string;
+  FROM_EMAIL?: string;
+  TO_EMAIL?: string;
+}
 export function userRoutes(app: Hono<{ Bindings: Env }>) {
   // CONTACT & QUICK INQUIRY FORM HANDLER
   app.post('/api/contact', async (c) => {
@@ -22,12 +28,13 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
         isInquiry ? '[MEDICAL PROVIDER INQUIRY]' : '[STANDARD CONTACT SUBMISSION]',
         JSON.stringify(data, null, 2)
       );
-      
       let emailSent = false;
-      const emailProvider = c.env.EMAIL_PROVIDER as string | undefined;
-      const emailApiKey = c.env.EMAIL_API_KEY as string | undefined;
+      const appEnv = c.env as AppEnv;
+      const emailProvider = appEnv.EMAIL_PROVIDER;
+      const emailApiKey = appEnv.EMAIL_API_KEY;
+      const fromEmail = appEnv.FROM_EMAIL || 'dispatch@midwestmedicaldelivery.com';
+      const toEmail = appEnv.TO_EMAIL || 'lawrencemurry@yahoo.com';
       const refId = crypto.randomUUID().slice(0, 8).toUpperCase();
-
       if (emailProvider && emailApiKey) {
         try {
           const res = await fetch('https://api.resend.com/emails', {
@@ -37,18 +44,18 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              from: 'dispatch@midwestmedicaldelivery.com',
-              to: 'lawrencemurry@yahoo.com',
+              from: fromEmail,
+              to: toEmail,
               subject: `[MMD Request ${refId}] ${data.facilityName || data.name}`,
               text: `Ref ID: ${refId}\n\n${JSON.stringify(data, null, 2)}`
             })
           });
           if (res.ok) emailSent = true;
+          console.log(`[EMAIL_DELIVERY] Ref ID: ${refId}, Sent: ${emailSent}`);
         } catch (err) {
           console.error('[EMAIL_DELIVERY_ERROR]', err);
         }
       }
-
       return ok(c, {
         message: 'Request received successfully',
         referenceId: refId,

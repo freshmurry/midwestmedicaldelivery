@@ -39,17 +39,20 @@ export function ContactPage() {
       });
       const json = await res.json();
       if (json.success && json.data?.emailSent) {
-        toast.success('Request routed to dispatch');
-        setLastRequest(data);
-        setIsSuccess(true);
-        reset();
-        setIsSubmitting(false);
+        setTimeout(() => {
+          toast.success('Request routed to dispatch');
+          setLastRequest(data);
+          setIsSuccess(true);
+          reset();
+          setIsSubmitting(false);
+        }, 600);
         return;
       }
     } catch (error) {
       console.error('API logging failed', error);
-    } finally {
-      window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    setTimeout(() => {
       toast.success('Request routed to dispatch', {
         description: "Complete the submission in your email client for immediate logging."
       });
@@ -57,7 +60,8 @@ export function ContactPage() {
       setIsSuccess(true);
       reset();
       setIsSubmitting(false);
-    }
+      window.location.href = `mailto:lawrencemurry@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }, 600);
   };
   const copySummary = () => {
     if (!lastRequest) return;

@@ -10,30 +10,30 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   const stripeColor = variant === 'monochrome' ? 'currentColor' : teal;
   const SpeedStripes = (
     <svg
-      viewBox="0 0 24 20"
+      viewBox="0 0 24 24"
       className="h-full w-auto shrink-0"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMinYMid meet"
     >
       <path
-        d="M6 3L2 17"
+        d="M7 4L3 20"
         stroke={stripeColor}
-        strokeWidth="3.5"
+        strokeWidth="3"
         strokeLinecap="round"
         className="opacity-100"
       />
       <path
-        d="M12 3L8 17"
+        d="M13 4L9 20"
         stroke={stripeColor}
-        strokeWidth="3.5"
+        strokeWidth="3"
         strokeLinecap="round"
         className="opacity-60"
       />
       <path
-        d="M18 3L14 17"
+        d="M19 4L15 20"
         stroke={stripeColor}
-        strokeWidth="3.5"
+        strokeWidth="3"
         strokeLinecap="round"
         className="opacity-30"
       />
@@ -51,7 +51,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
         >
           MMD
         </span>
-        <div className="h-5 flex items-center">
+        <div className="h-6 flex items-center">
           {SpeedStripes}
         </div>
       </div>
@@ -70,7 +70,7 @@ export function Logo({ variant = 'primary', className, showText = true }: LogoPr
   );
   if (variant === 'alt') {
     return (
-      <div className={cn("flex items-center p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-airbnb", className)}>
+      <div className={cn("flex items-center p-3.5 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-white/20", className)}>
         {LogoContent}
       </div>
     );

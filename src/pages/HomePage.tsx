@@ -20,11 +20,27 @@ const stagger = {
   }
 };
 export function HomePage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Midwest Medical Delivery",
+    "description": "Professional medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana.",
+    "url": "https://midwestmedicaldelivery.com",
+    "email": "dispatch@midwestmedicaldelivery.com",
+    "areaServed": [
+      "Gary, IN", "Hammond, IN", "East Chicago, IN", "Munster, IN", 
+      "Highland, IN", "Schererville, IN", "Dyer, IN", "Merrillville, IN", 
+      "Crown Point, IN", "St. John, IN", "Hobart, IN", "Whiting, IN", 
+      "Cedar Lake, IN", "Griffith, IN"
+    ],
+    "openingHours": "Mo-Su 00:00-23:59"
+  };
   return (
     <>
       <SEO
         title="Regional Medical Delivery Specialist"
         description="Professional medical delivery for Dental, Pharmacy & Vet Clinics in Northwest Indiana. Secure transport for sensitive clinical materials across the region."
+        schema={schema}
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white pt-16 pb-24 md:pt-24 md:pb-32">

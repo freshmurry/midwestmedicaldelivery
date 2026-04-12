@@ -9,8 +9,11 @@ interface RootLayoutProps {
 export function RootLayout({ children }: RootLayoutProps) {
   return (
     <div className="flex flex-col min-h-screen font-sans selection:bg-mmc-teal selection:text-white antialiased">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-white focus:text-mmc-dark">
+        Skip to Content
+      </a>
       <Navbar />
-      <main className="flex-grow pb-24 md:pb-0">
+      <main id="main-content" tabIndex={-1} className="flex-grow pb-24 md:pb-0 outline-none">
         {children}
       </main>
       <Footer />

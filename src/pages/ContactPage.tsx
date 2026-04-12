@@ -22,19 +22,30 @@ export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [lastRequest, setLastRequest] = useState<ContactFormValues | null>(null);
+  const [honeypot, setHoneypot] = useState('');
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
   });
   const onSubmit = async (data: ContactFormValues) => {
+    if (honeypot) return; // Spam detected
     setIsSubmitting(true);
     const subject = `MMD Delivery Request: ${data.name}`;
     const body = `Clinic: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDetails: ${data.message || 'N/A'}`;
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
+      const json = await res.json();
+      if (json.success && json.data?.emailSent) {
+        toast.success('Request routed to dispatch');
+        setLastRequest(data);
+        setIsSuccess(true);
+        reset();
+        setIsSubmitting(false);
+        return;
+      }
     } catch (error) {
       console.error('API logging failed', error);
     } finally {
@@ -114,7 +125,7 @@ export function ContactPage() {
             {/* Contact Form */}
             <div className="bg-white border border-gray-100 rounded-[3rem] p-8 md:p-12 shadow-airbnb relative">
               {isSuccess ? (
-                <div className="h-full flex flex-col items-center justify-center text-center space-y-8 py-12 animate-in fade-in zoom-in">
+                <div className="h-full flex flex-col items-center justify-center text-center space-y-8 py-12 animate-in fade-in zoom-in" aria-live="polite">
                   <div className="w-20 h-20 bg-mmc-teal/10 rounded-full flex items-center justify-center">
                     <CheckCircle2 className="h-10 w-10 text-mmc-teal" />
                   </div>
@@ -136,6 +147,14 @@ export function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="hidden" aria-hidden="true">
+                    <Label htmlFor="bot-field">Do not fill this out</Label>
+                    <Input 
+                      id="bot-field" 
+                      value={honeypot} 
+                      onChange={(e) => setHoneypot(e.target.value)} 
+                    />
+                  </div>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Clinic / Contact Name</Label>

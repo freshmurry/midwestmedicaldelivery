@@ -22,6 +22,8 @@ import { ServiceAreasPage } from '@/pages/ServiceAreasPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { CityPage } from '@/pages/CityPage';
+import { PrivacyPage } from '@/pages/PrivacyPage';
+import { TermsPage } from '@/pages/TermsPage';
 import { CITY_DATA } from '@shared/city-data';
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -55,6 +57,16 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <RootLayout><ContactPage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/privacy-policy",
+    element: <RootLayout><PrivacyPage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/terms",
+    element: <RootLayout><TermsPage /></RootLayout>,
     errorElement: <RouteErrorBoundary />,
   },
   // Local SEO Pages

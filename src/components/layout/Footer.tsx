@@ -50,6 +50,17 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/privacy-policy" className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-bold">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="text-mmc-gray hover:text-mmc-teal transition-colors text-sm font-bold">
+                  Terms of Service
+                </Link>
+              </li>
+              ))}
             </ul>
           </div>
           {/* Service Areas */}

@@ -22,12 +22,30 @@ export function CityPage({ city }: CityPageProps) {
   if (!city) {
     return <Navigate to="/areas" replace />;
   }
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": `Midwest Medical Delivery - ${city.name}`,
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Midwest Medical Delivery"
+    },
+    "description": city.metaDescription,
+    "url": `https://midwestmedicaldelivery.com/${city.slug}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": city.name,
+      "addressRegion": "IN"
+    },
+    "areaServed": `${city.name}, IN`
+  };
   return (
     <>
       <SEO
         title={city.heroTitle}
         description={city.metaDescription}
         canonical={`/${city.slug}`}
+        schema={schema}
       />
       {/* Hero Section */}
       <section className="bg-white pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">

@@ -4,11 +4,20 @@ import { SEO } from '@/components/SEO';
 import { Award, ShieldCheck, Zap, ShieldAlert, Package } from 'lucide-react';
 import { AuditSummary } from '@/components/AuditSummary';
 export function AboutPage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Midwest Medical Delivery",
+    "description": "MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport.",
+    "knowsAbout": ["Medical Logistics", "HIPAA Compliance", "OSHA 10 Safety", "Dental Prosthetic Transport", "Pharmacy Delivery"],
+    "url": "https://midwestmedicaldelivery.com/about"
+  };
   return (
     <>
       <SEO
         title="About Our Medical Logistics Specialization"
         description="MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport."
+        schema={schema}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">

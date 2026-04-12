@@ -36,6 +36,7 @@ const inquirySchema = z.object({
 type InquiryFormValues = z.infer<typeof inquirySchema>;
 function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues) => void }) {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [honeypot, setHoneypot] = React.useState('');
   const {
     register,
     handleSubmit,
@@ -50,15 +51,24 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
     }
   });
   const onSubmit = async (data: InquiryFormValues) => {
+    if (honeypot) return;
     setIsSubmitting(true);
     const subject = `MMD Provider Inquiry: ${data.facilityName}`;
     const body = `Facility: ${data.facilityName} (${data.facilityType})\nContact: ${data.contactName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceNeeded}\nDetails: ${data.message || 'N/A'}`;
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
+      const json = await res.json();
+      if (json.success && json.data?.emailSent) {
+        toast.success('Inquiry routed to dispatch');
+        onSuccess(data);
+        reset();
+        setIsSubmitting(false);
+        return;
+      }
     } catch (error) {
       console.error('API logging failed', error);
     } finally {
@@ -75,6 +85,14 @@ function InquiryFormContent({ onSuccess }: { onSuccess: (data: InquiryFormValues
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div className="hidden" aria-hidden="true">
+        <Label htmlFor="modal-bot-field">Do not fill this out</Label>
+        <Input 
+          id="modal-bot-field" 
+          value={honeypot} 
+          onChange={(e) => setHoneypot(e.target.value)} 
+        />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="facilityType" className="font-bold text-mmc-dark text-xs uppercase tracking-wider">Facility Type</Label>

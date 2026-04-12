@@ -22,11 +22,37 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
         isInquiry ? '[MEDICAL PROVIDER INQUIRY]' : '[STANDARD CONTACT SUBMISSION]',
         JSON.stringify(data, null, 2)
       );
-      // Simulate a realistic processing delay (200ms)
-      await new Promise(resolve => setTimeout(resolve, 200));
+      
+      let emailSent = false;
+      const emailProvider = c.env.EMAIL_PROVIDER as string | undefined;
+      const emailApiKey = c.env.EMAIL_API_KEY as string | undefined;
+      const refId = crypto.randomUUID().slice(0, 8).toUpperCase();
+
+      if (emailProvider && emailApiKey) {
+        try {
+          const res = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${emailApiKey}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              from: 'dispatch@midwestmedicaldelivery.com',
+              to: 'lawrencemurry@yahoo.com',
+              subject: `[MMD Request ${refId}] ${data.facilityName || data.name}`,
+              text: `Ref ID: ${refId}\n\n${JSON.stringify(data, null, 2)}`
+            })
+          });
+          if (res.ok) emailSent = true;
+        } catch (err) {
+          console.error('[EMAIL_DELIVERY_ERROR]', err);
+        }
+      }
+
       return ok(c, {
         message: 'Request received successfully',
-        referenceId: crypto.randomUUID().slice(0, 8).toUpperCase()
+        referenceId: refId,
+        emailSent
       });
     } catch (e) {
       console.error(`[${new Date().toISOString()}] [CONTACT_API_ERROR]`, e);

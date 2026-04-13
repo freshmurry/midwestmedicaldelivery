@@ -108,10 +108,10 @@ export default ({ mode }: { mode: string }) => {
     plugins: [react(), cloudflare(), watchDependenciesPlugin(), reloadTriggerPlugin()],
     build: {
       minify: true,
-      sourcemap: "inline", // Use inline source maps for better error reporting
+      sourcemap: false, // Disable production inline source maps; external maps are not generated for this build
       rollupOptions: {
         output: {
-          sourcemapExcludeSources: false, // Include original source in source maps
+          sourcemapExcludeSources: false,
         },
       },
     },

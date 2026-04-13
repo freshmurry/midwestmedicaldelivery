@@ -91,8 +91,8 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
-                  src="https://images.unsplash.com/photo-1566274360936-692e10aa39f4?auto=format&fit=crop&q=80&w=1200&fm=webp"
-                  alt="Midwest Medical Delivery Professional Vehicle"
+                  src="https://images.unsplash.com/photo-1518105779142-d975f22f1f45?auto=format&fit=crop&q=80&w=1200&fm=webp"
+                  alt="Medical courier delivering clinical packages"
                   loading="eager"
                   width={1200}
                   height={900}

@@ -1,6 +1,6 @@
 # Cloudflare Workers React Template
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/freshmurry/midwestmedicaldelivery)
 
 A production-ready full-stack application template powered by Cloudflare Workers. Features a React frontend with modern UI components and a serverless backend using Durable Objects for persistent entity storage (e.g., Users, ChatBoards, Messages). Perfect for building scalable, real-time apps with end-to-end type safety.
 
@@ -91,7 +91,7 @@ bun run deploy
 
 Requires Wrangler authentication (`wrangler login`) and a Cloudflare account.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/freshmurry/midwestmedicaldelivery)
 
 **Notes**:
 - Assets served as SPA (single-page application).

@@ -84,7 +84,7 @@ export function AboutPage() {
             >
               <div className="aspect-[4/5] rounded-[3rem] bg-mmc-light overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="https://media.istockphoto.com/id/1266144427/photo/attractive-positive-blond-lab-assistant-carrying-box-with-vaccines-for-covid-19-laboratory.webp?a=1&b=1&s=612x612&w=0&k=20&c=7RpJBFB7Wt3QVJLRCBTAI6MEXZeLaTg9tWWhyFOBGdo="
+                  src="https://media.istockphoto.com/id/1616635387/photo/pharmacist-package-and-delivery-with-woman-in-drug-store-for-medical-supplies-with-courier.jpg?s=612x612&w=0&k=20&c=2I-y39cNmSe79YDu2Pg2_-1X6NuyccZjajx7IZWx18Q="
                   alt="Secure Medical Handling in Professional Fleet"
                   loading="lazy"
                   width={800}

@@ -84,7 +84,7 @@ export function Footer() {
               <p className="text-mmc-gray text-sm font-bold">
                 Clinic Specialist Team
               </p>
-              <Link to="/contact" className="block text-mmc-dark font-black hover:text-mmc-teal transition-colors underline decoration-mmc-teal/30 underline-offset-4 text-lg italic tracking-tight">
+              <Link to="/contact" className="block text-mmc-dark font-black hover:text-mmc-teal transition-colors underline decoration-mmc-teal/30 underline-offset-4 text-lg tracking-tight">
                 Submit Delivery Request
               </Link>
               <p className="text-mmc-gray text-xs leading-relaxed">

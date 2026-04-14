@@ -91,7 +91,7 @@ export function HomePage() {
             >
               <div className="aspect-[4/3] rounded-3xl bg-mmc-light overflow-hidden shadow-xl relative">
                 <img
-                  src="https://images.unsplash.com/photo-1518105779142-d975f22f1f45?auto=format&fit=crop&q=80&w=1200&fm=webp"
+                  src="https://plus.unsplash.com/premium_photo-1661301133992-33d6ccedb5ed?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxM"
                   alt="Medical courier delivering clinical packages"
                   loading="eager"
                   width={1200}
@@ -179,7 +179,7 @@ export function HomePage() {
                 <div className="absolute -inset-4 bg-mmc-teal/5 rounded-[2.5rem] -z-10 group-hover:bg-mmc-teal/10 transition-colors" />
                 <div className="aspect-video rounded-3xl overflow-hidden shadow-airbnb relative">
                   <img
-                    src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=1200&fm=webp"
+                    src="https://media.istockphoto.com/id/1480570368/photo/pharmacy-delivery-box-and-people-hands-for-healthcare-package-and-ecommerce-courier-services.jpg?s=612x612&w=0&k=20&c=A_-FviV92FDZJLnz2OdacPD-pZpD3l0M6fpt_NuVmn0="
                     alt="Midwest Medical Delivery Delivering Clinical Packages"
                     loading="lazy"
                     width={1200}

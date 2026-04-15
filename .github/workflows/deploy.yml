@@ -20,16 +20,18 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build (vite + cloudflare plugin)
+      - name: Build
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: bun run build
 
-      - name: Compile user-routes into dist output dir
+      - name: Compile user-routes + patch dist wrangler.json
         run: |
           WORKER_DIR=$(find dist -name "index.js" -not -path "*/client/*" | head -1 | xargs dirname)
-          echo "Worker output dir: $WORKER_DIR"
+          echo "Worker dir: $WORKER_DIR"
+
+          # Compile user-routes.ts -> user-routes.js
           bunx esbuild worker/user-routes.ts \
             --bundle \
             --platform=browser \
@@ -40,8 +42,45 @@ jobs:
             --external:hono/logger \
             --external:cloudflare:workers \
             --outfile="$WORKER_DIR/user-routes.js"
-          echo "✅ Compiled user-routes.js:"
-          ls -la "$WORKER_DIR"
+
+          echo "Compiled. Patching $WORKER_DIR/wrangler.json to include additional_modules..."
+
+          # Patch the dist wrangler.json to declare user-routes.js as an additional module
+          python3 - <<'PYEOF'
+import json, os
+
+worker_dir = os.environ.get('WORKER_DIR', 'dist/midwestmedicaldelivery')
+# re-read from env since heredoc can't expand vars
+import subprocess
+worker_dir = subprocess.check_output(
+    "find dist -name 'index.js' -not -path '*/client/*' | head -1 | xargs dirname",
+    shell=True, text=True
+).strip()
+
+wrangler_path = f"{worker_dir}/wrangler.json"
+with open(wrangler_path) as f:
+    cfg = json.load(f)
+
+# Ensure AI binding is present
+if 'ai' not in cfg:
+    cfg['ai'] = {'binding': 'AI'}
+
+# Add user-routes.js as an additional module
+cfg['rules'] = cfg.get('rules', [])
+existing_modules = [m.get('name') for m in cfg.get('additional_modules', [])]
+if 'user-routes.js' not in existing_modules:
+    cfg.setdefault('additional_modules', []).append({
+        "name": "user-routes.js",
+        "path": "user-routes.js",
+        "type": "esm"
+    })
+
+with open(wrangler_path, 'w') as f:
+    json.dump(cfg, f, indent=2)
+
+print(f"Patched {wrangler_path}:")
+print(json.dumps(cfg, indent=2))
+PYEOF
 
       - name: Deploy
         env:

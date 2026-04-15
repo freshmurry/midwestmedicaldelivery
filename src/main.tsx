@@ -24,6 +24,7 @@ import { ContactPage } from '@/pages/ContactPage';
 import { CityPage } from '@/pages/CityPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { TermsPage } from '@/pages/TermsPage';
+import { FAQPage } from '@/pages/FAQPage';
 import { CITY_DATA } from '@shared/city-data';
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <RootLayout><ContactPage /></RootLayout>,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/faq",
+    element: <RootLayout><FAQPage /></RootLayout>,
     errorElement: <RouteErrorBoundary />,
   },
   {

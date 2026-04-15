@@ -3,10 +3,13 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { MessageCircle } from 'lucide-react';
 import { QuickInquiryModal } from '@/components/QuickInquiryModal';
+import { ChatBot } from '@/components/ChatBot';
 import { useAnalytics } from '@/hooks/use-analytics';
+
 interface RootLayoutProps {
   children: React.ReactNode;
 }
+
 export function RootLayout({ children }: RootLayoutProps) {
   useAnalytics();
   return (
@@ -19,10 +22,10 @@ export function RootLayout({ children }: RootLayoutProps) {
         {children}
       </main>
       <Footer />
-      {/* Mobile Sticky CTA Triggering Inquiry Modal */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full z-50 pointer-events-none">
+
+      {/* Mobile Sticky CTA */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full z-40 pointer-events-none">
         <div className="relative p-4 pointer-events-auto">
-          {/* Refined gradient backdrop strictly behind the button area */}
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/95 to-transparent -z-10 pointer-events-none" />
           <QuickInquiryModal
             trigger={
@@ -36,6 +39,11 @@ export function RootLayout({ children }: RootLayoutProps) {
             }
           />
         </div>
+      </div>
+
+      {/* AI Chatbot — lower right, always visible on desktop, above mobile CTA */}
+      <div className="hidden md:block">
+        <ChatBot />
       </div>
     </div>
   );

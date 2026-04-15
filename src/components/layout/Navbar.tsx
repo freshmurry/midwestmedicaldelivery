@@ -4,12 +4,15 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/Logo';
+
 const navLinks = [
   { name: 'Services', path: '/services' },
   { name: 'Service Areas', path: '/areas' },
   { name: 'About', path: '/about' },
+  { name: 'FAQ', path: '/faq' },
   { name: 'Contact', path: '/contact' },
 ];
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -42,7 +45,7 @@ export function Navbar() {
               </Link>
             ))}
             <Button asChild className="bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-full px-6 shadow-sm active:scale-95 transition-transform">
-              <Link to="/contact">Request Delivery</Link>
+              <Link to="/contact">Request Pickup & Delivery</Link>
             </Button>
           </div>
           {/* Mobile Menu Button */}
@@ -75,7 +78,7 @@ export function Navbar() {
           ))}
           <div className="pt-2 px-4">
             <Button asChild className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl py-7 text-lg font-bold shadow-md">
-              <Link to="/contact" onClick={() => setIsOpen(false)}>Request Delivery</Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>Request Pickup & Delivery</Link>
             </Button>
           </div>
         </div>

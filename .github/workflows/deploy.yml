@@ -20,21 +20,17 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build (vite)
+      - name: Build frontend (Vite)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: bun run build
 
-      - name: Bundle worker + patch wrangler.json
-        run: python3 scripts/patch-wrangler.py
-
-      - name: Deploy (wrangler deploy with patched config)
+      - name: Deploy worker from source (wrangler bundles worker/index.ts + user-routes)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          WORKER_CFG=$(find dist -name "wrangler.json" -not -path "*/client/*" | head -1)
-          echo "Using config: $WORKER_CFG"
-          cat "$WORKER_CFG"
-          bunx wrangler deploy --config "$WORKER_CFG"
+          bunx wrangler deploy \
+            --config wrangler.jsonc \
+            --assets dist/client

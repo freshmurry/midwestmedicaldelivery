@@ -1,3 +1,4 @@
+SHA: f02995a6d460a1e9aa1d16c2ca9b6c2e4eb4acf7
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Package, ShieldAlert } from 'lucide-react';
@@ -8,6 +9,7 @@ const navigationMapping = [
   { name: 'Services', path: '/services' },
   { name: 'Service Areas', path: '/areas' },
   { name: 'About', path: '/about' },
+  { name: 'FAQ', path: '/faq' },
   { name: 'Contact', path: '/contact' },
 ];
 export function Footer() {

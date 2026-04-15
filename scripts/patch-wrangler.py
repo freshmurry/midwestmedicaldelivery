@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Patches the vite-generated dist wrangler.json to include:
   - AI binding
-  - user-routes.js as an additional_modules entry
+  - user-routes.js as an additional_modules entry with name './user-routes'
 """
 import json, subprocess, sys
 
@@ -24,17 +24,22 @@ with open(wrangler_path) as f:
 if 'ai' not in cfg:
     cfg['ai'] = {'binding': 'AI'}
 
-# Add user-routes.js as additional module (idempotent)
-existing = [m.get('name') for m in cfg.get('additional_modules', [])]
-if 'user-routes.js' not in existing:
-    cfg.setdefault('additional_modules', []).append({
-        "name": "user-routes.js",
-        "path": "user-routes.js",
-        "type": "esm"
-    })
+# Remove any existing user-routes additional_modules entries
+cfg['additional_modules'] = [
+    m for m in cfg.get('additional_modules', [])
+    if 'user-routes' not in m.get('name', '')
+]
+
+# Add with the correct name matching the dynamic import string
+cfg['additional_modules'].append({
+    "name": "./user-routes",
+    "path": "user-routes.js",
+    "type": "esm"
+})
 
 with open(wrangler_path, 'w') as f:
     json.dump(cfg, f, indent=2)
 
-print("Done. Config:")
-print(json.dumps(cfg, indent=2))
+print("Done. additional_modules:")
+print(json.dumps(cfg.get('additional_modules'), indent=2))
+print("ai:", json.dumps(cfg.get('ai'), indent=2))

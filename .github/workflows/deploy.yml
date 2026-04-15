@@ -20,17 +20,32 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build
+      - name: Build (vite + cloudflare plugin)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: bun run build
 
-      - name: Remove stale deploy config redirect
-        run: rm -f .wrangler/deploy/config.json
+      - name: Compile user-routes into dist output dir
+        run: |
+          # Find the worker output directory
+          WORKER_DIR=$(find dist -name "index.js" -not -path "*/client/*" | head -1 | xargs dirname)
+          echo "Worker output dir: $WORKER_DIR"
+          # Compile user-routes.ts -> user-routes.js next to index.js
+          bunx esbuild worker/user-routes.ts \
+            --bundle \
+            --platform=browser \
+            --target=es2022 \
+            --format=esm \
+            --external:hono \
+            --external:hono/cors \
+            --external:hono/logger \
+            --outfile="$WORKER_DIR/user-routes.js"
+          echo "Compiled user-routes.js to $WORKER_DIR"
+          ls -la "$WORKER_DIR"
 
-      - name: Deploy via wrangler from source
+      - name: Deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-        run: bunx wrangler deploy --config wrangler.jsonc
+        run: bun run deploy

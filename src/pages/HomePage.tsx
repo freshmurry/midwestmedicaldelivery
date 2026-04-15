@@ -64,7 +64,7 @@ export function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="z-10 bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-2xl px-10 py-7 text-lg shadow-lg hover:-translate-y-1 transition-all">
-                  <Link to="/contact">Request Pickup</Link>
+                  <Link to="/contact">Request Pickup & Delivery</Link>
                 </Button>
                 <QuickInquiryModal
                   trigger={
@@ -249,7 +249,7 @@ export function HomePage() {
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto relative z-10">Contact our dispatch team today for immediate pickup or scheduled clinic routes.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
               <Button asChild size="lg" className="bg-white text-mmc-teal hover:bg-gray-100 rounded-2xl px-10 py-7 text-lg font-bold">
-                <Link to="/contact">Request Pickup</Link>
+                <Link to="/contact">Request Pickup & Delivery</Link>
               </Button>
               <QuickInquiryModal
                 trigger={

@@ -101,10 +101,11 @@ export function ChatBot() {
     }
   };
 
-  // Viewport-aware positioning: account for navbar height (80px) at top
+  // Viewport-aware positioning: never overlap the sticky navbar (80px) at top
+  // window is anchored bottom-24 (96px). maxHeight = 100vh - 96px (bottom) - 80px (navbar) - 8px (gap) = 100vh - 184px
   const chatWindowStyle: React.CSSProperties = {
     height: '520px',
-    maxHeight: 'calc(100vh - 104px)', // 80px navbar + 24px gap
+    maxHeight: 'calc(100vh - 184px)',
   };
 
   return (
@@ -121,7 +122,7 @@ export function ChatBot() {
       {/* Chat Window */}
       {isOpen && (
         <div
-          className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
+          className="fixed bottom-24 right-6 z-40 w-[360px] max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
           style={chatWindowStyle}
         >
           {/* Header */}

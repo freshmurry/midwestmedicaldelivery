@@ -6,36 +6,8 @@ import { logger } from 'hono/logger';
 import { Env } from './core-utils';
 export * from './core-utils';
 
-type UserRoutesModule = { userRoutes: (app: Hono<{ Bindings: Env }>) => void };
-
-const USER_ROUTES_MODULE = './user-routes';
-const RETRY_MS = 750;
-let nextRetryAt = 0;
-let userRoutesLoaded = false;
-let userRoutesLoadError: string | null = null;
-
-const safeLoadUserRoutes = async (app: Hono<{ Bindings: Env }>) => {
-  if (userRoutesLoaded) return;
-
-  const now = Date.now();
-  const shouldRetry = userRoutesLoadError !== null;
-  if (shouldRetry && now < nextRetryAt) return;
-  nextRetryAt = now + RETRY_MS;
-
-  const bust = shouldRetry && import.meta.env?.DEV ? `?t=${now}` : '';
-  const spec = `${USER_ROUTES_MODULE}${bust}`;
-
-  try {
-    const mod = (await import(/* @vite-ignore */ spec)) as UserRoutesModule;
-    mod.userRoutes(app);
-    userRoutesLoaded = true;
-    userRoutesLoadError = null;
-  } catch (e) {
-    userRoutesLoadError = e instanceof Error ? e.message : String(e);
-  }
-};
-
-export type ClientErrorReport = { message: string; url: string; timestamp: string } & Record<string, unknown>;
+// Static import to avoid dynamic import bundling issues with Cloudflare Workers
+import { userRoutes } from './user-routes';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -47,7 +19,7 @@ app.get('/api/health', (c) => c.json({ success: true, data: { status: 'healthy',
 
 app.post('/api/client-errors', async (c) => {
   try {
-    const e = await c.req.json<ClientErrorReport>();
+    const e = await c.req.json<{ message: string; url: string; timestamp: string; [k: string]: unknown }>();
     console.error('[CLIENT ERROR]', JSON.stringify({ timestamp: e.timestamp || new Date().toISOString(), message: e.message, url: e.url, stack: e.stack, componentStack: e.componentStack, errorBoundary: e.errorBoundary }, null, 2));
     return c.json({ success: true });
   } catch (error) {
@@ -56,29 +28,16 @@ app.post('/api/client-errors', async (c) => {
   }
 });
 
+// Register user routes statically
+userRoutes(app);
+
 app.notFound((c) => c.json({ success: false, error: 'Not Found' }, 404));
 app.onError((err, c) => { console.error(`[ERROR] ${err}`); return c.json({ success: false, error: 'Internal Server Error' }, 500); });
 
 console.log(`Server is running`)
 
 export default {
-  async fetch(request, env, ctx) {
-    const pathname = new URL(request.url).pathname;
-
-    if (pathname.startsWith('/api/') && pathname !== '/api/health' && pathname !== '/api/client-errors') {
-      await safeLoadUserRoutes(app);
-      if (userRoutesLoadError) {
-        return new Response(
-          JSON.stringify({
-            success: false,
-            error: 'Worker routes failed to load',
-            detail: userRoutesLoadError,
-          }),
-          { status: 500, headers: { 'content-type': 'application/json' } },
-        );
-      }
-    }
-
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     return app.fetch(request, env, ctx);
   },
 } satisfies ExportedHandler<Env>;

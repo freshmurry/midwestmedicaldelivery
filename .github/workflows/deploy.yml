@@ -28,10 +28,8 @@ jobs:
 
       - name: Compile user-routes into dist output dir
         run: |
-          # Find the worker output directory
           WORKER_DIR=$(find dist -name "index.js" -not -path "*/client/*" | head -1 | xargs dirname)
           echo "Worker output dir: $WORKER_DIR"
-          # Compile user-routes.ts -> user-routes.js next to index.js
           bunx esbuild worker/user-routes.ts \
             --bundle \
             --platform=browser \
@@ -40,8 +38,9 @@ jobs:
             --external:hono \
             --external:hono/cors \
             --external:hono/logger \
+            --external:cloudflare:workers \
             --outfile="$WORKER_DIR/user-routes.js"
-          echo "Compiled user-routes.js to $WORKER_DIR"
+          echo "✅ Compiled user-routes.js:"
           ls -la "$WORKER_DIR"
 
       - name: Deploy

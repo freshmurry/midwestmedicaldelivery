@@ -20,8 +20,17 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Deploy (build + wrangler deploy)
+      - name: Build
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-        run: bun run deploy
+        run: bun run build
+
+      - name: Remove stale deploy config redirect
+        run: rm -f .wrangler/deploy/config.json
+
+      - name: Deploy via wrangler from source
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: bunx wrangler deploy --config wrangler.jsonc

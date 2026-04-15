@@ -20,33 +20,21 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build
+      - name: Build (vite)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: bun run build
 
-      - name: Compile user-routes.ts
-        run: |
-          WORKER_DIR=$(find dist -name "index.js" -not -path "*/client/*" | head -1 | xargs dirname)
-          echo "Worker dir: $WORKER_DIR"
-          bunx esbuild worker/user-routes.ts \
-            --bundle --platform=browser --target=es2022 --format=esm \
-            --external:hono --external:hono/cors --external:hono/logger \
-            --external:cloudflare:workers \
-            --outfile="$WORKER_DIR/user-routes.js"
-          echo "Compiled:"
-          ls -la "$WORKER_DIR/"
-
-      - name: Patch dist wrangler.json (AI binding + additional_modules)
+      - name: Bundle worker + patch wrangler.json
         run: python3 scripts/patch-wrangler.py
 
-      - name: Deploy (wrangler deploy directly, skip rebuild)
+      - name: Deploy (wrangler deploy with patched config)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          WORKER_DIR=$(find dist -name "wrangler.json" -not -path "*/client/*" | head -1 | xargs dirname)
-          echo "Deploying from $WORKER_DIR"
-          cat "$WORKER_DIR/wrangler.json"
-          bunx wrangler deploy --config "$WORKER_DIR/wrangler.json"
+          WORKER_CFG=$(find dist -name "wrangler.json" -not -path "*/client/*" | head -1)
+          echo "Using config: $WORKER_CFG"
+          cat "$WORKER_CFG"
+          bunx wrangler deploy --config "$WORKER_CFG"

@@ -214,7 +214,7 @@ export function ContactPage() {
                       }`}
                     >
                       <Truck className="h-4 w-4" />
-                      Request Delivery
+                      Request Pickup & Delivery
                     </button>
                   </div>
 
@@ -291,7 +291,7 @@ export function ContactPage() {
                         <Textarea id="d-message" {...deliveryForm.register('message')} placeholder="Type of items, urgency, special handling instructions..." rows={3} className="bg-mmc-light border-0 rounded-xl focus:ring-2 focus:ring-mmc-teal resize-none" />
                       </div>
                       <Button type="submit" disabled={isSubmitting} className="w-full bg-mmc-teal hover:bg-mmc-teal/90 text-white rounded-xl py-6 text-base font-bold">
-                        {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Submitting...</> : 'Request Delivery Pickup'}
+                        {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Submitting...</> : 'Request Pickup & Delivery'}
                       </Button>
                     </form>
                   )}
@@ -304,3 +304,4 @@ export function ContactPage() {
     </>
   );
 }
+

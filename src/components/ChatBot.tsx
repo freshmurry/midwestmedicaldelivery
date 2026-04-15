@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2, Bot, User, AlertCircle } from 'lucide-react';
 
 interface Message {
-  id: string;
-  role: 'user' | 'assistant' | 'system';
+  role: 'user' | 'assistant';
   content: string;
   showContactForm?: boolean;
+  error?: boolean;
 }
 
 interface ContactFormData {
@@ -15,58 +15,20 @@ interface ContactFormData {
   message: string;
 }
 
-const WELCOME_MESSAGE: Message = {
-  id: 'welcome',
-  role: 'assistant',
-  content: "Hi! 👋 I'm the MMD assistant. I can answer questions about our medical delivery services in Northwest Indiana. How can I help you today?",
-};
-
-function ContactFallbackForm({ onSubmit, isSubmitting }: { onSubmit: (data: ContactFormData) => void; isSubmitting: boolean }) {
+function ContactFallbackForm({ onSubmit, isSubmitting }: { onSubmit: (d: ContactFormData) => void; isSubmitting: boolean }) {
   const [form, setForm] = useState<ContactFormData>({ name: '', email: '', phone: '', message: '' });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
     onSubmit(form);
   };
-
   return (
     <form onSubmit={handleSubmit} className="mt-3 bg-white border border-gray-200 rounded-2xl p-4 space-y-3">
-      <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Send us a message</p>
-      <input
-        value={form.name}
-        onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-        placeholder="Your name"
-        required
-        className="w-full text-sm px-3 py-2 bg-gray-50 rounded-xl border-0 outline-none focus:ring-2 focus:ring-[#00A699]"
-      />
-      <input
-        value={form.email}
-        onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-        placeholder="Email address"
-        type="email"
-        required
-        className="w-full text-sm px-3 py-2 bg-gray-50 rounded-xl border-0 outline-none focus:ring-2 focus:ring-[#00A699]"
-      />
-      <input
-        value={form.phone}
-        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-        placeholder="Phone (optional)"
-        className="w-full text-sm px-3 py-2 bg-gray-50 rounded-xl border-0 outline-none focus:ring-2 focus:ring-[#00A699]"
-      />
-      <textarea
-        value={form.message}
-        onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-        placeholder="How can we help?"
-        required
-        rows={3}
-        className="w-full text-sm px-3 py-2 bg-gray-50 rounded-xl border-0 outline-none focus:ring-2 focus:ring-[#00A699] resize-none"
-      />
-      <button
-        type="submit"
-        disabled={isSubmitting || !form.name || !form.email || !form.message}
-        className="w-full bg-[#00A699] text-white text-sm font-bold py-2.5 rounded-xl disabled:opacity-50 hover:bg-[#008f83] transition-colors"
-      >
+      <input className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00A699]/40" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+      <input type="email" className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00A699]/40" placeholder="Email address" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+      <input className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00A699]/40" placeholder="Phone (optional)" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
+      <textarea className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 h-20 resize-none focus:outline-none focus:ring-2 focus:ring-[#00A699]/40" placeholder="How can we help?" value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
+      <button type="submit" disabled={isSubmitting || !form.name || !form.email || !form.message} className="w-full bg-[#00A699] text-white text-sm font-bold py-2.5 rounded-xl hover:bg-[#008f83] disabled:opacity-50 transition-colors">
         {isSubmitting ? 'Sending...' : 'Send Message →'}
       </button>
     </form>
@@ -75,9 +37,11 @@ function ContactFallbackForm({ onSubmit, isSubmitting }: { onSubmit: (data: Cont
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
+  const [messages, setMessages] = useState<Message[]>([
+    { role: 'assistant', content: "Hi! I'm the MMD Assistant. I can answer questions about our medical delivery services, service areas, pricing, hours, and more. How can I help you?" }
+  ]);
   const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -93,45 +57,30 @@ export function ChatBot() {
 
   const sendMessage = async () => {
     const text = input.trim();
-    if (!text || isLoading) return;
-
-    const userMsg: Message = { id: crypto.randomUUID(), role: 'user', content: text };
-    setMessages(prev => [...prev, userMsg]);
+    if (!text || loading) return;
     setInput('');
-    setIsLoading(true);
-
+    const userMsg: Message = { role: 'user', content: text };
+    setMessages(prev => [...prev, userMsg]);
+    setLoading(true);
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: [...messages, userMsg]
-            .filter(m => m.role !== 'system')
-            .map(m => ({ role: m.role, content: m.content })),
-        }),
+        body: JSON.stringify({ messages: [...messages, userMsg].map(m => ({ role: m.role, content: m.content })) }),
       });
-
-      const json = await res.json() as { success: boolean; data?: { reply: string; showContactForm?: boolean } };
-
-      if (json.success && json.data) {
-        setMessages(prev => [...prev, {
-          id: crypto.randomUUID(),
-          role: 'assistant',
-          content: json.data!.reply,
-          showContactForm: json.data!.showContactForm,
-        }]);
-      } else {
-        throw new Error('API error');
-      }
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json() as { success: boolean; reply?: string; showContactForm?: boolean; error?: string };
+      if (!data.success) throw new Error(data.error || 'API error');
+      setMessages(prev => [...prev, { role: 'assistant', content: data.reply || '', showContactForm: data.showContactForm }]);
     } catch {
       setMessages(prev => [...prev, {
-        id: crypto.randomUUID(),
         role: 'assistant',
         content: "I'm having trouble connecting right now. Please use the contact form below or email us at dispatch@midwestmedicaldelivery.com.",
         showContactForm: true,
+        error: true,
       }]);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
@@ -144,51 +93,39 @@ export function ChatBot() {
         body: JSON.stringify({ ...data, contactType: 'general', source: 'chatbot' }),
       });
       setFormSubmitted(true);
-      setMessages(prev => [...prev, {
-        id: crypto.randomUUID(),
-        role: 'assistant',
-        content: `Thanks ${data.name}! ✅ Your message has been received. Someone from our team will get back to you shortly.`,
-      }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: "✅ Thanks! We've received your message and will follow up shortly." }]);
     } catch {
-      setMessages(prev => [...prev, {
-        id: crypto.randomUUID(),
-        role: 'assistant',
-        content: 'Sorry, there was an issue submitting your message. Please email us directly at dispatch@midwestmedicaldelivery.com.',
-      }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, there was an error submitting your message. Please email dispatch@midwestmedicaldelivery.com directly.", error: true }]);
     } finally {
       setFormSubmitting(false);
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
+  // Viewport-aware positioning: account for navbar height (80px) at top
+  const chatWindowStyle: React.CSSProperties = {
+    height: '520px',
+    maxHeight: 'calc(100vh - 104px)', // 80px navbar + 24px gap
   };
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Toggle Button */}
       <button
-        onClick={() => setIsOpen(o => !o)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat assistant'}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? 'Close chat' : 'Open chat'}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#00A699] text-white rounded-full shadow-lg hover:bg-[#008f83] transition-all duration-200 flex items-center justify-center hover:scale-105 active:scale-95"
       >
-        {isOpen
-          ? <X className="h-6 w-6" />
-          : <MessageCircle className="h-6 w-6" />
-        }
+        {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
         <div
           className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
-          style={{ height: '520px' }}
+          style={chatWindowStyle}
         >
           {/* Header */}
-          <div className="bg-[#00A699] px-5 py-4 flex items-center gap-3">
+          <div className="bg-[#00A699] px-5 py-4 flex items-center gap-3 flex-shrink-0">
             <div className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
               <Bot className="h-5 w-5 text-white" />
             </div>
@@ -201,18 +138,20 @@ export function ChatBot() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gray-50">
-            {messages.map(msg => (
-              <div key={msg.id} className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {msg.role === 'assistant' && (
-                  <div className="w-7 h-7 bg-[#00A699] rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                    <Bot className="h-3.5 w-3.5 text-white" />
+                  <div className="w-7 h-7 rounded-full bg-[#00A699]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    {msg.error ? <AlertCircle className="h-4 w-4 text-red-500" /> : <Bot className="h-4 w-4 text-[#00A699]" />}
                   </div>
                 )}
-                <div className={`max-w-[80%] ${msg.role === 'user' ? 'items-end' : 'items-start'} flex flex-col`}>
-                  <div className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                <div className="max-w-[80%]">
+                  <div className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                     msg.role === 'user'
                       ? 'bg-[#00A699] text-white rounded-tr-sm'
-                      : 'bg-white text-gray-800 border border-gray-100 rounded-tl-sm shadow-sm'
+                      : msg.error
+                        ? 'bg-red-50 text-red-700 border border-red-200 rounded-tl-sm'
+                        : 'bg-white text-gray-800 border border-gray-100 shadow-sm rounded-tl-sm'
                   }`}>
                     {msg.content}
                   </div>
@@ -221,23 +160,19 @@ export function ChatBot() {
                   )}
                 </div>
                 {msg.role === 'user' && (
-                  <div className="w-7 h-7 bg-gray-200 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                    <User className="h-3.5 w-3.5 text-gray-500" />
+                  <div className="w-7 h-7 rounded-full bg-[#00A699] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <User className="h-4 w-4 text-white" />
                   </div>
                 )}
               </div>
             ))}
-            {isLoading && (
-              <div className="flex gap-2.5 justify-start">
-                <div className="w-7 h-7 bg-[#00A699] rounded-full flex items-center justify-center shrink-0">
-                  <Bot className="h-3.5 w-3.5 text-white" />
+            {loading && (
+              <div className="flex gap-2 justify-start">
+                <div className="w-7 h-7 rounded-full bg-[#00A699]/10 flex items-center justify-center">
+                  <Bot className="h-4 w-4 text-[#00A699]" />
                 </div>
-                <div className="bg-white border border-gray-100 px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm">
-                  <div className="flex gap-1 items-center h-4">
-                    <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                  </div>
+                <div className="bg-white border border-gray-100 shadow-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                  <Loader2 className="h-4 w-4 animate-spin text-[#00A699]" />
                 </div>
               </div>
             )}
@@ -245,22 +180,23 @@ export function ChatBot() {
           </div>
 
           {/* Input */}
-          <div className="px-4 py-3 bg-white border-t border-gray-100 flex gap-2 items-center">
+          <div className="px-4 py-3 border-t border-gray-100 bg-white flex gap-2 flex-shrink-0">
             <input
               ref={inputRef}
+              type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
+              onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
               placeholder="Ask a question..."
-              disabled={isLoading}
-              className="flex-1 text-sm px-4 py-2.5 bg-gray-50 rounded-xl border-0 outline-none focus:ring-2 focus:ring-[#00A699] disabled:opacity-50"
+              className="flex-1 text-sm border border-gray-200 rounded-2xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#00A699]/30 focus:border-[#00A699]"
             />
             <button
               onClick={sendMessage}
-              disabled={!input.trim() || isLoading}
-              className="w-10 h-10 bg-[#00A699] text-white rounded-xl flex items-center justify-center disabled:opacity-40 hover:bg-[#008f83] transition-colors shrink-0"
+              disabled={!input.trim() || loading}
+              aria-label="Send message"
+              className="w-10 h-10 bg-[#00A699] text-white rounded-full flex items-center justify-center hover:bg-[#008f83] disabled:opacity-40 transition-colors flex-shrink-0"
             >
-              {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+              <Send className="h-4 w-4" />
             </button>
           </div>
         </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/SEO';
 import { Award, ShieldCheck, Zap, ShieldAlert, Package } from 'lucide-react';
-import { AuditSummary } from '@/components/AuditSummary';
 export function AboutPage() {
   const schema = {
     "@context": "https://schema.org",
@@ -107,7 +106,6 @@ export function AboutPage() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <AuditSummary />
       </div>
     </>
   );

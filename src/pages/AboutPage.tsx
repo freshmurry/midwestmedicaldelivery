@@ -7,15 +7,15 @@ export function AboutPage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Midwest Medical Delivery",
-    "description": "MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport.",
-    "knowsAbout": ["Medical Logistics", "HIPAA Compliance", "OSHA 10 Safety", "Dental Prosthetic Transport", "Pharmacy Delivery"],
+    "description": "MMD specializes in medical, dental, pharmacy, veterinary, med spa, and physical therapy pickup and delivery services across Northwest Indiana. HIPAA and OSHA 10 certified.",
+    "knowsAbout": ["Medical Logistics", "HIPAA Compliance", "OSHA 10 Safety", "Dental Prosthetic Transport", "Pharmacy Delivery", "Veterinary Courier", "Med Spa Delivery", "Physical Therapy Courier", "Long-Term Care Pharmacy Delivery"],
     "url": "https://midwestmedicaldelivery.com/about"
   };
   return (
     <>
       <SEO
         title="About Our Medical Logistics Specialization"
-        description="MMD specializes in professional medical delivery services for regional clinics, labs, and pharmacies. HIPAA and OSHA 10 certified for secure clinical transport."
+        description="MMD specializes in medical, dental, pharmacy, veterinary, med spa, and physical therapy pickup and delivery across Northwest Indiana. HIPAA and OSHA 10 certified."
         schema={schema}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,10 +54,10 @@ export function AboutPage() {
               </p>
               <div className="grid sm:grid-cols-2 gap-8 pt-4">
                 {[
-                  { icon: Award, title: 'Pharmacy Focus', desc: 'Optimized prescription routing for facility delivery.' },
+                  { icon: Award, title: 'Multi-Specialty Focus', desc: 'Medical, Dental, Pharmacy, Veterinary, Med Spa, and Physical Therapy pickup & delivery.' },
                   { icon: ShieldCheck, title: 'Secure Transport', desc: 'Compliant protocols for sensitive clinic cargo.' },
                   { icon: Zap, title: 'Regional Experts', desc: 'Professional response times across the clinic network.' },
-                  { icon: Package, title: 'Clinical Specialization', desc: 'Exclusively handling dental and medical parcels.' }
+                  { icon: Package, title: 'Long-Term Care Routes', desc: 'Daily & weekly pharmacy delivery to assisted living, nursing homes & rehab centers.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -110,3 +110,4 @@ export function AboutPage() {
     </>
   );
 }
+

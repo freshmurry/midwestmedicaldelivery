@@ -35,5 +35,8 @@
       "database_name": "mmd-contacts",
       "database_id": "01f75de3-1960-4347-ae68-90d42a347c95"
     }
-  ]
+  ],
+  "ai": {
+    "binding": "AI"
+  }
 }

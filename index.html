@@ -1,26 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2300A699'/><path d='M35 30L20 70M55 30L40 70M75 30L60 70' stroke='white' stroke-width='14' stroke-linecap='round'/></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA / Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#00A699" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MMD" />
+    <meta name="application-name" content="Midwest Medical Delivery" />
+    <meta name="msapplication-TileColor" content="#00A699" />
+    <meta name="msapplication-TileImage" content="/icon-192.png" />
+
     <!-- Primary SEO -->
-    <title>Midwest Medical Delivery | Northwest Indiana Medical & Dental</title>
-    <meta name="description" content="Midwest Medical Delivery (MMD) - Professional Medical Delivery for Dental, Pharmacy, and Vet Clinics in Northwest Indiana (NWI). Fast, secure prescription and dental prosthetic delivery." />
-    <meta name="keywords" content="medical delivery Northwest Indiana, dental delivery NWI, pharmacy delivery NWI, healthcare transport Northwest Indiana, medical logistics Gary, medical delivery Munster, secure clinic delivery, medical delivery Whiting, dental delivery Cedar Lake, pharmacy delivery Griffith" />
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://midwestmedicaldelivery.com/" />
-    <meta property="og:title" content="Midwest Medical Delivery | Northwest Indiana Last Minute Medical & Dental Delivery" />
-    <meta property="og:description" content="Specialized professional medical delivery for dental, pharmacy, and vet clinics across Northwest Indiana." />
-    <meta property="og:image" content="https://media.istockphoto.com/id/1469686707/photo/delivery-worker-hands-holding-medications-parcel.webp?a=1&b=1&s=612x612&w=0&k=20&c=I1vxFYX3ePjLg5hPeLyPn52ntz6XfV6ciXp-vSRYYsU=" />
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://midwestmedicaldelivery.com/" />
-    <meta property="twitter:title" content="Midwest Medical Delivery | Northwest Indiana Medical & Dental" />
-    <meta property="twitter:description" content="Specialized professional medical delivery for dental, pharmacy, and vet clinics across Northwest Indiana." />
-    <meta property="twitter:image" content="https://media.istockphoto.com/id/1469686707/photo/delivery-worker-hands-holding-medications-parcel.webp?a=1&b=1&s=612x612&w=0&k=20&c=I1vxFYX3ePjLg5hPeLyPn52ntz6XfV6ciXp-vSRYYsU=" />
+    <title>Midwest Medical Delivery | Northwest Indiana Medical &amp; Dental Delivery</title>
+    <meta name="description" content="Midwest Medical Delivery (MMD) — Professional medical courier for dental labs, pharmacies, and vet clinics in Northwest Indiana. HIPAA compliant. Fast, secure, reliable." />
+    <meta name="keywords" content="medical delivery Northwest Indiana, dental delivery NWI, pharmacy delivery Indiana, healthcare courier Gary IN, medical logistics Hammond, dental prosthetic transport, HIPAA compliant delivery, medical courier Munster, pharmacy courier Highland, veterinary delivery NWI" />
+    <meta name="author" content="Midwest Medical Delivery" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="geo.region" content="US-IN" />
+    <meta name="geo.placename" content="Northwest Indiana" />
+    <meta name="geo.position" content="41.5868;-87.5000" />
+    <meta name="ICBM" content="41.5868, -87.5000" />
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://midwestmedicaldelivery.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Midwest Medical Delivery" />
+    <meta property="og:url" content="https://midwestmedicaldelivery.com/" />
+    <meta property="og:title" content="Midwest Medical Delivery | NWI Medical &amp; Dental Courier" />
+    <meta property="og:description" content="Professional HIPAA-compliant medical courier for dental labs, pharmacies, and vet clinics across Northwest Indiana. Fast. Secure. Reliable." />
+    <meta property="og:image" content="https://midwestmedicaldelivery.com/icon-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Midwest Medical Delivery logo" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@midwestmeddelivery" />
+    <meta name="twitter:url" content="https://midwestmedicaldelivery.com/" />
+    <meta name="twitter:title" content="Midwest Medical Delivery | NWI Medical Courier" />
+    <meta name="twitter:description" content="HIPAA-compliant medical delivery for dental labs, pharmacies, and vet clinics across Northwest Indiana." />
+    <meta name="twitter:image" content="https://midwestmedicaldelivery.com/icon-512.png" />
+    <meta name="twitter:image:alt" content="Midwest Medical Delivery" />
+
+    <!-- Google Verification (replace with actual code from Search Console) -->
+    <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
+
+    <!-- Google AdSense (replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://midwestmedicaldelivery.com/#organization",
+      "name": "Midwest Medical Delivery",
+      "alternateName": "MMD",
+      "description": "Professional HIPAA-compliant medical courier service specializing in dental lab, pharmacy, and veterinary clinic deliveries across Northwest Indiana.",
+      "url": "https://midwestmedicaldelivery.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://midwestmedicaldelivery.com/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://midwestmedicaldelivery.com/icon-512.png",
+      "telephone": "",
+      "email": "dispatch@midwestmedicaldelivery.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "IN",
+        "addressCountry": "US",
+        "addressLocality": "Northwest Indiana"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Gary"},
+        {"@type": "City", "name": "Hammond"},
+        {"@type": "City", "name": "Munster"},
+        {"@type": "City", "name": "Highland"},
+        {"@type": "City", "name": "Schererville"},
+        {"@type": "City", "name": "Merrillville"},
+        {"@type": "City", "name": "Crown Point"},
+        {"@type": "City", "name": "East Chicago"},
+        {"@type": "City", "name": "Hobart"},
+        {"@type": "City", "name": "Dyer"},
+        {"@type": "City", "name": "Griffith"},
+        {"@type": "City", "name": "Whiting"},
+        {"@type": "City", "name": "St. John"},
+        {"@type": "City", "name": "Cedar Lake"}
+      ],
+      "knowsAbout": [
+        "Medical Delivery",
+        "Dental Prosthetic Transport",
+        "Pharmacy Courier",
+        "HIPAA Compliance",
+        "OSHA 10 Safety",
+        "Veterinary Supplies Delivery"
+      ],
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "07:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(function(reg) { console.log('[MMD SW] Registered:', reg.scope); })
+            .catch(function(err) { console.warn('[MMD SW] Registration failed:', err); });
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

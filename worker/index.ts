@@ -8,10 +8,18 @@ export * from './core-utils';
 
 // Static import to avoid dynamic import bundling issues with Cloudflare Workers
 import { userRoutes } from './user-routes';
+import { botBlock, robotsTxt } from './bot-block';
+
 
 const app = new Hono<{ Bindings: Env }>();
 
 app.use('*', logger());
+
+// robots.txt — must be before bot-block
+app.get('/robots.txt', robotsTxt);
+
+// Bot blocking — blocks crawlers & scrapers on every route
+app.use('*', botBlock);
 
 app.use('/api/*', cors({ origin: '*', allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], allowHeaders: ['Content-Type', 'Authorization'] }));
 
